@@ -63,6 +63,7 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $created = $fetch['created_at'];
                     }
                     
                     ?>
@@ -91,6 +92,7 @@
                         <div>
                             <h3>Bio</h3>
                             <p> <?php echo $_SESSION['bio']; ?> </p>
+                            <p>Gamer summoned on <?php echo date('F j, Y', strtotime($created)); ?></p>
                         </div>
                         <br>
                         <div>
