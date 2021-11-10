@@ -17,34 +17,34 @@ $paypal = new PaypalExpress;
 // Get product ID from URL 
 $productID = $_GET['id']; 
 
-$eventID = $_GET['id']; 
+// $eventID = $_GET['id']; 
  
 // Get product details 
 $conditions = array( 
     'where' => array('id' => $productID), 
     'return_type' => 'single' 
 ); 
-$conditions = array( 
-    'where' => array('id' => $productID), 
-    'return_type' => 'single' 
-); 
+// $conditions = array( 
+//     'where' => array('id' => $productID), 
+//     'return_type' => 'single' 
+// ); 
 
 $productData = $db->getRows('products', $conditions);
 
-$eventData = $db->getRows('events', $conditions); 
+// $eventData = $db->getRows('events', $conditions); 
 
  
 // Redirect to the home page if product not found 
-if(empty($eventData)){ 
+if(empty($productData)){ 
     header("Location: index.php"); 
 } 
 ?>
 
 <div class="item">
     <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
-    <p>Name: <?php echo $eventData['title']; ?></p>
-    <p>Price: <?php echo $eventData['s_price']; ?></p>
+    <img src="<?php echo BASE_URL . '/assets/images/' . $productData['image']; ?>"/>
+    <p>Name: <?php echo $productData['title']; ?></p>
+    <p>Price: <?php echo $productData['s_price']; ?></p>
     
     <!-- Checkout button -->
     <div id="paypal-button"></div>
@@ -91,7 +91,7 @@ paypal.Button.render({
         return actions.payment.create({
             transactions: [{
                 amount: {
-                    total: '<?php echo $productData['price']; ?>',
+                    total: '<?php echo $productData['s_price']; ?>',
                     currency: '<?php echo $productData['currency']; ?>'
                 }
             }]

@@ -13,11 +13,11 @@
 // To get session of Events by id
 
 if (isset($_GET['id'])) {
-  $post = selectOne('events', ['id' => $_GET['id']]);
+  $post = selectOne('products', ['id' => $_GET['id']]);
   $_SESSION['postid'] = $_GET['id'];
 }
 $topics = selectAll('topics');
-$posts = selectAll('events', ['published' => 1]);
+$posts = selectAll('products', ['published' => 1]);
 
 $_SESSION['postid'] = $_GET['id'];
 ?>

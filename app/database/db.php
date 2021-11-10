@@ -68,7 +68,7 @@ function selectAll($table, $conditions = [])
 function selectEvent($table, $conditions = [])
 {
     global $conn;
-    $sql =" select e.id as eventid, e.user_id, topic_id,title, image, body, published, e.created_at, u.id, username from events e inner join users u ON e.user_id = u.id ";
+    $sql =" select e.id as eventid, e.user_id, topic_id,title, image, body, published, e.created_at, u.id, username from products e inner join users u ON e.user_id = u.id ";
     if (empty($conditions)) {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
