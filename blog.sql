@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 07:17 AM
+-- Generation Time: Nov 10, 2021 at 07:32 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -29,20 +29,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `price` float(10,2) NOT NULL,
-  `currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
+  `user_id` int(11) NOT NULL,
+  `topic_id` int(11) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `s_price` float(10,2) NOT NULL,
+  `currency` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
+  `published` tinyint(4) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Active, 0=Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `image`, `price`, `currency`, `status`) VALUES
-(52, 'Valorant Tournament event', '', 15.00, 'SGD', 1),
-(61, 'Fifa Tournament', '', 10.00, 'SGD', 1);
+INSERT INTO `events` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`) VALUES
+(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636516912_cert.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1),
+(61, 49, 10, 'Fifa 22 Tourney', '1636463677_f.jpg', '&lt;p&gt;balblalbalbalbla&lt;/p&gt;', 'Solo', 10.00, 'SGD', 1, '2021-11-09 21:14:37', 1),
+(62, 58, 10, 'vgfadsf', '1636521480_WhatsApp Image 2021-10-25 at 9.33.19 AM.jpeg', '&lt;p&gt;fsdafasdf&lt;/p&gt;', 'solo', 0.00, 'SGD', 1, '2021-11-10 13:18:00', 1);
 
 -- --------------------------------------------------------
 
@@ -96,7 +103,8 @@ INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`
 (8, 0, 61, 'PAYID-MGFUHOA02P98938UA1117202', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 05:00:39'),
 (9, 0, 52, 'PAYID-MGFWC5Y5G970839RM048534X', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:07:31'),
 (10, 0, 52, 'PAYID-MGFWD6Q43K322272N760792W', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:09:09'),
-(11, 0, 61, 'PAYID-MGFWFLI8FW798381T820445C', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:12:08');
+(11, 0, 61, 'PAYID-MGFWFLI8FW798381T820445C', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:12:08'),
+(12, 0, 52, 'PAYID-MGFWOEY6XB77056LG490362A', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:31:12');
 
 -- --------------------------------------------------------
 
@@ -127,36 +135,6 @@ INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `pub
 (58, 58, 15, 'These are the teams in the Worlds 2021 Group Stage', '1633868936_post4.PNG', '&lt;h2&gt;&lt;strong&gt;After a historic and eventful play-ins stage, the groups for Worlds 2021 have been determined.&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Play-Ins for Worlds 2021 was just as historic as it was dramatic. For the first time, an LJL team, DetonatioN FocusMe, escaped Play-Ins and made it to Groups. LNG swept through Play-Ins without dropping a game while Cloud9 almost bowed out early. Beyond Gaming was engulfed in controversy just hours before the final series that sent Hanwha Life Esports to the main event.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;After the dust has settled, the final groups of Worlds 2021 have been cemented. With the main event looming and only one day of rest between, these are the groups.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group A &ndash; The Group of death&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every year has one, a group with two unimaginably strong teams paired together seemingly destined to at least make quarter finals. Cloud9 will join the fray against FPX and Damwon Kia. After a shaky play-ins, Cloud9 are clear underdogs along with Rogue. The chances of escaping groups seems slim for Cloud9, and their weaker players will have to step up to show that the team is not simply prolonging the inevitable.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group B &ndash; Will DFM defy expectations?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Group B has one clear leader, Edward Gaming, and a team expected to end last with the addition of DFM. Despite having a historic Play-Ins with their star shining like never before, DFM are still expected to be outclassed. With heavy hitters like EDG, T1, and 100T between them, it seems unlike that the DFM Cinderella story will go any farther.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group C &ndash; Hanwha Life poised to shake up groups&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;br&gt;&lt;strong&gt;Group C is one of the more &lsquo;open&rsquo; groups in Worlds 2021. RNG have emerged as clear favorites with the race between Fnatic and PSG Talon being split down the middle. Hanwha Life&rsquo;s presence complicates this group significantly, as the team has one of the strongest midlanes and bottom lane duos in Worlds. Hanwha Life could claim one of the two available spots, though they are almost just as likely to crash and burn.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group D &ndash; LNG, the Worlds sleeper pick&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;LNG may be the best team to ever compete in Play-Ins. The LPL fourth seed did not drop a single game and were the first squad to advance on to groups. Play-Ins have given the team time to learn the meta before continuing their journey into the most competitive group at Worlds. Though competition is stiff in Group D, as Team Liquid, Gen.G, and MAD Lions stand in their way, LNG could be a sleeper pick to win the entire tournament.&lt;/strong&gt;&lt;/p&gt;', 0, '2021-10-10 20:28:56', 0),
 (62, 49, 15, 'FIFA to split with EA sports?!', '1635416265_fifa.jpg', '&lt;p&gt;FIFA is ending its long-term exclusive partnership with Electronic Arts as it looks to widen its gaming and esports portfolio.&lt;/p&gt;&lt;p&gt;The two parties first struck a deal in 1993 that will expire in 2022. FIFA is &lt;a href=&quot;https://www.nytimes.com/2021/10/13/sports/soccer/ea-sports-fifa.html&quot;&gt;reportedly&lt;/a&gt; seeking more than double its current &lt;strong&gt;$150 million&lt;/strong&gt; annual licensing fee.&lt;/p&gt;&lt;p&gt;FIFA&rsquo;s &lt;a href=&quot;https://www.fifa.com/news/fifa-set-to-widen-gaming-and-esports-portfolio&quot;&gt;statement&lt;/a&gt;, in part: &ldquo;It is clear that this needs to be a space that is occupied by more than one party controlling all rights.&rdquo;&lt;/p&gt;&lt;p&gt;The organization added that it will be in a better position to serve its 211 member associations as they take advantage of emerging opportunities in gaming and soccer.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The &ldquo;FIFA&rdquo; series is estimated to be worth more than &lt;strong&gt;$2 billion&lt;/strong&gt; annually to EA.&lt;/li&gt;&lt;li&gt;Since its October 2020 release, &ldquo;FIFA 21&rdquo; had more than 31 million players.&lt;/li&gt;&lt;li&gt;&ldquo;FIFA 22&rdquo; already has 9.1 million players following its global release on Oct. 1.&lt;/li&gt;&lt;li&gt;More than 140 million people have played EA Sports titles over the last 12 months.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;EA &lt;a href=&quot;https://s22.q4cdn.com/894350492/files/doc_financials/2022/q1/Q1-FY22-Earnings-Release-Final.pdf&quot;&gt;posted&lt;/a&gt;&lt;strong&gt; $1.6 billion &lt;/strong&gt;in revenue in fiscal Q1, slightly up from $1.5 billion in the same period a year prior.&lt;/p&gt;&lt;p&gt;The results were driven by the company&rsquo;s live services segment, which generated $1.2 billion in revenue for the quarter. EA is projected to pocket &lt;strong&gt;$6.85 billion in revenue &lt;/strong&gt;in FY 2022.&lt;/p&gt;', 1, '2021-10-24 15:05:46', 0),
 (64, 49, 9, 'Battlefield 2042', '1635416254_b2042.jpg', '&lt;p&gt;asasasasasas&lt;/p&gt;', 1, '2021-10-25 13:38:36', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `topic_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `s_price` float(10,2) NOT NULL,
-  `currency` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
-  `published` tinyint(4) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Active, 0=Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`) VALUES
-(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636516912_cert.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1),
-(61, 49, 10, 'Fifa 22 Tourney', '1636463677_f.jpg', '&lt;p&gt;balblalbalbalbla&lt;/p&gt;', 'Solo', 10.00, 'SGD', 1, '2021-11-09 21:14:37', 1),
-(62, 58, 10, 'vgfadsf', '1636521480_WhatsApp Image 2021-10-25 at 9.33.19 AM.jpeg', '&lt;p&gt;fsdafasdf&lt;/p&gt;', 'solo', 0.00, 'SGD', 1, '2021-11-10 13:18:00', 1);
 
 -- --------------------------------------------------------
 
@@ -362,7 +340,8 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `st
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `events_ibfk_1` (`topic_id`);
 
 --
 -- Indexes for table `game_list`
@@ -382,13 +361,6 @@ ALTER TABLE `payments`
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `topic_id` (`topic_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `events_ibfk_1` (`topic_id`);
 
 --
 -- Indexes for table `tbl_comment`
@@ -437,25 +409,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tbl_comment`
@@ -498,16 +464,16 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
