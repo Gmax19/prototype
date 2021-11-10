@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 02:35 PM
+-- Generation Time: Nov 10, 2021 at 07:17 AM
 -- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,26 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `topic_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `s_price` float(10,2) NOT NULL,
-  `currency` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'BND',
-  `published` tinyint(4) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` float(10,2) NOT NULL,
+  `currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Active, 0=Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`) VALUES
-(52, 49, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636462774_yo.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'BND', 1, '2021-10-11 10:02:23', 1),
-(61, 49, 10, 'Fifa 22 Tourney', '1636463677_f.jpg', '&lt;p&gt;balblalbalbalbla&lt;/p&gt;', 'Solo', 10.00, 'BND', 1, '2021-11-09 21:14:37', 1);
+INSERT INTO `events` (`id`, `name`, `image`, `price`, `currency`, `status`) VALUES
+(52, 'Valorant Tournament event', '', 15.00, 'SGD', 1),
+(61, 'Fifa Tournament', '', 10.00, 'SGD', 1);
 
 -- --------------------------------------------------------
 
@@ -97,8 +91,12 @@ CREATE TABLE `payments` (
 
 INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`, `currency_code`, `payer_id`, `payer_name`, `payer_email`, `payer_country`, `payment_status`, `created`) VALUES
 (5, 91, 52, 'PAYID-MGE4UOY9GY295054H900891S', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 02:09:29'),
-(6, 0, 52, 'PAYID-MGFHGOQ5AH12079V71296304', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:10:31'),
-(7, 0, 61, 'PAYID-MGFHRSI2FG5750256467023K', 10.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:34:09');
+(6, 6, 52, 'PAYID-MGFHGOQ5AH12079V71296304', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:10:31'),
+(7, 0, 61, 'PAYID-MGFHRSI2FG5750256467023K', 10.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:34:09'),
+(8, 0, 61, 'PAYID-MGFUHOA02P98938UA1117202', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 05:00:39'),
+(9, 0, 52, 'PAYID-MGFWC5Y5G970839RM048534X', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:07:31'),
+(10, 0, 52, 'PAYID-MGFWD6Q43K322272N760792W', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:09:09'),
+(11, 0, 61, 'PAYID-MGFWFLI8FW798381T820445C', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 07:12:08');
 
 -- --------------------------------------------------------
 
@@ -123,7 +121,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `published`, `created_at`, `bookmark`) VALUES
-(0, 49, 15, 'Halloween Update!', '1635416287_Phasmophobia_Halloween_Cover.png', '&lt;p&gt;Phasmophobia will receive a major update this Monday the 25th at 4PM BST!&lt;/p&gt;', 1, '2021-10-24 14:57:33', 1),
+(0, 49, 15, 'Halloween Update!', '1635416287_Phasmophobia_Halloween_Cover.png', '&lt;p&gt;Phasmophobia will receive a major update this Monday the 25th at 4PM BST!&lt;/p&gt;', 1, '2021-10-24 14:57:33', 0),
 (55, 58, NULL, 'Effectively using smokes in VALORANT', '1633868454_post1.PNG', '&lt;h2&gt;In competitive VALORANT, smokes can be the difference maker. But who has the best smokes and where should you be placing them?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;VALORANT Agents are divided into four main categories: duelists, controllers, sentinels, and initiators. The ability to drop &lsquo;smokes&rsquo; stretches across almost all of these different roles but primarily falls to the controllers and sentinels. These agents may not have flashy abilities, but their contributions give their team map control and space. In competitive VALORANT, a well placed smoke can be the difference maker between a round win or loss. With some many smoke Agents, as well as places to smoke, using smokes effectively can be difficult.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;Which Agents are the best smokers?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every smoke Agent has their own unique take on the ability. Whether it be range, duration, or even color there is some distinction between all playable smokers.&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;Brimstone&amp;nbsp;is one of the best smokers in VALORANT and a great place to start for players looking to master controller Agents. Brimstone&rsquo;s has three, fairly high ranged smokes that you can drop from above. The benefit of Brimstone is that his&amp;nbsp;Sky Smoke gives an overhead perspective of the map, making his smokes some of the most precise in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Omen&amp;nbsp;is another viable smoke Agent. Also a controller, Omen allows for a little more play-making ability. His teleport and blinding ability make him more self-sufficient though come at the cost of his smokes.&amp;nbsp;Dark Cover&amp;nbsp;has only two charges and has a slightly below average duration. Omen&rsquo;s other abilities are useful in supplementing his smokes, making him more flexible in gaining ground.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;&amp;nbsp;Perhaps the most &lsquo;complex&rsquo; smoker Agent is&amp;nbsp;Astra. Astra&rsquo;s star system may appear daunting at first, but after mastery can be the most effective among other smoker. The five star charges can guarantee a max of five smokes on the map, however her other two abilities are just as effective in gaining map control. Similar to Brimstone, her astral projection gives her a bird&rsquo;s eye view of the map, but she has no range limits. Her incredible range and ability to lock down points on her own makes Astra the single best smoker in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&amp;nbsp;&lt;strong&gt;Viper and Jett are also Agents outside the controller role with viable smokes. Jett&rsquo;s Cloudburst has the lowest duration, as they are primarily meant to facilitate her personal play making ability. Viper&rsquo;s&amp;nbsp;Poison Cloud is an interesting alternative, as it has a range of 2-15 second duration. Viper alone is a poor mimic of a controller however, as her gas management is the sole decider of her effectiveness.&lt;/strong&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2&gt;&lt;strong&gt;Where to place smokes ?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Knowing who is the best smoker is completely separate from knowing how to use smokes.&amp;nbsp; Every map is obviously different and have their own guides for smokers, however there are some generally applicable tips.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Chokepoints and entrances are the two best spots to smoke when on the defense. This will force attackers to make the first move with little information, leaving them more likely to misplay. Attackers should focus smokes on known defense points. This includes &lsquo;heaven&rsquo; areas that overlook the bombsites, corners, and areas behind cover. Well-placed attacker smokes may even force defenders off the point as you move in, forcing them to play for the re-take.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;There plenty of other specific smoke scenarios. Using a smoke to cloud your spike plant or deplant is a common strategy. Knowledge of your map is ultimately what makes a great smoker, but these tips can get you started.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&amp;nbsp;&lt;/p&gt;', 1, '2021-10-10 20:20:54', 0),
 (57, 58, 9, 'VALORANT: Patch 3.0 brings big changes to all Agents and weapons', '1633868783_post 3.PNG', '&lt;h2&gt;&lt;strong&gt;The patch notes for patch 3.0 are here and we&rsquo;re getting changes to all Agents and weapons, alongside some competitive tuning.&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Agents&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The biggest changes come to the Agents, as they will all be adjusted with the upcoming patch. &ldquo;We have adjusted ability pricing, cooldown rates, and ultimate costs on every Agent. Generally, we noticed that certain agents were able to have too much impact with their abilities without making any significant tradeoffs.&ldquo;&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;These changes have been made to all agents&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Signature abilities now only provide a minimum of one charge per round instead of accumulating a charge every round.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Charges gained from cooldowns are now always temporary&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Visibility returns faster during the fadeout period of all flashes&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;&lt;strong&gt;Weapons&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;When it came to the weapons, the developers targeted run-and-gun, which is too powerful in some situations. &ldquo;It is currently more potent than we&rsquo;d like. This patch targets a piece of the puzzle that we haven&rsquo;t touched before which is what we call &lsquo;tag into accuracy.&rsquo; [&hellip;] We&rsquo;ve also reduced the running accuracy of Sidearms and SMGs in an attempt to tighten up engagements with those weapons while maintaining some of their identity in terms of mobility by being able to to move and shoot somewhat accurately at shorter ranges.&rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;changes to all weapons&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Bullet tagging changed from 75% slow to 72.5% slow&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Weapon Deadzones changed from 30 to 27.5%&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;', 1, '2021-10-10 20:26:23', 0),
 (58, 58, 15, 'These are the teams in the Worlds 2021 Group Stage', '1633868936_post4.PNG', '&lt;h2&gt;&lt;strong&gt;After a historic and eventful play-ins stage, the groups for Worlds 2021 have been determined.&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Play-Ins for Worlds 2021 was just as historic as it was dramatic. For the first time, an LJL team, DetonatioN FocusMe, escaped Play-Ins and made it to Groups. LNG swept through Play-Ins without dropping a game while Cloud9 almost bowed out early. Beyond Gaming was engulfed in controversy just hours before the final series that sent Hanwha Life Esports to the main event.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;After the dust has settled, the final groups of Worlds 2021 have been cemented. With the main event looming and only one day of rest between, these are the groups.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group A &ndash; The Group of death&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every year has one, a group with two unimaginably strong teams paired together seemingly destined to at least make quarter finals. Cloud9 will join the fray against FPX and Damwon Kia. After a shaky play-ins, Cloud9 are clear underdogs along with Rogue. The chances of escaping groups seems slim for Cloud9, and their weaker players will have to step up to show that the team is not simply prolonging the inevitable.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group B &ndash; Will DFM defy expectations?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Group B has one clear leader, Edward Gaming, and a team expected to end last with the addition of DFM. Despite having a historic Play-Ins with their star shining like never before, DFM are still expected to be outclassed. With heavy hitters like EDG, T1, and 100T between them, it seems unlike that the DFM Cinderella story will go any farther.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group C &ndash; Hanwha Life poised to shake up groups&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;br&gt;&lt;strong&gt;Group C is one of the more &lsquo;open&rsquo; groups in Worlds 2021. RNG have emerged as clear favorites with the race between Fnatic and PSG Talon being split down the middle. Hanwha Life&rsquo;s presence complicates this group significantly, as the team has one of the strongest midlanes and bottom lane duos in Worlds. Hanwha Life could claim one of the two available spots, though they are almost just as likely to crash and burn.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group D &ndash; LNG, the Worlds sleeper pick&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;LNG may be the best team to ever compete in Play-Ins. The LPL fourth seed did not drop a single game and were the first squad to advance on to groups. Play-Ins have given the team time to learn the meta before continuing their journey into the most competitive group at Worlds. Though competition is stiff in Group D, as Team Liquid, Gen.G, and MAD Lions stand in their way, LNG could be a sleeper pick to win the entire tournament.&lt;/strong&gt;&lt;/p&gt;', 0, '2021-10-10 20:28:56', 0),
@@ -138,20 +136,27 @@ INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `pub
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `price` float(10,2) NOT NULL,
-  `currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
+  `user_id` int(11) NOT NULL,
+  `topic_id` int(11) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `s_price` float(10,2) NOT NULL,
+  `currency` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'SGD',
+  `published` tinyint(4) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Active, 0=Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `image`, `price`, `currency`, `status`) VALUES
-(52, 'Valorant Tournament event', '', 15.00, 'SGD', 1),
-(61, 'Fifa Tournament', '', 10.00, 'SGD', 1);
+INSERT INTO `products` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`) VALUES
+(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636516912_cert.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1),
+(61, 49, 10, 'Fifa 22 Tourney', '1636463677_f.jpg', '&lt;p&gt;balblalbalbalbla&lt;/p&gt;', 'Solo', 10.00, 'SGD', 1, '2021-11-09 21:14:37', 1),
+(62, 58, 10, 'vgfadsf', '1636521480_WhatsApp Image 2021-10-25 at 9.33.19 AM.jpeg', '&lt;p&gt;fsdafasdf&lt;/p&gt;', 'solo', 0.00, 'SGD', 1, '2021-11-10 13:18:00', 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +330,7 @@ CREATE TABLE `users` (
   `status` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `bio` text NOT NULL,
-  `pic` varchar(255) NOT NULL,
+  `pic` varchar(255) NOT NULL DEFAULT '1634018908_profile.png',
   `blocked` tinyint(4) NOT NULL,
   `proof` varchar(255) NOT NULL,
   `organiser_status` int(11) NOT NULL,
@@ -341,12 +346,13 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `st
 (39, 2, 'moderator', 'moderator@account.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-04 05:40:32', 'test saja', '1633613077_profile.png', 0, '1633611742_Desktop Screenshot 2021.10.07 - 20.21.52.15.png', 0, 0, ''),
 (49, 1, 'Admin', 'Admin@account.com', '$2y$10$IaNcXYmpQc8AEU0adOGY2.zh5syuROoi.zsGXSjYlakgNl76dPSM.', 174631, 'verified', '2021-10-05 12:02:29', 'Hello', '1633768397_961279.png', 0, '1633612832_961279.png', 0, 7258975, ''),
 (53, 3, 'organiser', 'organiser@account.com', '$2y$10$beRMPZP9OPrHPQewe4IOaOPmCyrtOVXTgOzKqngllBJJcBkjInlZ2', 904720, 'verified', '2021-10-08 03:21:09', 'This is the organiser\'s bio take a peek at my profile tehee', '1633674352_Siesta (2).jpg', 0, '1633696357_Siesta (2).jpg', 2, 0, ''),
-(58, 1, 'Izzat', 'izzat.latif4@gmail.com', '$2y$10$qN40u9KsqrqBv.40E1gZUui.wzkB1JzK4gR68ugE4kSrXgPgAwPty', 259092, 'verified', '2021-10-10 11:58:50', 'Hi ! my name is Izzat . Im the co-creator of Esports Brunei FYP !', '1634371178_thumbnail_IMG_20190303_0001.jpg', 0, '1633955682_orange-top-gradient-background.jpg', 0, 7258975, ''),
+(58, 1, 'Izzat', 'izzat.latif4@gmail.com', '$2y$10$SM81vJoxiN3ZVz2L4pM5aOf6mPW6mJPcl8u68kWzTUcCwjxFcUnSe', 259092, 'verified', '2021-10-10 11:58:50', 'testing my bio bruhhhh', '1634371178_thumbnail_IMG_20190303_0001.jpg', 0, '1633955682_orange-top-gradient-background.jpg', 0, 7258975, ''),
 (59, 1, 'Amir Sabrin', 'AmirSabrin@gmail.com', '$2y$10$Eb2sth71Xr9l.y9yHVyUmeO8h3NEH.s1SFhpxNpNSGxPD6E51tXwK', 196742, 'verified', '2021-10-10 11:59:23', 'One of the Co-Creator of Esports Brunei', '1635135602_Miu.jpg', 0, '', 0, 8645562, ''),
 (60, 1, 'Danial Kamsur', 'DanialKamsur@gmail.com', '$2y$10$N3.Oxc4gU057BeLAWG0ObO/JCH0n0L3lOAIbI6aQrMcoGF6cy7Kmq', 699403, 'verified', '2021-10-10 11:59:56', '', '', 0, '', 0, 0, ''),
 (61, 1, 'NydiaWesdi', 'NydiaWesdi@gmail.com', '$2y$10$Np/5tD9xWEJ7BlSuxR3gz.tThLH4YXIH0KyUf.UFBhqUmkk9kSbn2', 917176, 'verified', '2021-10-10 12:00:25', '', '', 0, '', 0, 0, ''),
 (69, 0, 'User', 'User@account', '$2y$10$z3rPG03xRJmi9O07XQmekuR3WfkWs8M0t5i5JmeBpuTYOpcxn0ma.', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '1634994442_Miu.jpg', 0, '1634994607_bg.jpg', 3, 1234456, ''),
-(91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$XCTHmAHGy88uinkaMBgwV.Qs4srId0BfeBEdqplPtT0XOT/DhJKBO', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 1, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;');
+(91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$XCTHmAHGy88uinkaMBgwV.Qs4srId0BfeBEdqplPtT0XOT/DhJKBO', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 1, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
+(93, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$yb0KROCOu30ZbhCbjSKYUuK1vKEK9oB56v.f/NRk/5rgqssSgqpRO', 0, 'verified', '2021-11-10 05:01:35', '', '1634018908_profile.png', 0, '', 0, 7258975, '');
 
 --
 -- Indexes for dumped tables
@@ -356,8 +362,7 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `st
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `events_ibfk_1` (`topic_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `game_list`
@@ -382,7 +387,8 @@ ALTER TABLE `posts`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `events_ibfk_1` (`topic_id`);
 
 --
 -- Indexes for table `tbl_comment`
@@ -431,13 +437,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -449,7 +455,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tbl_comment`
@@ -485,23 +491,23 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `events`
---
-ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
