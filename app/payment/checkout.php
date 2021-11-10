@@ -29,22 +29,22 @@ $conditions = array(
 //     'return_type' => 'single' 
 // ); 
 
-$productData = $db->getRows('products', $conditions);
+$eventData = $db->getRows('events', $conditions);
 
 // $eventData = $db->getRows('events', $conditions); 
 
  
 // Redirect to the home page if product not found 
-if(empty($productData)){ 
+if(empty($eventData)){ 
     header("Location: index.php"); 
 } 
 ?>
 
 <div class="item">
     <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $productData['image']; ?>"/>
-    <p>Name: <?php echo $productData['title']; ?></p>
-    <p>Price: <?php echo $productData['s_price']; ?></p>
+    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
+    <p>Name: <?php echo $eventData['title']; ?></p>
+    <p>Price: <?php echo $eventData['s_price']; ?></p>
     
     <!-- Checkout button -->
     <div id="paypal-button"></div>
@@ -91,8 +91,8 @@ paypal.Button.render({
         return actions.payment.create({
             transactions: [{
                 amount: {
-                    total: '<?php echo $productData['s_price']; ?>',
-                    currency: '<?php echo $productData['currency']; ?>'
+                    total: '<?php echo $eventData['s_price']; ?>',
+                    currency: '<?php echo $eventData['currency']; ?>'
                 }
             }]
       });
@@ -105,7 +105,7 @@ paypal.Button.render({
             //window.alert('Thank you for your purchase!');
             
             // Redirect to the payment process page
-            window.location = "process.php?paymentID="+data.paymentID+"&token="+data.paymentToken+"&payerID="+data.payerID+"&pid=<?php echo $productData['id']; ?>";
+            window.location = "process.php?paymentID="+data.paymentID+"&token="+data.paymentToken+"&payerID="+data.payerID+"&pid=<?php echo $eventData['id']; ?>";
         });
     }
 }, '#paypal-button');

@@ -16,7 +16,7 @@ if(!empty($_GET['id'])){
         'where' => array('id' => $paymentData['product_id']), 
         'return_type' => 'single' 
     ); 
-    $productData = $db->getRows('products', $conditions); 
+    $eventData = $db->getRows('events', $conditions); 
 }else{ 
     header("Location: index.php"); 
 } 
@@ -44,8 +44,8 @@ if(!empty($_GET['id'])){
         <p><b>Payer Email:</b> <?php echo $paymentData['payer_email']; ?></p>
 		<!-- <p><b>User ID:</b> <?php echo $paymentData['user_id']; ?></p>  -->
         <h4>Product Information</h4>
-        <p><b>Name:</b> <?php echo $productData['title']; ?></p>
-        <p><b>Price:</b> <?php echo $productData['s_price'].' '.$productData['currency']; ?></p>
+        <p><b>Name:</b> <?php echo $eventData['title']; ?></p>
+        <p><b>Price:</b> <?php echo $eventData['s_price'].' '.$eventData['currency']; ?></p>
     <?php }else{ ?>
         <h1 class="error">Your Payment has Failed</h1>
     <?php } ?>

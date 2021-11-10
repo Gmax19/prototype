@@ -4,7 +4,7 @@ include_once 'DB.class.php';
 $db = new DB; 
  
 // Get all products from database 
-$products = $db->getRows('products'); 
+$events = $db->getRows('events'); 
 ?>
 
 <!DOCTYPE html>
@@ -20,13 +20,13 @@ $products = $db->getRows('products');
     
 <!-- List products -->
 <?php
-if(!empty($products)){
-    foreach($products as $row){
+if(!empty($events)){
+    foreach($events as $row){
 ?>
 <div class="item">
     <img src="images/<?php echo $row['image']; ?>"/>
-    <p>Name: <?php echo $row['name']; ?></p>
-    <p>Price: <?php echo $row['price']; ?></p> 
+    <p>Name: <?php echo $row['title']; ?></p>
+    <p>Price: <?php echo $row['s_price']; ?></p> 
 
     <!-- ani ambil id for event/product -->
     <a href="checkout.php?id=<?php echo $row['id']; ?>">BUY</a> 

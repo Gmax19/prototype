@@ -39,10 +39,10 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
             'return_type' => 'single' 
         ); 
         
-        $productData = $db->getRows('products', $conditions); 
+        $eventData = $db->getRows('events', $conditions); 
          
         // If payment price is valid 
-        if($productData['s_price'] >= $paidAmount){ 
+        if($eventData['s_price'] >= $paidAmount){ 
              
             // Insert transaction data in the database 
             $data = array( 

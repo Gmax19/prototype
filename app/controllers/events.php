@@ -4,7 +4,7 @@ include(ROOT_PATH . "/app/database/db.php");
 include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/helpers/validatePost.php");
 
-$table = 'products';
+$table = 'events';
 // $table2 = 'users';
 $topics = selectAll('topics');
 // $events = selectAll($table);
