@@ -35,41 +35,40 @@
         
                     
         ?>
-        
+        <br>
         <!-- profile image display code -->
         <li><img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" class="rounded" style="border-radius:50%;max-width:50%;" alt="Profile Image"></li>
         <li ><h1><?php echo $_SESSION['username'];?></h1></li>
         
-        <li><h5><a href="<?php echo BASE_URL . '/profile.php' ?>" class="profile"><i class="fa fa-user"></i> My Profile</a></h5></li>
-        <li><h5><a href="<?php echo BASE_URL . '/team-profile.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></h5></li>
-        <li><h5><a href="<?php echo BASE_URL . '/team-registration.php' ?>" class="TeamRegistration"><i class="fa fa-user-plus"></i> Team Registration</a></h5></li>
+        <li><p><a href="<?php echo BASE_URL . '/profile.php' ?>" class="profile"><i class="fa fa-user"></i> My Profile</a></p></li>
+        <li><p><a href="<?php echo BASE_URL . '/team-profile.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></p></li>
+        <li><p><a href="<?php echo BASE_URL . '/team-registration.php' ?>" class="TeamRegistration"><i class="fa fa-user-plus"></i> Team Registration</a></p></li>
         <?php if($_SESSION['admin']  == 0 || $_SESSION['admin']  == 1 ){ ?>
-        <li><h5><a href="<?php echo BASE_URL . '/organiser-reg.php' ?>" class="organiserreg">Organiser Registration</a></h5></li> 
+        <li><p><a href="<?php echo BASE_URL . '/organiser-reg.php' ?>" class="organiserreg">Organiser Registration</a></p></li> 
         <?php } ?>
         <!-- IF ADMIN USER -->
         <?php if($_SESSION['admin']  == 1 ){ ?>
-        <li><h5><a href="<?php echo BASE_URL . '/admin/events/create.php' ?>" class="organiserreg">Create Event</a></h5></li> 
+        <li><p><a href="<?php echo BASE_URL . '/admin/events/create.php' ?>" class="organiserreg">Create Event</a></p></li> 
         <?php }?>
         <!-- IF MODERATOR USER -->
         <?php if($_SESSION['admin']  == 2 ){ ?>
-        <li><h5><a href="<?php echo BASE_URL . '/moderator/events/create.php' ?>" class="organiserreg">Create Event</a></h5></li> 
+        <li><p><a href="<?php echo BASE_URL . '/moderator/events/create.php' ?>" class="organiserreg">Create Event</a></p></li> 
         <?php }?>
         <!-- IF ORGANISER USER -->
         <?php if($_SESSION['admin']  == 3 ){ ?>
-        <li><h5><a href="<?php echo BASE_URL . '/organiser/events/create.php' ?>" class="organiserreg">Create Event</a></h5></li> 
+        <li><p><a href="<?php echo BASE_URL . '/organiser/events/create.php' ?>" class="organiserreg">Create Event</a></p></li> 
         <?php }?>
-        <li><h5><a href= "contact.php" ><i class="fa fa-address-book"></i> Help </a></h5></li>  
-        <li><h5><a href= <?php echo BASE_URL . "/bookmarkpost.php" ?> ><i class="far fa-bookmark"></i> Bookmark posts </a></h5></li>  
-        <li><h5><a href="<?php echo BASE_URL . '/logout-user.php' ?>" class="logout">Logout</a></h5></li>
+        <li><p><a href= "contact.php" ><i class="fa fa-address-book"></i> Help </a></p></li>  
+        <li><p><a href= <?php echo BASE_URL . "/bookmarkpost.php" ?> ><i class="far fa-bookmark"></i> Bookmark posts </a></p></li>  
+        <li><p><a href="<?php echo BASE_URL . '/logout-user.php' ?>" class="logout">Logout</a></p></li>
         <?php } else { ?>
             
             <!-- IF GUEST USER PUNYA SIDEBAR -->
-        <li><h5><a href= "contact.php" ><i class="fa fa-address-book"></i> Help </a></h5></li>
-       <li><h5><a href=" <?php echo BASE_URL . '/login-user.php' ?> "><i class="fa fa-user" ></i> login/Register</a></h5></li>
+        <li><p><a href= "contact.php" ><i class="fa fa-address-book"></i> Help </a></p></li>
+       <li><p><a href=" <?php echo BASE_URL . '/login-user.php' ?> "><i class="fa fa-user" ></i> login/Register</a></p></li>
        <?php } ?>
     <br>   
     <br>   
-     
     
     <li>Esports Brunei © 2021</li>         
     </ul>
