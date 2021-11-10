@@ -23,6 +23,10 @@ $body = "";
 $topic_id = "";
 $published = "";
 $proof = "";
+$s_price = "";
+$category = "";
+
+
 
 // to get the id of events 
 if (isset($_GET['id'])) {
@@ -31,6 +35,8 @@ if (isset($_GET['id'])) {
     $id = $post['id'];
     $title = $post['title'];
     $body = $post['body'];
+    $s_price = $post['s_price'];
+    $category = $post['category'];
     $topic_id = $post['topic_id'];
     $published = $post['published'];
     $image = $post['image'];
@@ -112,6 +118,9 @@ if (isset($_POST['add-post'])) {
     } else {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        $s_price= $_POST['s_price'];
+        $category= $_POST['category'];
+        $title = $_POST['title'];
         $topic_id = $_POST['topic_id'];
         $published = isset($_POST['published']) ? 1 : 0;
     }
@@ -154,6 +163,8 @@ if (isset($_POST['update-post'])) {
         } else {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        $s_price= $_POST['s_price'];
+        $category= $_POST['category'];
         $topic_id = $_POST['topic_id'];
         $published = isset($_POST['published']) ? 1 : 0;
     }
