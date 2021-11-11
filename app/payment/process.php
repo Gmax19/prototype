@@ -1,5 +1,6 @@
 <?php 
 $redirectStr = ''; 
+session_start();
 if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID']) && !empty($_GET['pid']) ){ 
     // Include and initialize database class 
     include_once 'DB.class.php'; 
@@ -32,12 +33,12 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
         $payerCountryCode = $paymentCheck->payer->payer_info->country_code; 
         $paidAmount = $paymentCheck->transactions[0]->amount->details->subtotal; 
         $currency = $paymentCheck->transactions[0]->amount->currency; 
-         
         // Get product details 
         $conditions = array( 
             'where' => array('id' => $productID), 
             'return_type' => 'single' 
         ); 
+        
         
         $eventData = $db->getRows('events', $conditions); 
          
@@ -46,6 +47,7 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
              
             // Insert transaction data in the database 
             $data = array( 
+                'user_id' => $_SESSION['id'],
                 'product_id' => $productID, 
                 'txn_id' => $id, 
                 'payment_gross' => $paidAmount, 
