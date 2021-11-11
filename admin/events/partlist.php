@@ -1,14 +1,15 @@
 <?php include("../../path.php"); ?>
 
 <?php include(ROOT_PATH . '/app/controllers/events.php');
+require (ROOT_PATH . "/app/database/connect.php");
 
+// CODES FOR PARTICIPANTS
+$eventid = $_GET['id'];
 
-// if (isset($_GET['id'])) {
-//   $post = selectOne('events', ['id' => $_GET['id']]);
-// }
-// $topics = selectAll('topics');
-// $posts = selectAll('events', ['published' => 1]);
-
+$participants = "SELECT * FROM `payments` as p 
+inner join users as u on p.user_id = u.id
+inner JOIN events as e on e.id = p.product_id where e.id = $eventid
+";
 
 // To get session of Events by id
 
@@ -68,24 +69,38 @@ $_SESSION['postid'] = $_GET['id'];
 
            
             <div class="text-center">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="rounded" style="max-width:100%;" alt="...">
+              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="rounded" style="max-width:30%;" alt="...">
             </div>
            
 
           <div class="post-content">
-            
-<!-- will show price for tournaments based on the category (solo/team) -->
-<h3>Event category :</h3>
-<p> <?php echo $post['category']; ?> </p>
+                                   <!-- CODES FOR PARTICIPANTS -->
+                                <table>
+                                  <thead>
+                                      <th ><h2>no.</h2></th>
+                                      <th ><h2>Participants</h2></th>
+                                      <th><h2>Category</h2></th>
+                                      <th colspan="2"><h2>Payment Status</h2></th>
+                                    </thead>
+                              <?php 
+                                $res = mysqli_query($conn, $participants);
+                                  if(mysqli_num_rows($res) > 0){
+                                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
 
-<h3>Registration Fees :</h3>
-
-<p> <?php echo $post['s_price'] ?> <?php echo $post['currency'] ?> </p>
-
-<h3>Event Description :</h3> 
-
-         <p><?php echo html_entity_decode($post['body']); ?></p>
-
+                                      foreach ($fetch as $key => $participant){   ?>
+                                    <tr>
+                                      <td><?php echo $key + 1; ?>.</td>
+                                      <td><?php echo $participant['username']; ?></td>
+                                      <td><?php echo $participant['category']; ?></td>
+                                      <td><?php echo $participant['payment_status']; ?></td>
+                                      <td><?php echo $participant['s_price'];?></td>
+                                      <td><?php echo $participant['currency'];?></td>
+                                    </tr>  
+                                        <?php
+                                        } 
+                                    }
+                                  ?>
+                              </table>
         </div>
         </div>
 
