@@ -74,7 +74,7 @@ adminOnly();
                           </div>
                           <div>
                             <label>Fee/Price</label>
-                            <input type="number" name="s_price" class="text-input">
+                            <input type="number" name="s_price" class="text-input" value="<?php echo $s_price; ?>" readonly></input>
                         </div>
                         <div>
                             <label>category</label>
