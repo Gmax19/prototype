@@ -64,11 +64,12 @@
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
                         $created = $fetch['created_at'];
-                    }
+                    
 
                     $participants = "SELECT * FROM `payments` as p 
                                     inner join users as u on p.user_id = u.id
                                     inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
+                    }
                     ?>
                     
                     
