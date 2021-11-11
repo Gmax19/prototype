@@ -65,7 +65,10 @@
                         $phone_number = $fetch['phone_number'];
                         $created = $fetch['created_at'];
                     }
-                    
+
+                    $participants = "SELECT * FROM `payments` as p 
+                                    inner join users as u on p.user_id = u.id
+                                    inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
                     ?>
                     
                     
@@ -89,6 +92,28 @@
                             <h3>Phone Number</h3>
                             <p> <?php echo $phone_number; ?> </p>
                         </div>
+                        <table>
+                                  <thead>
+                                      <th><h2>no.</h2></th>
+                                      <th><h2>Events Participated</h2></th>
+                                      <th><h2>Category</h2></th>
+                                    </thead>
+                              <?php 
+                                $res = mysqli_query($conn, $participants);
+                                  if(mysqli_num_rows($res) > 0){
+                                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+
+                                      foreach ($fetch as $key => $participant){   ?>
+                                    <tr>
+                                      <td><?php echo $key + 1; ?>.</td>
+                                      <td><?php echo $participant['title']; ?></td>
+                                      <td><?php echo $participant['category']; ?></td>
+                                    </tr>  
+                                        <?php
+                                        } 
+                                    }
+                                  ?>
+                              </table>
                         <div>
                             <h3>Bio</h3>
                             <p> <?php echo $_SESSION['bio']; ?> </p>
