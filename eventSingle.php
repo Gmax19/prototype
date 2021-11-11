@@ -73,7 +73,9 @@ $_SESSION['postid'] = $_GET['id'];
            
 
           <div class="post-content">
-            
+
+<h3>See who joined this event :</h3>
+<td><a href="partlist.php?id=<?php echo $post['id']; ?>" >participants</a></td>
 <!-- will show price for tournaments based on the category (solo/team) -->
 <h3>Tournament Category :</h3>
 <p> <?php echo $post['category'] ?> </p>
