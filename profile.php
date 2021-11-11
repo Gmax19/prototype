@@ -72,7 +72,7 @@
                     }
                     ?>
                     
-                    
+                     
 
                     <form action="profile.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" >
@@ -98,6 +98,7 @@
                                       <th><h2>no.</h2></th>
                                       <th><h2>Events Participated</h2></th>
                                       <th><h2>Category</h2></th>
+                                      <th><h2>joined</h2></th>
                                     </thead>
                               <?php 
                                 $res = mysqli_query($conn, $participants);
@@ -109,6 +110,8 @@
                                       <td><?php echo $key + 1; ?>.</td>
                                       <td><?php echo $participant['title']; ?></td>
                                       <td><?php echo $participant['category']; ?></td>
+                                      <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
+
                                     </tr>  
                                         <?php
                                         } 
