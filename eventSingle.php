@@ -86,6 +86,7 @@ $_SESSION['postid'] = $_GET['id'];
 
          <p><?php echo html_entity_decode($post['body']); ?></p>
 
+<!-- <h3>Availability to join</h3>  -->
         </div>
 
 

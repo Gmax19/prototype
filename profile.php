@@ -95,7 +95,6 @@
                         </div>
                         <table>
                                   <thead>
-                                      <th><h2>no.</h2></th>
                                       <th><h2>Events Participated</h2></th>
                                       <th><h2>Category</h2></th>
                                       <th><h2>joined</h2></th>
@@ -107,8 +106,7 @@
 
                                       foreach ($fetch as $key => $participant){   ?>
                                     <tr>
-                                      <td><?php echo $key + 1; ?>.</td>
-                                      <td><?php echo $participant['title']; ?></td>
+                                      <td><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></td>
                                       <td><?php echo $participant['category']; ?></td>
                                       <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
 

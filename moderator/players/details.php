@@ -17,8 +17,8 @@ adminOnly();
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="../../assets/css/style.css">
@@ -33,12 +33,12 @@ adminOnly();
 
     <body>
         
-    <?php include(ROOT_PATH . "/app/includes/moderatorHeader.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
 
         <!-- Admin Page Wrapper -->
         <div class="admin-wrapper">
 
-        <?php include(ROOT_PATH . "/app/includes/moderatorSidebar.php"); ?>
+        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
 
             <!-- Admin Content -->
@@ -58,15 +58,25 @@ adminOnly();
                     <form action="index.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $id; ?>" >
                         <div>
-                            <label>Username</label>
-                            <input type="text" name="username" value="<?php echo $username; ?>" class="text-input" readonly>
+                            <h1>NOTE * CHANGE DESIGN</h1>
                         </div>
                         <div>
-                            <label>Email</label>
-                            <input type="email" name="email" value="<?php echo $email; ?>" class="text-input" readonly>
+                            <h1>Username : <?php echo $username; ?> </h1>
+                        </div>
+                        <div>
+                        <h1>Email : <?php echo $email; ?> </h1>
+                        </div>
+                        <div>
+                        <h1>Phone Number : +673 <?php echo $user['phone_number']; ?> </h1>
+                        </div>
+                        <div>
+                            <h1>User's Bio : </h1>
+                            <p><?php echo $user['bio']; ?></p>
+                            <img src="<?php echo BASE_URL . '/assets/profile/' . $user['pic']; ?>" height="100" width="100" /> 
+                            <p> <?php echo date('F j, Y', strtotime($user['created_at'])); ?></p>
                         </div>
                         <div align="center">
-                            <button class="btn btn-big"><a href="<?php echo BASE_URL . '/moderator/players/index.php'; ?>">back</a></button>
+                            <button class="btn btn-big"><a href="<?php echo BASE_URL . '/admin/players/index.php'; ?>">back</a></button>
                         </div>
                     </form>
 

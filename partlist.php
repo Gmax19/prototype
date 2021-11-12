@@ -66,9 +66,7 @@ inner JOIN events as e on e.id = p.product_id where e.id = $eventid
                                    <!-- CODES FOR PARTICIPANTS -->
                                 <table>
                                   <thead>
-                                      <th ><h2>no.</h2></th>
                                       <th ><h2>Participants</h2></th>
-                                      <th><h2>Category</h2></th>
                                     </thead>
                               <?php 
                                 $res = mysqli_query($conn, $participants);
@@ -77,9 +75,7 @@ inner JOIN events as e on e.id = p.product_id where e.id = $eventid
 
                                       foreach ($fetch as $key => $participant){   ?>
                                     <tr>
-                                      <td><?php echo $key + 1; ?>.</td>
-                                      <td><?php echo $participant['username']; ?></td>
-                                      <td><?php echo $participant['category']; ?></td>
+                                      <td><?php echo $key + 1; ?>. <?php echo $participant['username']; ?></td>
                                     </tr>  
                                         <?php
                                         } 

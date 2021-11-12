@@ -1,7 +1,6 @@
 <?php include("../../path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/events.php");
 adminOnly();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +17,16 @@ adminOnly();
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="../../assets/css/style.css">
 
-        <!-- moderator Styling -->
-        <link rel="stylesheet" href="../../assets/css/moderator.css">
+        <!-- Admin Styling -->
+        <link rel="stylesheet" href="../../assets/css/admin.css">
 
-        <title>Moderator Section - Manage Events</title>
+        <title>Admin Section - Manage Posts</title>
         <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
 
     </head>
@@ -36,14 +35,14 @@ adminOnly();
         
     <?php include(ROOT_PATH . "/app/includes/moderatorHeader.php"); ?>
 
-        <!-- moderator Page Wrapper -->
-        <div class="moderator-wrapper">
+        <!-- Admin Page Wrapper -->
+        <div class="admin-wrapper">
 
         <?php include(ROOT_PATH . "/app/includes/moderatorSidebar.php"); ?>
 
 
-            <!-- moderator Content -->
-            <div class="moderator-content">
+            <!-- Admin Content -->
+            <div class="admin-content">
                 <div class="button-group">
                     <a href="create.php" class="btn btn-big">Add Events</a>
                     <a href="index.php" class="btn btn-big">Manage Events</a>
@@ -72,7 +71,7 @@ adminOnly();
                                     <td><a href="edit.php?id=<?php echo $post['eventid']; ?>" class="edit">edit</a></td>
                                     <td><a href="edit.php?delete_id=<?php echo $post['eventid']; ?>" class="delete">delete</a></td>
                                     <td><a href="partlist.php?id=<?php echo $post['eventid']; ?>" >participants</a></td>
-
+                                    
                                     <?php if ($post['published']): ?>
                                         <td><a href="edit.php?published=0&p_id=<?php echo $post['eventid'] ?>" class="unpublish">unpublish</a></td>
                                     <?php else: ?>
@@ -88,7 +87,7 @@ adminOnly();
                 </div>
 
             </div>
-            <!-- // moderator Content -->
+            <!-- // Admin Content -->
 
         </div>
         <!-- // Page Wrapper -->
