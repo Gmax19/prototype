@@ -61,7 +61,14 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $instagram = $fetch['instagram'];
+                        $steam = $fetch['steam'];
+                        $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
+
+                        $participants = "SELECT * FROM `payments` as p 
+                        inner join users as u on p.user_id = u.id
+                        inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
                     }
                     
                     ?>
@@ -121,9 +128,9 @@
       <div class="links">
             <h3>Social Media</h3>
             <ul>
-              <li><a href="https://steamcommunity.com/profiles/76561199032818871/"><i class="fab fa-steam"></i></a></li>
+              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
               <li><a href="Zylioth#1580"><i class="fab fa-discord"></i></a></li>
-              <li><a href="https://www.instagram.com/_amir02/"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
           </ul>
       </div>
 

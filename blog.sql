@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 02:22 PM
+-- Generation Time: Nov 12, 2021 at 02:53 PM
 -- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -308,8 +308,8 @@ CREATE TABLE `users` (
   `status` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `bio` text NOT NULL DEFAULT 'No Bio Yet ... ',
-  `instagram` text NOT NULL DEFAULT 'https://www.instagram.com/IGNAME/',
-  `steam` text NOT NULL DEFAULT 'https://steamcommunity.com/profiles/STEAMID/',
+  `instagram` text NOT NULL DEFAULT 'EsportBrunei',
+  `steam` text NOT NULL DEFAULT 'SteamID',
   `discord` text NOT NULL DEFAULT 'name#0000',
   `pic` varchar(255) NOT NULL DEFAULT '1634018908_profile.png',
   `blocked` tinyint(4) NOT NULL,
@@ -332,7 +332,7 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `st
 (60, 1, 'Danial Kamsur', 'DanialKamsur@gmail.com', '$2y$10$N3.Oxc4gU057BeLAWG0ObO/JCH0n0L3lOAIbI6aQrMcoGF6cy7Kmq', 699403, 'verified', '2021-10-10 11:59:56', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (61, 1, 'NydiaWesdi', 'NydiaWesdi@gmail.com', '$2y$10$Np/5tD9xWEJ7BlSuxR3gz.tThLH4YXIH0KyUf.UFBhqUmkk9kSbn2', 917176, 'verified', '2021-10-10 12:00:25', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (69, 0, 'User', 'User@account', '$2y$10$z3rPG03xRJmi9O07XQmekuR3WfkWs8M0t5i5JmeBpuTYOpcxn0ma.', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1634994442_Miu.jpg', 0, '1634994607_bg.jpg', 3, 1234456, ''),
-(91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$XCTHmAHGy88uinkaMBgwV.Qs4srId0BfeBEdqplPtT0XOT/DhJKBO', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '', '', 'name#0000', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 1, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
+(91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$YNihhMmMyHCNPsenU4rmk.DutU09oAhuQBDJD2kRs6ZIou6MqgWUW', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '_amir02', '76561199032818871', 'Zylioth#1580', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 1, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
 (95, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$hE4ufy4l7HRUWySYV2pynu.L4ItdCrZcr4ETEM360zn44bjuh6DJ.', 0, 'verified', '2021-11-12 13:21:25', 'No Bio Yet ... ', 'https://www.instagram.com/IGNAME/', 'https://steamcommunity.com/profiles/STEAMID/', 'name#0000', '1634018908_profile.png', 0, '', 0, 7258975, '');
 
 --
