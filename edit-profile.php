@@ -62,6 +62,9 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $instagram = $fetch['instagram'];
+                        $steam = $fetch['steam'];
+                        $discord = $fetch['discord'];
                     }
                     
                     ?>
@@ -91,6 +94,18 @@
                         <div>
                             <h3>Bio</h3>
                             <textarea type="text" name="bio"  class="text-input"  ><?php echo $_SESSION['bio']; ?></textarea>
+                        </div>
+                        <div > 
+                            <h3>Instagram</h3>
+                            <input type="text" name="instagram" value="<?php echo $instagram; ?>" class="text-input" style = "text-align:center;">
+                        </div>
+                        <div > 
+                            <h3>Steam</h3>
+                            <input type="text" name="steam" value="<?php echo $steam; ?>" class="text-input" style = "text-align:center;">
+                        </div>
+                        <div > 
+                            <h3>Discord</h3>
+                            <input type="text" name="discord" value="<?php echo $discord; ?>" class="text-input" style = "text-align:center;">
                         </div>
                         <div>
                             <h3>Password</h3>

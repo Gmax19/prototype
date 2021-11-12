@@ -63,6 +63,9 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $instagram = $fetch['instagram'];
+                        $steam = $fetch['steam'];
+                        $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
                     
 
@@ -92,6 +95,18 @@
                         <div>
                             <h3>Phone Number</h3>
                             <p> <?php echo $phone_number; ?> </p>
+                        </div>
+                        <div>
+                            <h3>instagram</h3>
+                            <p> <?php echo $instagram?> </p>
+                        </div>
+                        <div>
+                            <h3>steam</h3>
+                            <p> <?php echo $steam; ?> </p>
+                        </div>
+                        <div>
+                            <h3>discord</h3>
+                            <p> <?php echo $discord; ?> </p>
                         </div>
                         <table>
                                   <thead>
