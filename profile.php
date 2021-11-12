@@ -98,11 +98,11 @@
                         </div>
                         <div>
                             <h3>instagram</h3>
-                            <p> <?php echo $instagram?> </p>
+                            <a href = " <?php echo $instagram?> "><i class="fab fa-instagram"></i></a>
                         </div>
                         <div>
                             <h3>steam</h3>
-                            <p> <?php echo $steam; ?> </p>
+                            <a href = " <?php echo $steam?> "><i class="fab fa-steam"></i></a>
                         </div>
                         <div>
                             <h3>discord</h3>
