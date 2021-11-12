@@ -17,8 +17,8 @@ adminOnly();
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="../../assets/css/style.css">

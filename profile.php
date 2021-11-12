@@ -65,12 +65,19 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $instagram = $fetch['instagram'];
+                        $steam = $fetch['steam'];
+                        $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
-                    }
                     
+
+                    $participants = "SELECT * FROM `payments` as p 
+                                    inner join users as u on p.user_id = u.id
+                                    inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
+                    }
                     ?>
                     
-                    
+                     
 
                     <form action="profile.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" >
@@ -91,6 +98,41 @@
                             <h3>Phone Number</h3>
                             <p> <?php echo $phone_number; ?> </p>
                         </div>
+                        <div>
+                            <h3>instagram</h3>
+                            <a href = " <?php echo $instagram?> "><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div>
+                            <h3>steam</h3>
+                            <a href = " <?php echo $steam?> "><i class="fab fa-steam"></i></a>
+                        </div>
+                        <div>
+                            <h3>discord</h3>
+                            <p> <?php echo $discord; ?> </p>
+                        </div>
+                        <table>
+                                  <thead>
+                                      <th><h2>Events Participated</h2></th>
+                                      <th><h2>Category</h2></th>
+                                      <th><h2>joined</h2></th>
+                                    </thead>
+                              <?php 
+                                $res = mysqli_query($conn, $participants);
+                                  if(mysqli_num_rows($res) > 0){
+                                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+
+                                      foreach ($fetch as $key => $participant){   ?>
+                                    <tr>
+                                      <td><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></td>
+                                      <td><?php echo $participant['category']; ?></td>
+                                      <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
+
+                                    </tr>  
+                                        <?php
+                                        } 
+                                    }
+                                  ?>
+                              </table>
                         <div>
                             <h3>Bio</h3>
                             <p> <?php echo $_SESSION['bio']; ?> </p>

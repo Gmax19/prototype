@@ -74,8 +74,6 @@ $_SESSION['postid'] = $_GET['id'];
 
           <div class="post-content">
 
-<h3>See who joined this event :</h3>
-<td><a href="partlist.php?id=<?php echo $post['id']; ?>" >participants</a></td>
 <!-- will show price for tournaments based on the category (solo/team) -->
 <h3>Tournament Category :</h3>
 <p> <?php echo $post['category'] ?> </p>
@@ -88,6 +86,7 @@ $_SESSION['postid'] = $_GET['id'];
 
          <p><?php echo html_entity_decode($post['body']); ?></p>
 
+<!-- <h3>Availability to join</h3>  -->
         </div>
 
 
@@ -98,7 +97,7 @@ $_SESSION['postid'] = $_GET['id'];
                 <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register For this event</a>  
               <?php }  else { ?>
                 <a href=" <?php echo BASE_URL . '/login-user.php' ?> " class="btn btn-big">Login/Signup to register for this event</a> <?php } ?>  
-
+                <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn btn-big" >View participants</a>
         </div>
 
       </div>
