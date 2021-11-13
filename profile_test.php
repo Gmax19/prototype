@@ -144,13 +144,15 @@
                  </div>
             </div>
         </div>
-      <div class="links">
+      <div class="projects">
+        <div class="links">
             <h3>Social Media</h3>
             <ul>
               <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
-              <li><a href="Zylioth#1580"><i class="fab fa-discord"></i></a></li>
               <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
+              <li style="width:160px;"><a href="#"><i class="fab fa-discord"></i> <?php echo $discord ?></a></li>
           </ul>
+          </div>
       </div>
 
       <div class="edit">
