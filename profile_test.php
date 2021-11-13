@@ -81,6 +81,11 @@
         alt="user" width="75%" height="auto">
         <h4><?php echo $_SESSION['username']; ?></h4>
          <p><?php echo $_SESSION['bio']; ?></p>
+         
+         <div class="data">
+                   <h4>Summoned on</h4>
+                    <p><?php echo date('F j, Y', strtotime($created)); ?></p>
+              </div>
 
         <!-- <div class="badges">
         <h3>Badges</h3>
@@ -115,16 +120,30 @@
             <h3>Achievements</h3>
             <div class="projects_data">
                  <div class="data">
-                    <h4>Events Joined:</h4>
-                    <p>-</p>
+                   <table>
+                     <thead>
+                    <th>Events Joined:</th>
+                    <th>Category:</th>
+                    <th>Joined:</th>
+                  </thead>
+                    <?php 
+                         $res = mysqli_query($conn, $participants);
+                         if(mysqli_num_rows($res) > 0){
+                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                          foreach ($fetch as $key => $participant){   ?>
+                    <tr>
+                    <td><p><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></p></td>
+                    <td><p><?php echo $participant['category']; ?></p></td>
+                     <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
+                      </tr>
+                    <?php
+                                        } 
+                                    }
+                                  ?>
+                   </table>
                  </div>
-                 <div class="data">
-                   <h4>Summoned on</h4>
-                    <p><?php echo date('F j, Y', strtotime($created)); ?></p>
-              </div>
             </div>
         </div>
-      
       <div class="links">
             <h3>Social Media</h3>
             <ul>
