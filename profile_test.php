@@ -120,17 +120,19 @@
             <h3><i class="fas fa-trophy"></i> Achievements</h3>
             <div class="projects_data">
                  <div class="data">
+                   
                    <table>
-                     <thead>
+                    <thead>
                     <th><i class="fas fa-certificate"></i> Events Joined:</th>
                     <th><i class="far fa-calendar-check"></i> Joined:</th>
                     <th><i class="fas fa-users-cog"></i>Category:</th>
-                  </thead>
+                    </thead>
                     <?php 
                          $res = mysqli_query($conn, $participants);
                          if(mysqli_num_rows($res) > 0){
                          $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                          foreach ($fetch as $key => $participant){   ?>
+                          foreach ($fetch as $key => $participant){   
+                            ?>
                     <tr>
                     <td><p><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></p></td>
                     <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
@@ -148,9 +150,18 @@
         <div class="links">
             <h3><i class="fas fa-user-plus"></i> Social Media</h3>
             <ul>
+            <div class="data">
+              
               <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
+            </div>  
+
+            <div class="data">
               <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
+            </div>
+            
+            <div class="data">
               <li style="width:160px;"><a href="#"><i class="fab fa-discord"></i> <?php echo $discord ?></a></li>
+            </div>
           </ul>
           </div>
       </div>
