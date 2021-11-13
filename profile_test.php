@@ -49,7 +49,7 @@
                 <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
                 <?php include(ROOT_PATH . "/app/includes/messages.php"); ?> 
                     <!-- <h1 class="page-title">Welcome to your profile</h1> -->
-                </div> -->
+                </div> 
 
                     <?php  
                     // to get user details by fetching user punya database table 
