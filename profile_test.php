@@ -79,11 +79,11 @@
     <div class="left">
         <img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" 
         alt="user" width="75%" height="auto">
-        <h4><?php echo $_SESSION['username']; ?></h4>
+        <h1><i class="fas fa-at"></i> <?php echo $_SESSION['username']; ?></h1>
          <p><?php echo $_SESSION['bio']; ?></p>
          
          <div class="data">
-                   <h4>Summoned on</h4>
+                   <h4><i class="fa fa-gamepad"></i> Summoned on</h4>
                     <p><?php echo date('F j, Y', strtotime($created)); ?></p>
               </div>
 
@@ -103,28 +103,28 @@
     <div class="right">
 
         <div class="info">
-            <h3>Information</h3>
+            <h3><i class="fas fa-info-circle"></i> Information</h3>
             <div class="info_data">
                  <div class="data">
-                    <h4>Email</h4>
-                    <p><?php echo $_SESSION['email']; ?></p>
+                    <h4>Email <i class="far fa-envelope"></i></h4>
+                    <p><?php echo $_SESSION['email']; ?> </p>
                  </div>
                  <div class="data">
-                   <h4>Phone</h4>
+                   <h4>Phone <i class="fas fa-phone"></i></h4>
                     <p><?php echo $phone_number; ?></p>
               </div>
             </div>
         </div>
       
       <div class="projects">
-            <h3>Achievements</h3>
+            <h3><i class="fas fa-trophy"></i> Achievements</h3>
             <div class="projects_data">
                  <div class="data">
                    <table>
                      <thead>
-                    <th>Events Joined:</th>
-                    <th>Category:</th>
-                    <th>Joined:</th>
+                    <th><i class="fas fa-certificate"></i> Events Joined:</th>
+                    <th><i class="far fa-calendar-check"></i> Joined:</th>
+                    <th><i class="fas fa-users-cog"></i>Category:</th>
                   </thead>
                     <?php 
                          $res = mysqli_query($conn, $participants);
@@ -133,8 +133,8 @@
                           foreach ($fetch as $key => $participant){   ?>
                     <tr>
                     <td><p><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></p></td>
+                    <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
                     <td><p><?php echo $participant['category']; ?></p></td>
-                     <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
                       </tr>
                     <?php
                                         } 
@@ -146,7 +146,7 @@
         </div>
       <div class="projects">
         <div class="links">
-            <h3>Social Media</h3>
+            <h3><i class="fas fa-user-plus"></i> Social Media</h3>
             <ul>
               <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
               <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
