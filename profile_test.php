@@ -45,7 +45,7 @@
         </div>
 
 
-                <!-- <div class="auth-content" align="center" >
+                <!-- <div class="auth-content" align="center" > -->
                 <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
                 <?php include(ROOT_PATH . "/app/includes/messages.php"); ?> 
                     <!-- <h1 class="page-title">Welcome to your profile</h1> -->
