@@ -105,12 +105,8 @@
     font-size: 18px;
   }
   
-  .wrapper .edit .btn{
+  .wrapper .view .btn{
   background: linear-gradient(to right,#ff6a6a,#c38d18);
-  position: absolute;
-      transition: .5s ease;
-      right: 42px;
-      top: 550px;
   }
   
   

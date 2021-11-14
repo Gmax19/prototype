@@ -74,7 +74,9 @@
                  <div class="links">
                     <p>In the forum, the community will be posting  news, strategies and events that are upcoming. </p>
                     <br>
+                    <div class="view">
                         <a href="<?php echo BASE_URL . '/index.php' ?>" class="btn">View Forums</a>
+                    </div>
                  </div>
             </div>
         </div>
@@ -85,7 +87,9 @@
                  <div class="links">
                  <p>Want to organise a tournament or gaming event? Be part of the team by becoming an Organiser and you will be able to host/organise this event. Organiser can also look for volunteers through the help of this platform. </p>
                  <br>
+                 <div class="view">
                  <a href="<?php echo BASE_URL . '/eventsPage.php' ?>" class="btn">View Events</a>
+                    </div>
                  </div>
             </div>
         </div>
@@ -94,7 +98,9 @@
             <h3><i class="fas fa-users"></i> Teams</h3>
             <p>Our website allows users to create teams/squad for them to able to register for events in the event page</p>
             <br>
+            <div class="view">
             <a href="<?php echo BASE_URL . '/Team-profile.php' ?>" class="btn">View Teams</a>
+            </div>
           </div>
       </div>      
     </div>
