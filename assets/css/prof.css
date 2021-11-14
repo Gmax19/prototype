@@ -30,13 +30,17 @@
 
 .wrapper .left p{
   font-size: 12px;
+  overflow: auto;
 }
 
 .wrapper .left .badges{
   text-align: left;
 }
 
-
+.wrapper .left .bio{
+  font-size: 12px;
+  
+}
 
 .wrapper .right{
   width: 65%;
@@ -112,6 +116,14 @@ position: absolute;
     right: 42px;
     top: 550px;
 }
+
+.wrapper .update .btn{
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
+  position: absolute;
+      transition: .5s ease;
+      right: 212px;
+      top: 550px;
+  }
 
 
 /* .wrapper .right .auth-content {
