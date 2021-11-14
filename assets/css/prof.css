@@ -1,5 +1,5 @@
 .wrapper{
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -7,7 +7,6 @@
   height: 70%;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
-  min-height: 70%;
 }
 
 .wrapper .left{
@@ -30,22 +29,13 @@
 }
 
 .wrapper .left p{
-  font-size: 15px;
   font-size: 12px;
   overflow: auto;
 }
 
-.wrapper .left .users p{
-  font-size: 20px;
+.wrapper .left .badges{
+  text-align: left;
 }
-
-.wrapper .left .summoned{
-  text-align: center;
-  position: absolute;
-    bottom: 10px;
-    left: 200px;
-  }
-
 
 .wrapper .left .bio{
   font-size: 12px;
@@ -86,16 +76,11 @@
   width: 45%;
 }
 
-.wrapper .right .projects .links .data{
-  width: 10%;
-}
-
 .wrapper .right .info_data .data h4,
 .wrapper .right .projects_data .data h4{
     color: #353c4e;
     margin-bottom: 5px;
 }
-
 
 .wrapper .right .info_data .data p,
 .wrapper .right .projects_data .data p{
@@ -109,7 +94,7 @@
 }
 
 .wrapper .links ul li{
-  width: 50px;
+  width: 45px;
   height: 45px;
   background: linear-gradient(to right,#ff6a6a,#c38d18);
   margin-right: 10px;
@@ -132,40 +117,41 @@ position: absolute;
     top: 550px;
 }
 
-table {
-  width: 214%;
-}
+.wrapper .update .btn{
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
+  position: absolute;
+      transition: .5s ease;
+      right: 212px;
+      top: 550px;
+  }
 
-table tbody, table thead
-{
-    display: block;
-}
-
-table tbody 
-{
-   overflow: auto;
-   height: 150px;
-}
-
-th
-{
-    width: 330px;
-    text-align: left;
-}
-
-td
-{
-    width: 330px;
-    text-align: left;
-}
-
-/* th, td {
-  padding: 5px;
-  text-align: left;
-  height: 30px;
-  vertical-align: bottom;
-} */
-
+  table {
+    width: 214%;
+  }
+  
+  table tbody, table thead
+  {
+      display: block;
+  }
+  
+  table tbody 
+  {
+     overflow: auto;
+     height: 150px;
+  }
+  
+  th
+  {
+      width: 330px;
+      text-align: left;
+  }
+  
+  td
+  {
+      width: 330px;
+      text-align: left;
+  }
+  
 /* .wrapper .right .auth-content {
   width: 30%;
   margin: 50px auto;
