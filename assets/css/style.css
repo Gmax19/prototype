@@ -219,7 +219,7 @@ header .menu-toggle {
 
 .post-slider .post-wrapper {
   width: 84%;
-  height: 350px;
+  height: 700px;
   margin: 0px auto;
   overflow: hidden;
   padding: 10px 0px 10px 0px;
@@ -227,7 +227,7 @@ header .menu-toggle {
 
 .post-slider .post-wrapper .post {
   width: 300px;
-  height: 330px;
+  height: 550px;
   margin: 0px 10px;
   display: inline-block;
   background: white;
@@ -238,11 +238,13 @@ header .menu-toggle {
 .post-slider .post-wrapper .post .post-info {
   height: 130px;
   padding: 0px 5px;
+  border-radius: 5px;
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
 }
 
 .post-slider .post-wrapper .post .slider-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }

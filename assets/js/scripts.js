@@ -5,10 +5,11 @@ $(document).ready(function () {
     });
 
     $(".post-wrapper").slick({
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
+        fade: true,
         nextArrow: $(".next"),
         prevArrow: $(".prev"),
         responsive: [
