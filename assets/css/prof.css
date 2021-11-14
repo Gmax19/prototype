@@ -31,6 +31,8 @@
 
 .wrapper .left p{
   font-size: 15px;
+  font-size: 12px;
+  overflow: auto;
 }
 
 .wrapper .left .users p{
@@ -45,6 +47,10 @@
   }
 
 
+.wrapper .left .bio{
+  font-size: 12px;
+  
+}
 
 .wrapper .right{
   width: 65%;
@@ -152,6 +158,7 @@ td
     width: 330px;
     text-align: left;
 }
+
 /* th, td {
   padding: 5px;
   text-align: left;
