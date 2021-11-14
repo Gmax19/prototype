@@ -131,6 +131,14 @@ position: absolute;
     top: 550px;
 }
 
+.wrapper .update .btn{
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
+  position: absolute;
+      transition: .5s ease;
+      right: 212px;
+      top: 550px;
+  }
+  
 table {
   width: 214%;
 }
@@ -172,19 +180,15 @@ td
   background: white;
   border-radius: 5px;
 }
-
 .wrapper .right .auth-content .form-title {
   text-align: center;
 }
-
 .wrapper .right .auth-content form div {
   margin-bottom: 10px;
 }
-
 .wrapper .right .auth-content form p {
   text-align: center;
 }
-
 .wrapper .right .auth-content form p a {
   text-decoration: underline;
 } */
