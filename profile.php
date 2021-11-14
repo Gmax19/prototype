@@ -77,15 +77,17 @@
 <div class="wrapper">
  
     <div class="left">
+     <div class="users">
         <img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" 
         alt="user" width="75%" height="auto">
         <h1><i class="fas fa-at"></i> <?php echo $_SESSION['username']; ?></h1>
          <p><?php echo $_SESSION['bio']; ?></p>
-         
-         <div class="data">
-                   <h4><i class="fa fa-gamepad"></i> Summoned on</h4>
-                    <p><?php echo date('F j, Y', strtotime($created)); ?></p>
-              </div>
+      </div>   
+      
+         <div class="summoned">
+            <h4><i class="fa fa-gamepad"></i> Summoned on</h4>
+            <p><?php echo date('F j, Y', strtotime($created)); ?></p>
+         </div>
 
         <!-- <div class="badges">
         <h3>Badges</h3>
@@ -144,15 +146,24 @@
                  </div>
             </div>
         </div>
-      <div class="projects">
+        <div class="projects">
         <div class="links">
             <h3><i class="fas fa-user-plus"></i> Social Media</h3>
             <ul>
+            <div class="data">
+              
               <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
+            </div>  
+
+            <div class="data">
               <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
+            </div>
+            
+            <div class="data">
               <li style="width:160px;"><a href="#"><i class="fab fa-discord"></i> <?php echo $discord ?></a></li>
+            </div>
           </ul>
-          </div>
+        </div>
       </div>
 
       <div class="edit">

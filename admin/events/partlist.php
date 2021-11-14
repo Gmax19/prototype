@@ -50,15 +50,14 @@ $_SESSION['postid'] = $_GET['id'];
 
 <body>
 
-  <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+<?php include(ROOT_PATH . "/app/includes/adminheader.php"); ?>
 
   <!-- Page Wrapper -->
-  <div class="page-wrapper">
-  <div class="sidebar-wrapper">
+<div class="admin-wrapper">
 
-<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
-</div>
+   
     <!-- Content -->
     <div class="content clearfix">
 
@@ -111,7 +110,7 @@ $_SESSION['postid'] = $_GET['id'];
     </div>
     <!-- // Content -->
 
-  </div>
+</div>
   <!-- // Page Wrapper -->
 
   <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>

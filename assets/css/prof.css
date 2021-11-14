@@ -1,5 +1,5 @@
 .wrapper{
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -7,6 +7,7 @@
   height: 70%;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+  min-height: 70%;
 }
 
 .wrapper .left{
@@ -29,12 +30,19 @@
 }
 
 .wrapper .left p{
-  font-size: 12px;
+  font-size: 15px;
 }
 
-.wrapper .left .badges{
-  text-align: left;
+.wrapper .left .users p{
+  font-size: 20px;
 }
+
+.wrapper .left .summoned{
+  text-align: center;
+  position: absolute;
+    bottom: 10px;
+    left: 200px;
+  }
 
 
 
@@ -73,7 +81,7 @@
 }
 
 .wrapper .right .projects .links .data{
-  width: 15%;
+  width: 10%;
 }
 
 .wrapper .right .info_data .data h4,
@@ -135,13 +143,13 @@ table tbody
 
 th
 {
-    width: 214px;
+    width: 330px;
     text-align: left;
 }
 
 td
 {
-    width: 214px;
+    width: 330px;
     text-align: left;
 }
 /* th, td {

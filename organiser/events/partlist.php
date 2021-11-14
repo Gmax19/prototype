@@ -50,7 +50,7 @@ $_SESSION['postid'] = $_GET['id'];
 
 <body>
 
-  <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+  <?php include(ROOT_PATH . "/app/includes/organiserheader.php"); ?>
 
   <!-- Page Wrapper -->
   <div class="page-wrapper">
