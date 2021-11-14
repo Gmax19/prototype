@@ -152,11 +152,11 @@
             <ul>
             <div class="data">
               
-              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
+              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i> <?php echo $steam?></a></li>
             </div>  
 
             <div class="data">
-              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i> <?php echo $instagram?></a></li>
             </div>
             
             <div class="data">

@@ -192,6 +192,7 @@ header .menu-toggle {
 
 .post-slider {
   position: relative;
+  z-index: 0;
 }
 
 .post-slider .slider-title {
@@ -199,7 +200,43 @@ header .menu-toggle {
   margin: 30px auto;
 }
 
-.post-slider .next {
+.slick-dots{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 16px 0;
+  list-style: none;
+  bottom: 40px;
+}
+
+.slick-dots li{
+  margin: 0 0.25rem;
+  background: #FFF;
+  border-radius: 50%;
+  list-style: none;
+  color: #FFF;
+}
+
+.slick-dots button{
+  display: block;
+  width: 60px;
+  height: 15px;
+  padding: 0;
+  border: none;
+  color:#efefef;
+  border-radius: 15px;
+  list-style: none;
+}
+
+.slick-dots li.slick-active button{
+  background: orange;
+  color: orange;
+
+}
+/* .post-slider .next {
   position: absolute;
   top: 50%;
   right: 30px;
@@ -215,11 +252,10 @@ header .menu-toggle {
   font-size: 2em;
   color: #ffffff;
   cursor: pointer;
-}
+} */
 
 .post-slider .post-wrapper {
   width: 84%;
-  height: 700px;
   margin: 0px auto;
   overflow: hidden;
   padding: 10px 0px 10px 0px;
@@ -232,21 +268,42 @@ header .menu-toggle {
   display: inline-block;
   background: white;
   border-radius: 5px;
-  box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
+  
 }
 
 .post-slider .post-wrapper .post .post-info {
   height: 130px;
   padding: 0px 5px;
   border-radius: 5px;
+  color : white;
+  position: absolute;
+  top: 90%;
+  left: 4%;
+}
+
+.post-slider .post-wrapper .post .post-info h3{
+  text-transform: uppercase;
+  color : white;
+  font-size: 30px;
+  letter-spacing: 1px;
+  padding-bottom: 45px;
+}
+
+.post-slider .post-wrapper .post .post-info a{
   background: linear-gradient(to right,#ff6a6a,#c38d18);
+  font-size: 15px;
+  color : white;
+  padding:10px 30px;
+  border-radius: 15px;
+  text-transform: uppercase;
 }
 
 .post-slider .post-wrapper .post .slider-image {
   width: 100%;
-  height: 100%;
+  height: 125%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+
 }
 
 /* CONTENT */

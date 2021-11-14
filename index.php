@@ -61,18 +61,20 @@ if (isset($_GET['t_id'])) {
 
     <div class="post-slider">
       <h1 class="slider-title" style="color:white;">Trending Posts</h1>
-      <i class="fas fa-chevron-left prev"></i>
-      <i class="fas fa-chevron-right next"></i>
+      
 
       <div class="post-wrapper">
 
         <?php foreach ($posts as $post): ?>
           <div class="post">
+             
             <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-image">
+             
             <div class="post-info">
-              <h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
-              <p>Post created by <?php echo $post['username']; ?></p>
-             <p>created at <?php echo date('F j, Y', strtotime($post['created_at'])); ?></p>
+              <h3><?php echo $post['title']; ?></h3>
+              <!-- <h4>Post created by <?php echo $post['username']; ?></h4>
+             <h4>created at <?php echo date('F j, Y', strtotime($post['created_at'])); ?></h4> -->
+             <h4><a href="single.php?id=<?php echo $post['id']; ?>">More Details</a></h4>
             </div>
           </div>
         <?php endforeach; ?>
