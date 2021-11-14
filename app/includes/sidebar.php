@@ -35,11 +35,11 @@
         
                     
         ?>
-        
+                <br>
+
         <!-- profile image display code -->
         <li><img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" class="rounded" style="border-radius:50%;max-width:50%;" alt="Profile Image"></li>
         <li ><h1><?php echo $_SESSION['username'];?></h1></li>
-        
         <li><h5><a href="<?php echo BASE_URL . '/profile.php' ?>" class="profile"><i class="fas fa-user-circle"></i> My Profile</a></h5></li>
         
         <!-- IF NORMAL USER -->
