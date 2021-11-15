@@ -121,31 +121,30 @@ if(isset($_POST['signup'])){
         if(mysqli_num_rows($res) > 0){
             $fetch = mysqli_fetch_assoc($res);
             $fetch_pass = $fetch['password'];
-            if(password_verify($password, $fetch_pass)){
-                $_SESSION['email'] = $email;
-                $status = $fetch['status'];
-                if($status == 'verified'){
-                  $_SESSION['admin'] = $fetch['admin'];
-                  $_SESSION['username'] = $fetch['username'];
-                  $_SESSION['id'] = $fetch['id'];
-                  $_SESSION['email'] = $fetch['email'];
-                  $_SESSION['bio'] = $fetch['bio'];
-                  $_SESSION['password'] = $fetch['password'];
-
-                if ($fetch['blocked'] == 1) {
-                    $errors['email'] = "Your Account has been block";
-                } else {
-                    header('location: index.php');
-                }
-
+            if ($fetch['blocked'] == 1) {
+                $errors['email'] = "Your Account has been block";
+            } else {
+                if(password_verify($password, $fetch_pass)){
+                    $_SESSION['email'] = $email;
+                    $status = $fetch['status'];
+                    if($status == 'verified'){
+                      $_SESSION['admin'] = $fetch['admin'];
+                      $_SESSION['username'] = $fetch['username'];
+                      $_SESSION['id'] = $fetch['id'];
+                      $_SESSION['email'] = $fetch['email'];
+                      $_SESSION['bio'] = $fetch['bio'];
+                      $_SESSION['password'] = $fetch['password'];
+    
+                    }else{
+                        $info = "It's look like you haven't still verify your email - $email";
+                        $_SESSION['info'] = $info;
+                        header('location: user-otp.php');
+                    }
                 }else{
-                    $info = "It's look like you haven't still verify your email - $email";
-                    $_SESSION['info'] = $info;
-                    header('location: user-otp.php');
-                }
-            }else{
-                $errors['email'] = "Incorrect email or password!";
-            } 
+                    $errors['email'] = "Incorrect email or password!";
+                } 
+            }
+            
         }else{
             $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
         }
