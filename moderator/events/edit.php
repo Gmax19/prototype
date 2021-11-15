@@ -86,7 +86,7 @@ adminOnly();
                         </div>
                         <div>
                             <label>Participant limit</label>
-                            <input type="number" name="participant_limit" class="text-input">
+                            <input type="number" name="participant_limit" class="text-input" value="<?php echo $participant_limit; ?>"></input>
                         </div>
                         <div>
                             <label>Topic</label>
