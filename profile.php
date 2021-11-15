@@ -124,9 +124,9 @@
                  <div class="data">
                    <table>
                      <thead>
-                    <th><i class="fas fa-certificate"></i> Events Joined:</th>
-                    <th><i class="far fa-calendar-check"></i> Joined:</th>
-                    <th><i class="fas fa-users-cog"></i>Category:</th>
+                    <th><h4><i class="fas fa-certificate"></i> Events Joined:</h4></th>
+                    <th><h4><i class="far fa-calendar-check"></i> Joined:</h4></th>
+                    <th><h4><i class="fas fa-users-cog"></i>Category:</h4></th>
                   </thead>
                     <?php 
                          $res = mysqli_query($conn, $participants);
