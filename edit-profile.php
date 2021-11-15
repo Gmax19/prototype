@@ -69,6 +69,7 @@
                     ?>
             <!-- // page Content -->
             <form action="profile.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" >
     <div class="wrapper">
  
     <div class="left">
