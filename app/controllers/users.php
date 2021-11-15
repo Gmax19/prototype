@@ -305,16 +305,25 @@ if (isset($_POST['organiser-register'])) {
     }
 }
 
-// help to get user info for all update/edit/delete
+// help to get user info for all update/edit/delete and view other users profile etc using the get
 if (isset($_GET['id'])) {
     $user = selectOne($table, ['id' => $_GET['id']]);
     
     $id = $user['id'];
+    $pic = $user['pic'];
     $username = $user['username'];
     $admin = $user['admin'];
     $proof = $user['proof'];
-   // $moderator = $user['moderator'];
+    $bio = $user['bio'];
     $email = $user['email'];
+    $phone = $user['phone_number'];
+    $instagram = $user['instagram'];
+    $steam = $user['steam'];
+    $discord = $user['discord'];
+    $created = $user['created_at'];
+
+
+
 }
 
 //onclick login button
