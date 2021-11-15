@@ -81,6 +81,10 @@ adminOnly();
                             </select>
                         </div>
                         <div>
+                            <label>Participant limit</label>
+                            <input type="number" name="participant_limit" class="text-input">
+                        </div>
+                        <div>
                             <label>Topic</label>
                             <select name="topic_id" class="text-input">
                                 <option value=""></option>
