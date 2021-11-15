@@ -74,7 +74,7 @@ if (isset($_GET['t_id'])) {
               <h3><?php echo $post['title']; ?></h3>
               <!-- <h4>Post created by <?php echo $post['username']; ?></h4>
              <h4>created at <?php echo date('F j, Y', strtotime($post['created_at'])); ?></h4> -->
-             <h4><a href="single.php?id=<?php echo $post['id']; ?>">More Details</a></h4>
+             <h4><a href="eventsingle.php?id=<?php echo $post['eventid']; ?>">More Details</a></h4>
             </div>
           </div>
         <?php endforeach; ?>

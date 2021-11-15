@@ -134,7 +134,8 @@ if(isset($_POST['signup'])){
                       $_SESSION['email'] = $fetch['email'];
                       $_SESSION['bio'] = $fetch['bio'];
                       $_SESSION['password'] = $fetch['password'];
-    
+                      header('location: index.php');
+
                     }else{
                         $info = "It's look like you haven't still verify your email - $email";
                         $_SESSION['info'] = $info;
