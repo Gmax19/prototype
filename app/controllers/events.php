@@ -79,7 +79,7 @@ if (isset($_GET['published']) && isset($_GET['p_id'])) {
 }
 
 
-//to create a new event 
+//to create a new event  //add counter stuff sql query for participant_limit
 if (isset($_POST['add-post'])) {
     // adminOnly();
     $errors = validatePost($_POST);
