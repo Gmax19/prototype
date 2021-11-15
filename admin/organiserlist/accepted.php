@@ -77,6 +77,12 @@
                                   <td><a href="details.php?admin=3&organiser_status=2&p_id=<?php echo $user['id'] ?>" class="approve">approve</a></td>
                                     <!--New Add Bloked area  -->
                                      
+                                    <?php if ($user['blocked'] == 1): ?>
+                                        <td><a href="details.php?organiser_blocked=0&p_id=<?php echo $user['id'] ?>" class="unblock">unblock</a></td>
+                                    <?php else: ?>
+                                        <td><a href="details.php?organiser_blocked=1&p_id=<?php echo $user['id'] ?>" class="block">block</a></td>
+                                    <?php endif; ?>
+
                                     </tr>
                             <?php endforeach; ?>
                         </tbody>
