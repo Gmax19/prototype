@@ -318,8 +318,9 @@ header .menu-toggle {
 }
 
 .content .main-content {
-  width: 85%;
+  width: 90%;
   float: left;
+  margin-left: 80px;
 }
 
 .content .main-content.single {
@@ -335,12 +336,14 @@ header .menu-toggle {
 }
 
 .content .main-content .post {
-  width: 95%;
+  width: 90%;
   height: 270px;
   margin: 20px auto;
-  border-radius: 5px;
+  border-radius: 15px;
   background: white;
+  border: 1px solid #dfdfdf;
   position: relative;
+  box-shadow: 0 3px 7px -1px rgb(0 0 0 / 10%);
 }
 
 .content .popular .post {
@@ -371,14 +374,16 @@ header .menu-toggle {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  border: 1px solid #000000;
-  background: transparent;
+  border: 1px solid #c38d18;
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
   border-radius: 10px;
-  color: #000000 !important;
+  color: white;
+  text-transform: uppercase;
 }
 
 .content .main-content .post .read-more:hover {
-  background: #007eff;
+  background: orange;
+  transition: 3s;
   color: white !important;
   transition: 0.25s;
 }
