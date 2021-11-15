@@ -27,7 +27,7 @@
         <!-- Admin Styling -->
         <link rel="stylesheet" href="../../assets/css/admin.css">
 
-        <title>Admin Section - User Organiser Registration Details</title>
+        <title>Moderator Section - User Organiser Registration Details</title>
         <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
 
     </head>

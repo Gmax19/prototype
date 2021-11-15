@@ -26,7 +26,7 @@ adminOnly();
         <!-- Admin Styling -->
         <link rel="stylesheet" href="../../assets/css/admin.css">
 
-        <title>Admin Section - Manage Posts</title>
+        <title>Moderator Section - Manage Posts</title>
         <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
 
     </head>

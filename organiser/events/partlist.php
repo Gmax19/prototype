@@ -56,7 +56,7 @@ $_SESSION['postid'] = $_GET['id'];
   <div class="page-wrapper">
   <div class="sidebar-wrapper">
 
-<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+<?php include(ROOT_PATH . "/app/includes/organisersidebar.php"); ?>
 
 </div>
     <!-- Content -->

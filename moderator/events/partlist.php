@@ -42,6 +42,7 @@ $_SESSION['postid'] = $_GET['id'];
 
   <!-- Custom Styling -->
   <link rel="stylesheet" href="../../assets/css/style.css">
+  
 
   <title> Esport Brunei - <?php echo $post['title']; ?> </title>
   <link rel="icon" href="assets/logo/logo3.png">
@@ -50,13 +51,13 @@ $_SESSION['postid'] = $_GET['id'];
 
 <body>
 
-  <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+  <?php include(ROOT_PATH . "/app/includes/moderatorheader.php"); ?>
 
   <!-- Page Wrapper -->
   <div class="page-wrapper">
   <div class="sidebar-wrapper">
 
-<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+<?php include(ROOT_PATH . "/app/includes/moderatorsidebar.php"); ?>
 
 </div>
     <!-- Content -->

@@ -26,19 +26,19 @@ adminOnly();
         <!-- Admin Styling -->
         <link rel="stylesheet" href="../../assets/css/admin.css">
 
-        <title>Admin Section - Edit User</title>
+        <title>Moderator Section - Edit User</title>
         <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
 
     </head>
 
     <body>
         
-    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/moderatorHeader.php"); ?>
 
         <!-- Admin Page Wrapper -->
         <div class="admin-wrapper">
 
-        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
+        <?php include(ROOT_PATH . "/app/includes/moderatorSidebar.php"); ?>
 
 
             <!-- Admin Content -->
@@ -76,7 +76,7 @@ adminOnly();
                             <p> <?php echo date('F j, Y', strtotime($user['created_at'])); ?></p>
                         </div>
                         <div align="center">
-                            <button class="btn btn-big"><a href="<?php echo BASE_URL . '/admin/players/index.php'; ?>">back</a></button>
+                            <button class="btn btn-big"><a href="<?php echo BASE_URL . '/moderator/players/index.php'; ?>">back</a></button>
                         </div>
                     </form>
 
