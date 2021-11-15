@@ -379,6 +379,23 @@ if (isset($_GET['blocked']) && isset($_GET['p_id'])) {
     exit();
 }
 
+//function for banning organiser temporary 
+if (isset($_GET['organiser_blocked']) && isset($_GET['p_id'])) {
+    adminOnly();
+    $blocked = $_GET['organiser_blocked'];
+    $user = $_GET['p_id'];
+    $count = update($table, $user, ['blocked' => $blocked]);
+    $_SESSION['message'] = "User status changed successfully !";
+    $_SESSION['type'] = "success";
+    if ($_SESSION['admin'] == 1) {
+        header('location: ' . BASE_URL . '/admin/organiserlist/accepted.php'); 
+    } else if($_SESSION['admin'] == 2) {
+        header('location: ' . BASE_URL . '/moderator/organiserlist/accepted.php');
+    } else {
+        header('location: ' . BASE_URL . '/index.php');
+    }
+    exit();
+}
 
 //function for pending organisers
 if (isset($_GET['admin']) && isset($_GET['p_id'])) {
