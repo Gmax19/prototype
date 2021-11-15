@@ -66,7 +66,7 @@
                                     <td><?php echo $key + 1; ?></td>
                                     <td><?php echo $user['username']; ?></td>
                                     <td><?php echo $user['email']; ?></td>
-                                    <td><a href="user-details.php?id=<?php echo $user['id']; ?>" >details</a></td>
+                                    <td><a href="details.php?id=<?php echo $user['id']; ?>" >details</a></td>
 
                                     <!--New Add Bloked area --> 
                                     <?php if ($user['blocked'] == 1): ?>
