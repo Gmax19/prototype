@@ -12,6 +12,8 @@ $events = selectEvent($table ,  array('published'=> 1));
 
 $Adminevents = selectEvent($table);
 
+// $pCount = SELECT COUNT('payment_status') FROM 'payments' WHERE 'product_id'='61';
+
 // $events = selectEvent($table , $table2);
 
 
