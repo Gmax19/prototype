@@ -113,7 +113,7 @@
                  </div>
                  <div class="data">
                    <h4>Phone <i class="fas fa-phone"></i></h4>
-                    <p><?php echo $phone_number; ?></p>
+                    <p>+673 <?php echo $phone_number; ?></p>
               </div>
             </div>
         </div>
