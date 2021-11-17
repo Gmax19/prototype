@@ -1,5 +1,28 @@
 <?php include("../../path.php"); ?>
 
+<?php include(ROOT_PATH . '/app/controllers/events.php');
+
+
+// if (isset($_GET['id'])) {
+//   $post = selectOne('events', ['id' => $_GET['id']]);
+// }
+// $topics = selectAll('topics');
+// $posts = selectAll('events', ['published' => 1]);
+
+
+// To get session of Events by id
+
+if (isset($_GET['id'])) {
+  $post = selectOne('events', ['id' => $_GET['id']]);
+  $_SESSION['postid'] = $_GET['id'];
+}
+$topics = selectAll('topics');
+$posts = selectAll('events', ['published' => 1]);
+
+$_SESSION['postid'] = $_GET['id'];
+?>
+
+
 <?php 
 // Redirect to the home page if id parameter not found in URL 
 if(empty($_GET['id'])){ 
