@@ -55,7 +55,7 @@
 <div class="wrapper">
  
     <div class="left">
-    <img src="<?php echo BASE_URL . "/assets/logo/logo2.png" ?>" style="width:70%;" align="center" >
+    <img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:70%;" align="center" >
     <h2>What is Esport BN ?</h2>
                 <p>It is a website developed 
                     to satisfy the needs of a user that could not 

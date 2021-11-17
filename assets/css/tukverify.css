@@ -3,10 +3,10 @@ html,body{
     background-image: url(../images/oren.jpg);
     font-family: 'Poppins', sans-serif;
 }
-::selection{
+/* ::selection{
     color: #fff;
-    background: #6665ee;
-}
+    background: orangered;
+} */
 .container{
     position: absolute;
     top: 50%;
@@ -30,20 +30,20 @@ html,body{
    font-size: 15px;
 }
 .container .form form .button{
-    background: #6665ee;
+    background: linear-gradient(to right,#ff6a6a,#c38d18);
     color: #fff;
     font-size: 17px;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 .container .form form .button:hover{
-    background: #5757d1;
+    background: linear-gradient(to right,#ff6a6a,#c38d18);
 }
 .container .form form .link{
     padding: 5px 0;
 }
 .container .form form .link a{
-    color: #6665ee;
+    color: orangered;
 }
 .container .login-form form p{
     font-size: 14px;
