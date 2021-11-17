@@ -109,7 +109,7 @@ JavaScript code to render PayPal checkout button and execute payment
 
 
     <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
+    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>" style="max-width:100%;" />
     <p>Name: <?php echo $eventData['title']; ?></p>
     <p>Price: <?php echo $eventData['s_price']; ?></p>
     
@@ -124,7 +124,16 @@ JavaScript code to render PayPal checkout button and execute payment
 
 </body>
 </html>
-
+<script>
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }</script>
 <script>
 paypal.Button.render({
     // Configure environment
