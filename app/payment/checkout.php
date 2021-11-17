@@ -40,15 +40,7 @@ if(empty($eventData)){
 } 
 ?>
 
-<div class="item">
-    <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
-    <p>Name: <?php echo $eventData['title']; ?></p>
-    <p>Price: <?php echo $eventData['s_price']; ?></p>
-    
-    <!-- Checkout button -->
-    <div id="paypal-button"></div>
-</div>
+
 
 <!--
 JavaScript code to render PayPal checkout button and execute payment
@@ -63,11 +55,50 @@ JavaScript code to render PayPal checkout button and execute payment
 <!-- paypal checkout JS lib -->
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="style.css">
 
-  <title>Document</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+  <title> Esport Brunei - Payment confirmation </title>
+  <link rel="icon" href="../assets/logo/logo3.png">
 </head>
 <body>
-<div id="paypal-button"></div>
+<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+<div class="sidebar-wrapper">
+
+<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+
+</div>
+<!-- Content -->
+<div class="content clearfix">
+
+ <!-- Main Content Wrapper -->
+ <div class="main-content-wrapper">
+        <div class="main-content single">
+
+
+    <!-- Product details -->
+    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
+    <p>Name: <?php echo $eventData['title']; ?></p>
+    <p>Price: <?php echo $eventData['s_price']; ?></p>
+    
+    <!-- Checkout button -->
+    <div id="paypal-button"></div>
+
+</div>
+</div>
+</div>
+
+<?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+
 </body>
 </html>
 
