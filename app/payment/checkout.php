@@ -109,7 +109,7 @@ JavaScript code to render PayPal checkout button and execute payment
 
 
     <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>"/>
+    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>" class="rounded" style="max-width:100%;" alt="...">
     <p>Name: <?php echo $eventData['title']; ?></p>
     <p>Price: <?php echo $eventData['s_price']; ?></p>
     
