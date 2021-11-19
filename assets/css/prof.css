@@ -123,20 +123,28 @@
   font-size: 18px;
 }
 
-.wrapper .edit .btn{
+.wrapper .edit .batn{
 background: linear-gradient(to right,#ff6a6a,#c38d18);
 position: absolute;
     transition: .5s ease;
     right: 42px;
     top: 550px;
+    color: white;
+padding: 10px;
+border-radius: 5px;
 }
 
-.wrapper .update .btn{
+.wrapper .update .batn{
   background: linear-gradient(to right,#ff6a6a,#c38d18);
   position: absolute;
       transition: .5s ease;
       right: 212px;
       top: 550px;
+      padding: 10px;
+  border-radius: 7px;
+  color :#fff;
+  display: block;
+  font-size: 15px;
   }
   
 table {

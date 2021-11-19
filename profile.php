@@ -167,7 +167,7 @@
       </div>
 
       <div class="edit">
-        <a href="<?php echo BASE_URL . '/edit-profile.php' ?>" class="btn">Edit Profile</a>
+        <a href="<?php echo BASE_URL . '/edit-profile.php' ?>" class="batn">Edit Profile</a>
       </div>
 
       

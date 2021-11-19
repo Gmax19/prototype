@@ -143,10 +143,10 @@
       </div>
 
       <div class="edit">
-       <a href="<?php echo BASE_URL . '/profile.php' ?>" class="btn">Cancel Update</a>
+       <a href="<?php echo BASE_URL . '/profile.php' ?>" class="batn">Cancel Update</a>
       </div>
       <div class="update">
-      <button type="submit" name="update-profile" class="btn">Update Profile</button>
+      <button type="submit" name="update-profile" class="batn">Update Profile</button>
        </div>
     </form>
       
