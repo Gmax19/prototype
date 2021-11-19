@@ -134,7 +134,7 @@
                          $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
                           foreach ($fetch as $key => $participant){   ?>
                     <tr>
-                    <td><p><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></p></td>
+                    <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
                     <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
                     <td><p><?php echo $participant['category']; ?></p></td>
                       </tr>
