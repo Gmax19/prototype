@@ -74,34 +74,34 @@ $_SESSION['postid'] = $_GET['id'];
 
           <div class="post-content">
 
-<!-- will show price for tournaments based on the category (solo/team) -->
-<h3>Available slots :</h3>
+              <!-- will show price for tournaments based on the category (solo/team) -->
+              <h3>Available slots :</h3>
 
-<!-- <?php 
+              <!-- <?php 
 
-  $query = "SELECT COUNT(payment_status) FROM payments WHERE product_id='61' ";
-  $query_run = mysqli_query($conn, $query);
+                $query = "SELECT COUNT(payment_status) FROM payments WHERE product_id='61' ";
+                $query_run = mysqli_query($conn, $query);
 
-  $total_ikut = mysqli_num_rows($query_run);
+                $total_ikut = mysqli_num_rows($query_run);
 
-  echo '<p> ' .$total_ikut. ' </p>';
-?>  -->
+                echo '<p> ' .$total_ikut. ' </p>';
+              ?>  -->
 
 
 
-<h3>Tournament Category :</h3>
-<p> <?php echo $post['category'] ?> </p>
+              <h3>Tournament Category :</h3>
+              <p> <?php echo $post['category'] ?> </p>
 
-<h3>Registration Fees :</h3>
+              <h3>Registration Fees :</h3>
 
-<p> <?php echo $post['s_price'] ?> <?php echo $post['currency'] ?> </p>
+              <p> <?php echo $post['s_price'] ?> <?php echo $post['currency'] ?> </p>
 
-<h3>Event Description :</h3> 
+              <h3>Event Description :</h3> 
 
-         <p><?php echo html_entity_decode($post['body']); ?></p>
+                      <p><?php echo html_entity_decode($post['body']); ?></p>
 
-<!-- <h3>Availability to join</h3>  -->
-        </div>
+              <!-- <h3>Availability to join</h3>  -->
+          </div>
 
 
           <br>

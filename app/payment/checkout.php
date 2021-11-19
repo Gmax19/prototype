@@ -109,12 +109,26 @@ JavaScript code to render PayPal checkout button and execute payment
 
 
     <!-- Product details -->
-    <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>" class="rounded" style="max-width:100%;" alt="...">
-    <p>Name: <?php echo $eventData['title']; ?></p>
-    <p>Price: <?php echo $eventData['s_price']; ?></p>
-    
-    <!-- Checkout button -->
-    <div id="paypal-button"></div>
+    <div class="text-center">
+        <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>" class="rounded" style="max-width:100%;" alt="...">
+    </div>
+
+    <div class="post-content">  
+
+        <h3>Tournament :</h3> 
+        <p> <?php echo $eventData['title']; ?></p>
+
+        <h3>Tournament Category :</h3> 
+        <p> <?php echo $eventData['category']; ?></p>
+
+        <h3>Registration Fees :</h3> 
+        <p> <?php echo $eventData['s_price']; ?></p>
+        
+        <br>
+
+        <!-- Checkout button -->
+        <div id="paypal-button"></div>
+    </div>
 
 </div>
 </div>
@@ -164,3 +178,14 @@ paypal.Button.render({
     }
 }, '#paypal-button');
 </script>
+
+<script>
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }</script>
