@@ -77,15 +77,15 @@ $_SESSION['postid'] = $_GET['id'];
               <!-- will show price for tournaments based on the category (solo/team) -->
               <h3>Available slots :</h3>
 
-              <!-- <?php 
-
-                $query = "SELECT COUNT(payment_status) FROM payments WHERE product_id='61' ";
+               <?php 
+               $id = $_GET['id'];
+                $query = "SELECT COUNT(*) as p FROM payments WHERE product_id= $id ";
                 $query_run = mysqli_query($conn, $query);
 
-                $total_ikut = mysqli_num_rows($query_run);
+                $total_ikut = mysqli_fetch_assoc($query_run);
 
-                echo '<p> ' .$total_ikut. ' </p>';
-              ?>  -->
+                echo '<p> ' .$total_ikut['p'] . ' </p>';
+              ?>  
 
 
 
