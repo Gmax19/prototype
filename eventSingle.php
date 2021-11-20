@@ -75,17 +75,18 @@ $_SESSION['postid'] = $_GET['id'];
           <div class="post-content">
 
               <!-- will show price for tournaments based on the category (solo/team) -->
-              <h3>Available slots :</h3>
 
-               <?php 
+              <?php 
                $id = $_GET['id'];
                 $query = "SELECT COUNT(*) as p FROM payments WHERE product_id= $id ";
                 $query_run = mysqli_query($conn, $query);
 
                 $total_ikut = mysqli_fetch_assoc($query_run);
-
-                echo '<p> ' .$total_ikut['p'] . ' </p>';
               ?>  
+              <h3>Available slots :  <?php echo $total_ikut['p']; ?> / <?php echo $post['participant_limit']; ?></h3>
+
+              
+
 
 
 
