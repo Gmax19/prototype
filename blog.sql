@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 12:05 PM
+-- Generation Time: Nov 20, 2021 at 08:01 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -48,7 +48,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`, `participant_limit`) VALUES
-(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636634492_1633870021_961279.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1, 3);
+(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636634492_1633870021_961279.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1, 20);
 
 -- --------------------------------------------------------
 
@@ -97,13 +97,9 @@ CREATE TABLE `payments` (
 
 INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`, `currency_code`, `payer_id`, `payer_name`, `payer_email`, `payer_country`, `payment_status`, `created`) VALUES
 (5, 58, 52, 'PAYID-MGE4UOY9GY295054H900891S', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 02:09:29'),
-(6, 0, 52, 'PAYID-MGFHGOQ5AH12079V71296304', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:10:31'),
-(7, 58, 61, 'PAYID-MGFHRSI2FG5750256467023K', 10.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 14:34:09'),
-(8, 59, 61, 'PAYID-MGFUHOA02P98938UA1117202', 10.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-10 05:00:39'),
 (33, 69, 52, 'PAYID-MGGQ5VI2WW783100S1559300', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-11 13:39:02'),
-(34, 94, 52, 'PAYID-MGGRCZI8GU98650UA6978212', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-11 13:49:52'),
 (35, 91, 52, 'PAYID-MGIL6PI9TX98604P6928084A', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-14 08:48:23'),
-(36, 58, 66, 'PAYID-MGIMNAQ9D913397US815352N', 12.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-14 09:19:25');
+(41, 95, 52, 'PAYID-MGMJEVQ8XY75889S3883134U', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-20 07:14:56');
 
 -- --------------------------------------------------------
 
@@ -173,7 +169,8 @@ INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `commen
 (97, 0, '  agree', 'Zylioth', '2021-11-06 03:51:34', 0, 0),
 (98, 0, '  QWOQW', 'Izzat', '2021-11-10 06:39:52', 0, 0),
 (99, 0, '  goihnerwojkagnpdafknk;gbdafgd', 'kerol', '2021-11-11 05:46:50', 0, 0),
-(100, 99, 'sfiushbijkfaidgfa', 'kerol', '2021-11-11 05:46:58', 0, 0);
+(100, 99, 'sfiushbijkfaidgfa', 'kerol', '2021-11-11 05:46:58', 0, 0),
+(101, 0, '  rfawsgdfdzfs', 'User', '2021-11-15 05:49:49', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -328,12 +325,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `status`, `created_at`, `bio`, `instagram`, `steam`, `discord`, `pic`, `blocked`, `proof`, `organiser_status`, `phone_number`, `details`) VALUES
 (39, 2, 'moderator', 'moderator@account.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-04 05:40:32', 'test saja', '', '', 'name#0000', '1633613077_profile.png', 0, '1633611742_Desktop Screenshot 2021.10.07 - 20.21.52.15.png', 0, 0, ''),
 (49, 1, 'Admin', 'Admin@account.com', '$2y$10$IaNcXYmpQc8AEU0adOGY2.zh5syuROoi.zsGXSjYlakgNl76dPSM.', 174631, 'verified', '2021-10-05 12:02:29', 'Hello', '', '', 'name#0000', '1633768397_961279.png', 0, '1633612832_961279.png', 0, 7258975, ''),
-(53, 3, 'organiser', 'organiser@account.com', '$2y$10$beRMPZP9OPrHPQewe4IOaOPmCyrtOVXTgOzKqngllBJJcBkjInlZ2', 904720, 'verified', '2021-10-08 03:21:09', 'This is the organiser\'s bio take a peek at my profile tehee', '', '', 'name#0000', '1633674352_Siesta (2).jpg', 0, '1633696357_Siesta (2).jpg', 2, 0, ''),
-(58, 1, 'Izzat', 'izzat.latif4@gmail.com', '$2y$10$A1D5ktzPoRTceXg18pE2s.X2SaehEVonHTc3Z5hFZjRrN9nfMwR76', 259092, 'verified', '2021-10-10 11:58:50', 'yo', 'izzxtlxtif', '76561198450007053', 'kerol#1903', '1636631871_1634037650_Siesta.jpg', 0, '1633955682_orange-top-gradient-background.jpg', 0, 7258975, ''),
+(53, 3, 'organiser', 'organiser@account.com', '$2y$10$beRMPZP9OPrHPQewe4IOaOPmCyrtOVXTgOzKqngllBJJcBkjInlZ2', 904720, 'verified', '2021-10-08 03:21:09', 'This is the organiser\'s bio take a peek at my profile tehee', '', '', 'name#0000', '1633674352_Siesta (2).jpg', 1, '1633696357_Siesta (2).jpg', 2, 0, ''),
+(58, 1, 'Izzat', 'izzat.latif4@gmail.com', '$2y$10$NuhnudBLupNPlYpmdpVZ1OwS/EblLe2Z7QTJHB1ZIm9f4VK1Vk/d6', 259092, 'verified', '2021-10-10 11:58:50', 'Hi it\'s Izzat , Head-developer for EsportsBrunei . Eventhough it looks like rotten carcass but hey .. there\'s room for improvement am I right ??? xD', 'izzxtlxtif', '76561198450007053', 'kerol#1903', '1636977941_1634037650_Siesta.jpg', 0, '1633955682_orange-top-gradient-background.jpg', 0, 7258975, ''),
 (59, 1, 'Amir Sabrin', 'AmirSabrin@gmail.com', '$2y$10$Eb2sth71Xr9l.y9yHVyUmeO8h3NEH.s1SFhpxNpNSGxPD6E51tXwK', 196742, 'verified', '2021-10-10 11:59:23', 'One of the Co-Creator of Esports Brunei', '', '', 'name#0000', '1635135602_Miu.jpg', 0, '', 0, 8645562, ''),
 (60, 1, 'Danial Kamsur', 'DanialKamsur@gmail.com', '$2y$10$N3.Oxc4gU057BeLAWG0ObO/JCH0n0L3lOAIbI6aQrMcoGF6cy7Kmq', 699403, 'verified', '2021-10-10 11:59:56', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (61, 1, 'NydiaWesdi', 'NydiaWesdi@gmail.com', '$2y$10$Np/5tD9xWEJ7BlSuxR3gz.tThLH4YXIH0KyUf.UFBhqUmkk9kSbn2', 917176, 'verified', '2021-10-10 12:00:25', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
-(69, 0, 'User', 'User@account', '$2y$10$z3rPG03xRJmi9O07XQmekuR3WfkWs8M0t5i5JmeBpuTYOpcxn0ma.', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1634994442_Miu.jpg', 0, '1634994607_bg.jpg', 3, 1234456, ''),
+(69, 3, 'User', 'User@account', '$2y$10$bmz8mxpXx0P1fopabCvR3OnUTjKEDQNkxyl7/Fz5RYxCMj1TeNm2O', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1636975942_1634018908_profile.png', 0, '1636976645_1634037650_Siesta.jpg', 1, 1234456, '&lt;p&gt;yo&lt;/p&gt;'),
 (91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '_amir02', '76561199032818871', 'Zylioth#1580', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 3, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
 (95, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$hE4ufy4l7HRUWySYV2pynu.L4ItdCrZcr4ETEM360zn44bjuh6DJ.', 0, 'verified', '2021-11-12 13:21:25', 'No Bio Yet ... ', 'https://www.instagram.com/IGNAME/', 'https://steamcommunity.com/profiles/STEAMID/', 'name#0000', '1634018908_profile.png', 0, '', 0, 7258975, '');
 
@@ -414,13 +411,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -432,7 +429,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `tbl_like_unlike`
