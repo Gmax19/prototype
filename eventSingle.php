@@ -78,7 +78,7 @@ $_SESSION['postid'] = $_GET['id'];
 
               <?php 
                $id = $_GET['id'];
-                $query = "SELECT COUNT(*) as p FROM payments WHERE product_id= $id ";
+                $query = "SELECT COUNT(*) as p FROM payments WHERE product_id= $id and payment_status='approved'";
                 $query_run = mysqli_query($conn, $query);
 
                 $total_ikut = mysqli_fetch_assoc($query_run);
