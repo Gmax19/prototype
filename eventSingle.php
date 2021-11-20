@@ -83,13 +83,10 @@ $_SESSION['postid'] = $_GET['id'];
 
                 $total_ikut = mysqli_fetch_assoc($query_run);
               ?>  
-              <h3>Available slots :  <?php echo $total_ikut['p']; ?> / <?php echo $post['participant_limit']; ?></h3>
-
-              
-
-
-
-
+              <h3>Available slots :  <?php echo $total_ikut['p']; ?> / <?php echo $post['participant_limit']; ?> 
+              <br>
+              <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn" >View participants</a></h3>
+              <br>
               <h3>Tournament Category :</h3>
               <p> <?php echo $post['category'] ?> </p>
 
@@ -105,14 +102,15 @@ $_SESSION['postid'] = $_GET['id'];
           </div>
 
 
-          <br>
 
 
-          <?php if (isset($_SESSION['id'])) { ?>
+            <?php if ($total_ikut['p'] >= $post['participant_limit']) {?>
+              <h1>Registration for this event is full</h1>
+            <?php } else  if (isset($_SESSION['id'])) {?>
                 <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register For this event</a>  
-              <?php }  else { ?>
-                <a href=" <?php echo BASE_URL . '/login-user.php' ?> " class="btn btn-big">Login/Signup to register for this event</a> <?php } ?>  
-                <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn btn-big" >View participants</a>
+              <?php } else {?>
+                <a href=" <?php echo BASE_URL . '/login-user.php' ?> " class="btn btn-big">Login/Signup to register for this event</a>
+                 <?php } ?>  
         </div>
 
       </div>
