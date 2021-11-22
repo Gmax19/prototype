@@ -4,7 +4,7 @@ include(ROOT_PATH . "/app/controllers/topics.php");
 
 // gets all the posts from post table in database
 $posts = array();
-$postsTitle = 'Recent Posts';
+$postsTitle = 'Forum Posts';
 
 
 if (isset($_GET['t_id'])) {
@@ -90,6 +90,14 @@ if (isset($_GET['t_id'])) {
 
       <!-- Main Content -->
       <div class="main-content">
+
+      <div class="section search">
+
+          <form action="index.php" method="post">
+          <input type="text" name="search-term" class="text-input" placeholder="Search...">
+          </form>
+        </div>
+
         <h1 class="recent-post-title"><?php echo $postsTitle ?></h1>
 
         <?php foreach ($posts as $post): ?>
