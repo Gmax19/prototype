@@ -4,7 +4,7 @@
 
 
 <button type="button" onclick="openNav()" id="sidebarCollapse" class="btn btn-info">
-<img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:80px;" align="center" >
+<img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:105px;" align="center" >
                 
             </button>
            
