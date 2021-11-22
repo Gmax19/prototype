@@ -28,7 +28,7 @@
         <!-- page Styling -->
         <!-- <link rel="stylesheet" href="assets/css/page.css"> -->
 
-        <title>Esport Brunei - Profile</title>
+        <title>Esport Brunei - Organiser Registration</title>
         <link rel="icon" href="assets/logo/logo3.png">
 
     </head>
@@ -80,7 +80,7 @@
  
     <div class="left">
      <div class="users">
-     <img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:50%;" align="center" >
+     <img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:45%;" align="center" >
         <h5>User Organiser details: </h5>
         <img src="<?php echo BASE_URL . '/assets/proof/' . $proof; ?>" class="rounded" style="max-width:50%;"  alt="Organiser Proof Image">
         <?php echo html_entity_decode($details); ?>
@@ -110,7 +110,7 @@
         </div>
       
         <div class="projects">
-            <h3><i class="fas fa-trophy"></i> Upload Proof Of organiser to be checked by the moderator/s : </h3>
+            <h3><i class="far fa-image"></i> Upload Proof Of organiser to be checked by the moderator/s : </h3>
             <div class="projects_data">
                  <div class="data">
                  <input type="file" name="image" class="text-input" ></input>
@@ -119,7 +119,7 @@
         </div>
 
       <div class="projects">
-            <h3><i class="fas fa-trophy"></i> Enter your Organiser Details here : </h3>
+            <h3><i class="fas fa-paragraph"></i> Enter your Organiser Details here : </h3>
             <div class="projects_data">
                  <div class="data">
                  <textarea name="details" id="body" ><?php echo $details ?></textarea>
