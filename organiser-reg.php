@@ -74,7 +74,7 @@
                     ?>
                     
             <!-- // page Content -->
-    <form action="test-org.php" method="post" enctype="multipart/form-data">
+    <form action="organiser-reg.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" >
 <div class="wrapper">
  
