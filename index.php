@@ -98,6 +98,15 @@ if (isset($_GET['t_id'])) {
           </form>
         </div>
 
+        <!-- <div class="section topics">
+          <h2 class="section-title">Topics</h2>
+          <ul>
+            <?php foreach ($topics as $key => $topic): ?>
+              <li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name'] ?>"><?php echo $topic['name']; ?></a></li>
+            <?php endforeach; ?>
+          </ul>
+        </div> -->
+
         <h1 class="recent-post-title"><?php echo $postsTitle ?></h1>
 
         <?php foreach ($posts as $post): ?>

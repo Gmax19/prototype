@@ -83,6 +83,7 @@ a {
   color: #3a6e3a;
   border: 1px solid #3a6e3a;
   background: #bcf5bc;
+  text-align: center;
 }
 
 .error {
@@ -900,3 +901,14 @@ span.posted-at {
     color: #929292;
 }
 
+.btn-link {
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
+  position: absolute;
+  transition: .5s ease;
+  right: 42px;
+  top: 550px;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  right: 150px;
+}

@@ -1,3 +1,5 @@
+<?php include("../../path.php"); ?>
+
 <?php 
 if(!empty($_GET['id'])){ 
     // Include and initialize database class 
@@ -28,14 +30,41 @@ if(!empty($_GET['id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Custom Styling -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
     <title>Esport Brunei - Payment Status</title>
+    <link rel="icon" href="../assets/logo/logo3.png">
 </head>
 <body>
-    <div>
+    <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+    <div class="sidebar-wrapper">
+
+    <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+
+    </div>
+    <!-- Content -->
+    <div class="content clearfix">
+
+    <!-- Main Content Wrapper -->
+        <div class="main-content-wrapper">
+                
+
+        <div class="main-content single">
         <div class="status">
     <?php if(!empty($paymentData)){ ?>
-        <h1 class="success">Your Payment has been Successful!</h1>
-        <h4>Payment Information</h4>
+        <h3 class="success">Your Payment has been Successful!</h3>
+        <h1>Payment Information</h1>
         <p><b>TXN ID:</b> <?php echo $paymentData['txn_id']; ?></p>
         <p><b>Paid Amount:</b> <?php echo $paymentData['payment_gross'].' '.$paymentData['currency_code']; ?></p>
         <p><b>Payment Status:</b> <?php echo $paymentData['payment_status']; ?></p>
@@ -43,14 +72,33 @@ if(!empty($_GET['id'])){
         <p><b>Payer Name:</b> <?php echo $paymentData['payer_name']; ?></p>
         <p><b>Payer Email:</b> <?php echo $paymentData['payer_email']; ?></p>
 		<!-- <p><b>User ID:</b> <?php echo $paymentData['user_id']; ?></p>  -->
-        <h4>Product Information</h4>
+        <h1>Product Information</h1>
         <p><b>Name:</b> <?php echo $eventData['title']; ?></p>
         <p><b>Price:</b> <?php echo $eventData['s_price'].' '.$eventData['currency']; ?></p>
     <?php }else{ ?>
         <h1 class="error">Your Payment has Failed</h1>
     <?php } ?>
+    
         </div>
+        <div class="edit">
         <a href="../../index.php" class="btn-link">Back to Home</a>
+        </div>
 </div>
+
+</div>
+</div>
+
 </body>
+<?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 </html>
+
+<script>
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }</script>
