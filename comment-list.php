@@ -4,7 +4,7 @@
 require_once (ROOT_PATH . '/app/database/connect.php');
 
 $post_id = $_SESSION['postid'];
-$memberId = 1;
+$memberId = $_SESSION['id'];
 $sql = "SELECT tbl_comment.*,tbl_like_unlike.like_unlike 
 FROM tbl_comment 
 LEFT JOIN tbl_like_unlike 
