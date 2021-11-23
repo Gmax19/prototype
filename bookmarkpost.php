@@ -50,6 +50,7 @@
 
                     <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
+
                     <table>
                         <thead>
                             <th>No.</th>
@@ -62,7 +63,7 @@
                                     <td><?php echo $key + 1; ?></td>
                                     <td><?php echo $bookmark['title'] ?></td>
                                     <td><a href="Single.php?id=<?php echo $bookmark['id']; ?>" class="view">view post</a></td>
-                                    <td><a href="bookmarkpost.php?bookmark=0&p_id=<?php echo $bookmark['id'] ?>" class="remove">remove from bookmark</a></td>                                    
+                                    <td><a href="bookmarkpost.php?status=1&p_id=<?php echo $bookmark['bookmarkid'] ?>" class="remove">remove from bookmark</a></td>                                    
                                 </tr>
                             <?php endforeach; ?>
 
