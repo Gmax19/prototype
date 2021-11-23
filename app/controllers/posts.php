@@ -40,7 +40,6 @@ if (isset($_GET['id'])) {
     $body = $post['body'];
     $topic_id = $post['topic_id'];
     $published = $post['published'];
-    $bookmark = $post['bookmark'];
 }
 
 //to delete posts created

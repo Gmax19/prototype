@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2021 at 08:01 AM
+-- Generation Time: Nov 23, 2021 at 06:16 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `blog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookmark`
+--
+
+CREATE TABLE `bookmark` (
+  `id` int(11) NOT NULL,
+  `postid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookmark`
+--
+
+INSERT INTO `bookmark` (`id`, `postid`, `userid`, `status`) VALUES
+(45, 0, 97, 0),
+(46, 55, 97, 0),
+(47, 58, 97, 0);
 
 -- --------------------------------------------------------
 
@@ -48,7 +70,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`, `participant_limit`) VALUES
-(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636634492_1633870021_961279.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1, 20);
+(52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636634492_1633870021_961279.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1, 4),
+(69, 58, 10, 'Event Test', '1637632457_1633870021_961279.png', '&lt;p&gt;Testing aja kok mas&lt;/p&gt;', 'Solo', 5.00, 'SGD', 1, '2021-11-23 09:54:17', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -99,7 +122,8 @@ INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`
 (5, 58, 52, 'PAYID-MGE4UOY9GY295054H900891S', 15.00, 'SGD', 'BJBD5WG3KURZY', 'Amir Sabrin Ali', 'amirsabrin@gmail.com', 'SG', 'approved', '2021-11-09 02:09:29'),
 (33, 69, 52, 'PAYID-MGGQ5VI2WW783100S1559300', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-11 13:39:02'),
 (35, 91, 52, 'PAYID-MGIL6PI9TX98604P6928084A', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-14 08:48:23'),
-(41, 95, 52, 'PAYID-MGMJEVQ8XY75889S3883134U', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-20 07:14:56');
+(44, 97, 52, 'PAYID-MGNZAHI1RK42422RA858690C', 11.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-22 13:42:14'),
+(45, 58, 69, 'PAYID-MGOEWKA2CX59766XD879005B', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-23 03:00:21');
 
 -- --------------------------------------------------------
 
@@ -115,20 +139,19 @@ CREATE TABLE `posts` (
   `image` varchar(255) NOT NULL,
   `body` text NOT NULL,
   `published` tinyint(4) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `bookmark` tinyint(4) NOT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `published`, `created_at`, `bookmark`) VALUES
-(0, 49, 15, 'Halloween Update!', '1635416287_Phasmophobia_Halloween_Cover.png', '&lt;p&gt;Phasmophobia will receive a major update this Monday the 25th at 4PM BST!&lt;/p&gt;', 1, '2021-10-24 14:57:33', 1),
-(55, 58, NULL, 'Effectively using smokes in VALORANT', '1633868454_post1.PNG', '&lt;h2&gt;In competitive VALORANT, smokes can be the difference maker. But who has the best smokes and where should you be placing them?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;VALORANT Agents are divided into four main categories: duelists, controllers, sentinels, and initiators. The ability to drop &lsquo;smokes&rsquo; stretches across almost all of these different roles but primarily falls to the controllers and sentinels. These agents may not have flashy abilities, but their contributions give their team map control and space. In competitive VALORANT, a well placed smoke can be the difference maker between a round win or loss. With some many smoke Agents, as well as places to smoke, using smokes effectively can be difficult.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;Which Agents are the best smokers?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every smoke Agent has their own unique take on the ability. Whether it be range, duration, or even color there is some distinction between all playable smokers.&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;Brimstone&amp;nbsp;is one of the best smokers in VALORANT and a great place to start for players looking to master controller Agents. Brimstone&rsquo;s has three, fairly high ranged smokes that you can drop from above. The benefit of Brimstone is that his&amp;nbsp;Sky Smoke gives an overhead perspective of the map, making his smokes some of the most precise in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Omen&amp;nbsp;is another viable smoke Agent. Also a controller, Omen allows for a little more play-making ability. His teleport and blinding ability make him more self-sufficient though come at the cost of his smokes.&amp;nbsp;Dark Cover&amp;nbsp;has only two charges and has a slightly below average duration. Omen&rsquo;s other abilities are useful in supplementing his smokes, making him more flexible in gaining ground.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;&amp;nbsp;Perhaps the most &lsquo;complex&rsquo; smoker Agent is&amp;nbsp;Astra. Astra&rsquo;s star system may appear daunting at first, but after mastery can be the most effective among other smoker. The five star charges can guarantee a max of five smokes on the map, however her other two abilities are just as effective in gaining map control. Similar to Brimstone, her astral projection gives her a bird&rsquo;s eye view of the map, but she has no range limits. Her incredible range and ability to lock down points on her own makes Astra the single best smoker in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&amp;nbsp;&lt;strong&gt;Viper and Jett are also Agents outside the controller role with viable smokes. Jett&rsquo;s Cloudburst has the lowest duration, as they are primarily meant to facilitate her personal play making ability. Viper&rsquo;s&amp;nbsp;Poison Cloud is an interesting alternative, as it has a range of 2-15 second duration. Viper alone is a poor mimic of a controller however, as her gas management is the sole decider of her effectiveness.&lt;/strong&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2&gt;&lt;strong&gt;Where to place smokes ?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Knowing who is the best smoker is completely separate from knowing how to use smokes.&amp;nbsp; Every map is obviously different and have their own guides for smokers, however there are some generally applicable tips.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Chokepoints and entrances are the two best spots to smoke when on the defense. This will force attackers to make the first move with little information, leaving them more likely to misplay. Attackers should focus smokes on known defense points. This includes &lsquo;heaven&rsquo; areas that overlook the bombsites, corners, and areas behind cover. Well-placed attacker smokes may even force defenders off the point as you move in, forcing them to play for the re-take.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;There plenty of other specific smoke scenarios. Using a smoke to cloud your spike plant or deplant is a common strategy. Knowledge of your map is ultimately what makes a great smoker, but these tips can get you started.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&amp;nbsp;&lt;/p&gt;', 1, '2021-10-10 20:20:54', 0),
-(58, 58, 15, 'These are the teams in the Worlds 2021 Group Stage', '1633868936_post4.PNG', '&lt;h2&gt;&lt;strong&gt;After a historic and eventful play-ins stage, the groups for Worlds 2021 have been determined.&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Play-Ins for Worlds 2021 was just as historic as it was dramatic. For the first time, an LJL team, DetonatioN FocusMe, escaped Play-Ins and made it to Groups. LNG swept through Play-Ins without dropping a game while Cloud9 almost bowed out early. Beyond Gaming was engulfed in controversy just hours before the final series that sent Hanwha Life Esports to the main event.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;After the dust has settled, the final groups of Worlds 2021 have been cemented. With the main event looming and only one day of rest between, these are the groups.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group A &ndash; The Group of death&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every year has one, a group with two unimaginably strong teams paired together seemingly destined to at least make quarter finals. Cloud9 will join the fray against FPX and Damwon Kia. After a shaky play-ins, Cloud9 are clear underdogs along with Rogue. The chances of escaping groups seems slim for Cloud9, and their weaker players will have to step up to show that the team is not simply prolonging the inevitable.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group B &ndash; Will DFM defy expectations?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Group B has one clear leader, Edward Gaming, and a team expected to end last with the addition of DFM. Despite having a historic Play-Ins with their star shining like never before, DFM are still expected to be outclassed. With heavy hitters like EDG, T1, and 100T between them, it seems unlike that the DFM Cinderella story will go any farther.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group C &ndash; Hanwha Life poised to shake up groups&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;br&gt;&lt;strong&gt;Group C is one of the more &lsquo;open&rsquo; groups in Worlds 2021. RNG have emerged as clear favorites with the race between Fnatic and PSG Talon being split down the middle. Hanwha Life&rsquo;s presence complicates this group significantly, as the team has one of the strongest midlanes and bottom lane duos in Worlds. Hanwha Life could claim one of the two available spots, though they are almost just as likely to crash and burn.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group D &ndash; LNG, the Worlds sleeper pick&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;LNG may be the best team to ever compete in Play-Ins. The LPL fourth seed did not drop a single game and were the first squad to advance on to groups. Play-Ins have given the team time to learn the meta before continuing their journey into the most competitive group at Worlds. Though competition is stiff in Group D, as Team Liquid, Gen.G, and MAD Lions stand in their way, LNG could be a sleeper pick to win the entire tournament.&lt;/strong&gt;&lt;/p&gt;', 1, '2021-10-10 20:28:56', 0),
-(62, 49, 15, 'FIFA to split with EA sports?!', '1635416265_fifa.jpg', '&lt;p&gt;FIFA is ending its long-term exclusive partnership with Electronic Arts as it looks to widen its gaming and esports portfolio.&lt;/p&gt;&lt;p&gt;The two parties first struck a deal in 1993 that will expire in 2022. FIFA is &lt;a href=&quot;https://www.nytimes.com/2021/10/13/sports/soccer/ea-sports-fifa.html&quot;&gt;reportedly&lt;/a&gt; seeking more than double its current &lt;strong&gt;$150 million&lt;/strong&gt; annual licensing fee.&lt;/p&gt;&lt;p&gt;FIFA&rsquo;s &lt;a href=&quot;https://www.fifa.com/news/fifa-set-to-widen-gaming-and-esports-portfolio&quot;&gt;statement&lt;/a&gt;, in part: &ldquo;It is clear that this needs to be a space that is occupied by more than one party controlling all rights.&rdquo;&lt;/p&gt;&lt;p&gt;The organization added that it will be in a better position to serve its 211 member associations as they take advantage of emerging opportunities in gaming and soccer.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The &ldquo;FIFA&rdquo; series is estimated to be worth more than &lt;strong&gt;$2 billion&lt;/strong&gt; annually to EA.&lt;/li&gt;&lt;li&gt;Since its October 2020 release, &ldquo;FIFA 21&rdquo; had more than 31 million players.&lt;/li&gt;&lt;li&gt;&ldquo;FIFA 22&rdquo; already has 9.1 million players following its global release on Oct. 1.&lt;/li&gt;&lt;li&gt;More than 140 million people have played EA Sports titles over the last 12 months.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;EA &lt;a href=&quot;https://s22.q4cdn.com/894350492/files/doc_financials/2022/q1/Q1-FY22-Earnings-Release-Final.pdf&quot;&gt;posted&lt;/a&gt;&lt;strong&gt; $1.6 billion &lt;/strong&gt;in revenue in fiscal Q1, slightly up from $1.5 billion in the same period a year prior.&lt;/p&gt;&lt;p&gt;The results were driven by the company&rsquo;s live services segment, which generated $1.2 billion in revenue for the quarter. EA is projected to pocket &lt;strong&gt;$6.85 billion in revenue &lt;/strong&gt;in FY 2022.&lt;/p&gt;', 1, '2021-10-24 15:05:46', 0),
-(64, 49, 9, 'Battlefield 2042', '1635416254_b2042.jpg', '&lt;p&gt;asasasasasas&lt;/p&gt;', 1, '2021-10-25 13:38:36', 0);
+INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `published`, `created_at`) VALUES
+(0, 49, 15, 'Halloween Update!', '1635416287_Phasmophobia_Halloween_Cover.png', '&lt;p&gt;Phasmophobia will receive a major update this Monday the 25th at 4PM BST!&lt;/p&gt;', 1, '2021-10-24 14:57:33'),
+(55, 58, NULL, 'Effectively using smokes in VALORANT', '1633868454_post1.PNG', '&lt;h2&gt;In competitive VALORANT, smokes can be the difference maker. But who has the best smokes and where should you be placing them?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;VALORANT Agents are divided into four main categories: duelists, controllers, sentinels, and initiators. The ability to drop &lsquo;smokes&rsquo; stretches across almost all of these different roles but primarily falls to the controllers and sentinels. These agents may not have flashy abilities, but their contributions give their team map control and space. In competitive VALORANT, a well placed smoke can be the difference maker between a round win or loss. With some many smoke Agents, as well as places to smoke, using smokes effectively can be difficult.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;Which Agents are the best smokers?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every smoke Agent has their own unique take on the ability. Whether it be range, duration, or even color there is some distinction between all playable smokers.&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;Brimstone&amp;nbsp;is one of the best smokers in VALORANT and a great place to start for players looking to master controller Agents. Brimstone&rsquo;s has three, fairly high ranged smokes that you can drop from above. The benefit of Brimstone is that his&amp;nbsp;Sky Smoke gives an overhead perspective of the map, making his smokes some of the most precise in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Omen&amp;nbsp;is another viable smoke Agent. Also a controller, Omen allows for a little more play-making ability. His teleport and blinding ability make him more self-sufficient though come at the cost of his smokes.&amp;nbsp;Dark Cover&amp;nbsp;has only two charges and has a slightly below average duration. Omen&rsquo;s other abilities are useful in supplementing his smokes, making him more flexible in gaining ground.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;&amp;nbsp;Perhaps the most &lsquo;complex&rsquo; smoker Agent is&amp;nbsp;Astra. Astra&rsquo;s star system may appear daunting at first, but after mastery can be the most effective among other smoker. The five star charges can guarantee a max of five smokes on the map, however her other two abilities are just as effective in gaining map control. Similar to Brimstone, her astral projection gives her a bird&rsquo;s eye view of the map, but she has no range limits. Her incredible range and ability to lock down points on her own makes Astra the single best smoker in VALORANT.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&amp;nbsp;&lt;strong&gt;Viper and Jett are also Agents outside the controller role with viable smokes. Jett&rsquo;s Cloudburst has the lowest duration, as they are primarily meant to facilitate her personal play making ability. Viper&rsquo;s&amp;nbsp;Poison Cloud is an interesting alternative, as it has a range of 2-15 second duration. Viper alone is a poor mimic of a controller however, as her gas management is the sole decider of her effectiveness.&lt;/strong&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h2&gt;&lt;strong&gt;Where to place smokes ?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Knowing who is the best smoker is completely separate from knowing how to use smokes.&amp;nbsp; Every map is obviously different and have their own guides for smokers, however there are some generally applicable tips.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Chokepoints and entrances are the two best spots to smoke when on the defense. This will force attackers to make the first move with little information, leaving them more likely to misplay. Attackers should focus smokes on known defense points. This includes &lsquo;heaven&rsquo; areas that overlook the bombsites, corners, and areas behind cover. Well-placed attacker smokes may even force defenders off the point as you move in, forcing them to play for the re-take.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;There plenty of other specific smoke scenarios. Using a smoke to cloud your spike plant or deplant is a common strategy. Knowledge of your map is ultimately what makes a great smoker, but these tips can get you started.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&amp;nbsp;&lt;/p&gt;', 1, '2021-10-10 20:20:54'),
+(58, 58, 15, 'These are the teams in the Worlds 2021 Group Stage', '1633868936_post4.PNG', '&lt;h2&gt;&lt;strong&gt;After a historic and eventful play-ins stage, the groups for Worlds 2021 have been determined.&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Play-Ins for Worlds 2021 was just as historic as it was dramatic. For the first time, an LJL team, DetonatioN FocusMe, escaped Play-Ins and made it to Groups. LNG swept through Play-Ins without dropping a game while Cloud9 almost bowed out early. Beyond Gaming was engulfed in controversy just hours before the final series that sent Hanwha Life Esports to the main event.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;After the dust has settled, the final groups of Worlds 2021 have been cemented. With the main event looming and only one day of rest between, these are the groups.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group A &ndash; The Group of death&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Every year has one, a group with two unimaginably strong teams paired together seemingly destined to at least make quarter finals. Cloud9 will join the fray against FPX and Damwon Kia. After a shaky play-ins, Cloud9 are clear underdogs along with Rogue. The chances of escaping groups seems slim for Cloud9, and their weaker players will have to step up to show that the team is not simply prolonging the inevitable.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group B &ndash; Will DFM defy expectations?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Group B has one clear leader, Edward Gaming, and a team expected to end last with the addition of DFM. Despite having a historic Play-Ins with their star shining like never before, DFM are still expected to be outclassed. With heavy hitters like EDG, T1, and 100T between them, it seems unlike that the DFM Cinderella story will go any farther.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group C &ndash; Hanwha Life poised to shake up groups&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;br&gt;&lt;strong&gt;Group C is one of the more &lsquo;open&rsquo; groups in Worlds 2021. RNG have emerged as clear favorites with the race between Fnatic and PSG Talon being split down the middle. Hanwha Life&rsquo;s presence complicates this group significantly, as the team has one of the strongest midlanes and bottom lane duos in Worlds. Hanwha Life could claim one of the two available spots, though they are almost just as likely to crash and burn.&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;Group D &ndash; LNG, the Worlds sleeper pick&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;LNG may be the best team to ever compete in Play-Ins. The LPL fourth seed did not drop a single game and were the first squad to advance on to groups. Play-Ins have given the team time to learn the meta before continuing their journey into the most competitive group at Worlds. Though competition is stiff in Group D, as Team Liquid, Gen.G, and MAD Lions stand in their way, LNG could be a sleeper pick to win the entire tournament.&lt;/strong&gt;&lt;/p&gt;', 1, '2021-10-10 20:28:56'),
+(62, 49, 15, 'FIFA to split with EA sports?!', '1635416265_fifa.jpg', '&lt;p&gt;FIFA is ending its long-term exclusive partnership with Electronic Arts as it looks to widen its gaming and esports portfolio.&lt;/p&gt;&lt;p&gt;The two parties first struck a deal in 1993 that will expire in 2022. FIFA is &lt;a href=&quot;https://www.nytimes.com/2021/10/13/sports/soccer/ea-sports-fifa.html&quot;&gt;reportedly&lt;/a&gt; seeking more than double its current &lt;strong&gt;$150 million&lt;/strong&gt; annual licensing fee.&lt;/p&gt;&lt;p&gt;FIFA&rsquo;s &lt;a href=&quot;https://www.fifa.com/news/fifa-set-to-widen-gaming-and-esports-portfolio&quot;&gt;statement&lt;/a&gt;, in part: &ldquo;It is clear that this needs to be a space that is occupied by more than one party controlling all rights.&rdquo;&lt;/p&gt;&lt;p&gt;The organization added that it will be in a better position to serve its 211 member associations as they take advantage of emerging opportunities in gaming and soccer.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The &ldquo;FIFA&rdquo; series is estimated to be worth more than &lt;strong&gt;$2 billion&lt;/strong&gt; annually to EA.&lt;/li&gt;&lt;li&gt;Since its October 2020 release, &ldquo;FIFA 21&rdquo; had more than 31 million players.&lt;/li&gt;&lt;li&gt;&ldquo;FIFA 22&rdquo; already has 9.1 million players following its global release on Oct. 1.&lt;/li&gt;&lt;li&gt;More than 140 million people have played EA Sports titles over the last 12 months.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;EA &lt;a href=&quot;https://s22.q4cdn.com/894350492/files/doc_financials/2022/q1/Q1-FY22-Earnings-Release-Final.pdf&quot;&gt;posted&lt;/a&gt;&lt;strong&gt; $1.6 billion &lt;/strong&gt;in revenue in fiscal Q1, slightly up from $1.5 billion in the same period a year prior.&lt;/p&gt;&lt;p&gt;The results were driven by the company&rsquo;s live services segment, which generated $1.2 billion in revenue for the quarter. EA is projected to pocket &lt;strong&gt;$6.85 billion in revenue &lt;/strong&gt;in FY 2022.&lt;/p&gt;', 1, '2021-10-24 15:05:46'),
+(64, 49, 9, 'Battlefield 2042', '1635416254_b2042.jpg', '&lt;p&gt;asasasasasas&lt;/p&gt;', 1, '2021-10-25 13:38:36');
 
 -- --------------------------------------------------------
 
@@ -146,32 +169,6 @@ CREATE TABLE `tbl_comment` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_comment`
---
-
-INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`, `user_id`, `post_id`) VALUES
-(51, 52, 'COULDN\'T AGREE MORE SIS!!!', 'organiser', '2021-10-08 00:42:58', 0, 55),
-(52, 0, 'woah this is actually a helpful tip!!', 'NydiaWesdi', '2021-10-08 00:43:58', 0, 55),
-(53, 0, 'Thanks for this amazing tip !', 'Amir Sabrin', '2021-10-08 00:44:51', 0, 55),
-(72, 0, 'Fly high bro ! you\'ll be missed </3 ', 'Danial Kamsur', '2021-10-08 00:47:21', 0, 56),
-(73, 74, 'rip :((', 'User', '2021-10-08 00:47:26', 0, 56),
-(74, 0, 'RIP bruh </3', 'izzat', '2021-10-08 00:47:31', 0, 56),
-(75, 0, 'this update patch sucks >:(', 'moderator', '2021-10-08 00:48:07', 0, 57),
-(76, 0, 'WHAT?!?! BAD PATCH UPDATE !!!!', 'admin', '2021-10-08 00:48:12', 0, 57),
-(78, 76, 'haloo pls give me admin pls I can manage  users I have a degree', 'izzat', '2021-10-08 00:48:19', 0, 57),
-(79, 0, 'SENTINELS BEST VALORANT TEAM NA !!!', 'organiser', '2021-10-08 00:49:04', 0, 58),
-(80, 79, 'Nahhh G2 best team from EU bro', 'Normal User 1', '2021-10-08 00:49:22', 0, 58),
-(81, 0, '100T is the best team !!!!', 'normal user 2', '2021-10-08 00:49:32', 0, 58),
-(82, 0, '  that will 11 PM Brunei time', 'Admin', '2021-10-24 00:58:57', 0, 61),
-(91, 0, '  testing', 'Zylioth', '2021-10-27 07:51:05', 0, 0),
-(96, 0, '  wow', 'Zylioth', '2021-11-06 03:50:58', 0, 0),
-(97, 0, '  agree', 'Zylioth', '2021-11-06 03:51:34', 0, 0),
-(98, 0, '  QWOQW', 'Izzat', '2021-11-10 06:39:52', 0, 0),
-(99, 0, '  goihnerwojkagnpdafknk;gbdafgd', 'kerol', '2021-11-11 05:46:50', 0, 0),
-(100, 99, 'sfiushbijkfaidgfa', 'kerol', '2021-11-11 05:46:58', 0, 0),
-(101, 0, '  rfawsgdfdzfs', 'User', '2021-11-15 05:49:49', 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -185,35 +182,6 @@ CREATE TABLE `tbl_like_unlike` (
   `like_unlike` int(2) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_like_unlike`
---
-
-INSERT INTO `tbl_like_unlike` (`id`, `member_id`, `comment_id`, `like_unlike`, `date`) VALUES
-(56, 1, 38, 29, '2021-10-08 06:51:01'),
-(57, 1, 40, 7, '2021-10-08 06:50:54'),
-(58, 1, 45, 11, '2021-10-08 06:50:52'),
-(59, 1, 46, 14, '2021-10-08 06:50:50'),
-(60, 1, 51, 0, '2021-10-24 07:01:57'),
-(61, 1, 52, 1, '2021-10-24 07:37:55'),
-(62, 1, 53, 0, '2021-10-24 07:01:58'),
-(63, 1, 69, 5, '2021-10-08 06:50:45'),
-(64, 1, 79, 50, '2021-10-10 12:37:34'),
-(65, 1, 80, 121, '2021-10-10 12:37:37'),
-(66, 1, 81, 23, '2021-10-10 12:37:42'),
-(67, 1, 72, 0, '2021-10-24 07:02:08'),
-(68, 1, 74, 0, '2021-10-24 07:02:09'),
-(69, 1, 73, 0, '2021-10-24 07:02:10'),
-(70, 1, 75, 1, '2021-10-24 07:02:19'),
-(71, 1, 76, 0, '2021-10-24 07:02:15'),
-(72, 1, 78, 0, '2021-10-24 07:02:17'),
-(73, 1, 82, 0, '2021-10-24 07:01:45'),
-(74, 1, 84, 1, '2021-10-24 07:21:40'),
-(75, 1, 87, 0, '2021-10-25 05:21:43'),
-(76, 1, 88, 1, '2021-10-25 05:21:42'),
-(77, 1, 89, 1, '2021-10-25 06:19:41'),
-(78, 1, 99, 0, '2021-11-12 10:51:06');
 
 -- --------------------------------------------------------
 
@@ -325,18 +293,24 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `status`, `created_at`, `bio`, `instagram`, `steam`, `discord`, `pic`, `blocked`, `proof`, `organiser_status`, `phone_number`, `details`) VALUES
 (39, 2, 'moderator', 'moderator@account.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-04 05:40:32', 'test saja', '', '', 'name#0000', '1633613077_profile.png', 0, '1633611742_Desktop Screenshot 2021.10.07 - 20.21.52.15.png', 0, 0, ''),
 (49, 1, 'Admin', 'Admin@account.com', '$2y$10$IaNcXYmpQc8AEU0adOGY2.zh5syuROoi.zsGXSjYlakgNl76dPSM.', 174631, 'verified', '2021-10-05 12:02:29', 'Hello', '', '', 'name#0000', '1633768397_961279.png', 0, '1633612832_961279.png', 0, 7258975, ''),
-(53, 3, 'organiser', 'organiser@account.com', '$2y$10$beRMPZP9OPrHPQewe4IOaOPmCyrtOVXTgOzKqngllBJJcBkjInlZ2', 904720, 'verified', '2021-10-08 03:21:09', 'This is the organiser\'s bio take a peek at my profile tehee', '', '', 'name#0000', '1633674352_Siesta (2).jpg', 1, '1633696357_Siesta (2).jpg', 2, 0, ''),
+(53, 3, 'organiser', 'organiser@account.com', '$2y$10$beRMPZP9OPrHPQewe4IOaOPmCyrtOVXTgOzKqngllBJJcBkjInlZ2', 904720, 'verified', '2021-10-08 03:21:09', 'This is the organiser\'s bio take a peek at my profile tehee', '', '', 'name#0000', '1633674352_Siesta (2).jpg', 0, '1633696357_Siesta (2).jpg', 2, 0, ''),
 (58, 1, 'Izzat', 'izzat.latif4@gmail.com', '$2y$10$NuhnudBLupNPlYpmdpVZ1OwS/EblLe2Z7QTJHB1ZIm9f4VK1Vk/d6', 259092, 'verified', '2021-10-10 11:58:50', 'Hi it\'s Izzat , Head-developer for EsportsBrunei . Eventhough it looks like rotten carcass but hey .. there\'s room for improvement am I right ??? xD', 'izzxtlxtif', '76561198450007053', 'kerol#1903', '1636977941_1634037650_Siesta.jpg', 0, '1633955682_orange-top-gradient-background.jpg', 0, 7258975, ''),
 (59, 1, 'Amir Sabrin', 'AmirSabrin@gmail.com', '$2y$10$Eb2sth71Xr9l.y9yHVyUmeO8h3NEH.s1SFhpxNpNSGxPD6E51tXwK', 196742, 'verified', '2021-10-10 11:59:23', 'One of the Co-Creator of Esports Brunei', '', '', 'name#0000', '1635135602_Miu.jpg', 0, '', 0, 8645562, ''),
 (60, 1, 'Danial Kamsur', 'DanialKamsur@gmail.com', '$2y$10$N3.Oxc4gU057BeLAWG0ObO/JCH0n0L3lOAIbI6aQrMcoGF6cy7Kmq', 699403, 'verified', '2021-10-10 11:59:56', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (61, 1, 'NydiaWesdi', 'NydiaWesdi@gmail.com', '$2y$10$Np/5tD9xWEJ7BlSuxR3gz.tThLH4YXIH0KyUf.UFBhqUmkk9kSbn2', 917176, 'verified', '2021-10-10 12:00:25', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (69, 3, 'User', 'User@account', '$2y$10$bmz8mxpXx0P1fopabCvR3OnUTjKEDQNkxyl7/Fz5RYxCMj1TeNm2O', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1636975942_1634018908_profile.png', 0, '1636976645_1634037650_Siesta.jpg', 1, 1234456, '&lt;p&gt;yo&lt;/p&gt;'),
 (91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '_amir02', '76561199032818871', 'Zylioth#1580', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 3, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
-(95, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$hE4ufy4l7HRUWySYV2pynu.L4ItdCrZcr4ETEM360zn44bjuh6DJ.', 0, 'verified', '2021-11-12 13:21:25', 'No Bio Yet ... ', 'https://www.instagram.com/IGNAME/', 'https://steamcommunity.com/profiles/STEAMID/', 'name#0000', '1634018908_profile.png', 0, '', 0, 7258975, '');
+(97, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$44pWXXHr9p2uMebQ5iXAu.AicwKBywV/exc0E3jXMBLKHqY23hA7m', 0, 'verified', '2021-11-22 12:41:08', 'No Bio Yet ... ', 'EsportBrunei', 'SteamID', 'name#0000', '1634018908_profile.png', 0, '1637587130_1634037650_Siesta.jpg', 1, 7258975, '&lt;h1&gt;fgsegfsdfvsfwfdsfsscsacsaca&lt;/h1&gt;&lt;p&gt;hfdhdfhfdhfdhdhd&lt;/p&gt;');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `events`
@@ -408,16 +382,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -429,7 +409,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `tbl_like_unlike`
@@ -459,7 +439,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- Constraints for dumped tables
