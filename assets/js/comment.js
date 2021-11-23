@@ -1,7 +1,7 @@
-
             var totalLikes = 0;
             var totalUnlikes = 0;
-           
+            var myvar='<?php echo $_SESSION["username"];?>';
+
             function postReply(commentId) {
                 $('#commentId').val(commentId);
                 $("#name").focus();
@@ -21,7 +21,7 @@
                         if (response)
                         {
                             $("#comment-message").css('display', 'inline-block');
-                            $("#name").val("");
+                            $("#name").val("1");
                             $("#comment").val("");
                             $("#commentId").val("");
                             listComment();
