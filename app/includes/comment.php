@@ -3,7 +3,7 @@
                 <div class="input-row">
                     <input type="hidden" name="comment_id" id="commentId"
                            placeholder="Name" /> <input class="input-field" 
-                           type="text" name="name" value="<?php echo $_SESSION['username'] ?>" id="name" placeholder="Name" />
+                           type="text" name="name" value="<?php echo $_SESSION['username'] ?>" id="name" placeholder="Name" readonly />
                 </div>
                 <div class="input-row">
                     <textarea class="input-field" type="text" name="comment"

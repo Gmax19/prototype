@@ -21,7 +21,7 @@
                         if (response)
                         {
                             $("#comment-message").css('display', 'inline-block');
-                            $("#name").val("1");
+                            $("#name").val(JSON.stringify.$(myvar));
                             $("#comment").val("");
                             $("#commentId").val("");
                             listComment();
