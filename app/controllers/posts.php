@@ -11,13 +11,13 @@ $posts = selectAll($table);
 $bookmarktable = 'bookmark';
 
 //for bookmarked content TO BE USED
-$sql = "SELECT *, b.id as bookmarkid  FROM bookmark as b 
-                INNER JOIN users as u on u.id = b.userid 
-                INNER JOIN posts as p on p.id = b.postid 
-                WHERE b.status = 0 AND u.id = " . $_SESSION['id'];
- $stmt = $conn->prepare($sql); // preparing sql statement by first checking the connection of database
- $stmt->execute(); // executing query statement
-$bookmarks = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+// $sql = "SELECT *, b.id as bookmarkid  FROM bookmark as b 
+//                 INNER JOIN users as u on u.id = b.userid 
+//                 INNER JOIN posts as p on p.id = b.postid 
+//                 WHERE b.status = 0 AND u.id = " . $_SESSION['id'];
+//  $stmt = $conn->prepare($sql); // preparing sql statement by first checking the connection of database
+//  $stmt->execute(); // executing query statement
+// $bookmarks = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 
 $errors = array();
