@@ -46,11 +46,24 @@ adminOnly();
 
                 <div >
 
-                    <h1 class="page-title">Welcome to the Admin Dashboard</h1>
+                    <h1 class="page-title2">Welcome to the Admin Dashboard</h1>
 
                     <?php include(ROOT_PATH . '/app/includes/messages.php'); ?>
 
+                    <div class="container">
+                            <img src=<?php echo BASE_URL . "/assets/logo/test2.jpg" ?> alt="Avatar" class="image">
+                            <div class="overlay">
+                            <div class="text">Greetings Admin</div>
+                        </div>
+                    </div>
                     
+                    <div class="container2">
+                        <div class="center">
+                            <button onclick="window.location.href='/prototype/admin/events/create.php';" class="button">Create Events</button>
+                            <button onclick="window.location.href='/prototype/admin/posts/create.php';"  class="button">Create Posts</button>
+                            <button onclick="window.location.href='/prototype/admin/users/create.php';"  class="button">Create Moderator</button>
+                        </div>
+                    </div>
 
                 </div>
 

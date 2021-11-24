@@ -44,13 +44,25 @@ adminOnly();
             <!-- moderator Content -->
             <div class="moderator-content">
 
-                <div class="content">
+            <div>
 
-                    <h2 class="page-title">Welcome to the Organiser Dashboard</h2>
+                <h1 class="page-title2">Welcome to the Organiser Dashboard</h1>
 
                     <?php include(ROOT_PATH . '/app/includes/messages.php'); ?>
 
-                    
+                    <div class="container">
+                            <img src=<?php echo BASE_URL . "/assets/logo/test4.jpg" ?> alt="Avatar" class="image">
+                            <div class="overlay">
+                            <div class="text">Greetings Organiser</div>
+                        </div>
+                    </div>
+
+                    <div class="container2">
+                        <div class="center">
+                            <button onclick="window.location.href='/prototype/organiser/events/create.php';" class="button">Create Events</button>
+                            <button onclick="window.location.href='/prototype/organiser/events/index.php';"  class="button">Event Lists</button>
+                        </div>
+                    </div>
 
                 </div>
 
