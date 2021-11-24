@@ -44,13 +44,11 @@ if(!empty($_GET['id'])){
     <link rel="icon" href="../assets/logo/logo3.png">
 </head>
 <body>
-    <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
     <!-- Page Wrapper -->
     <div class="page-wrapper">
     <div class="sidebar-wrapper">
 
-    <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
     </div>
     <!-- Content -->
@@ -80,8 +78,11 @@ if(!empty($_GET['id'])){
     <?php } ?>
     
         </div>
-        <div class="edit">
+        <div class="home">
         <a href="../../index.php" class="btn-link">Back to Home</a>
+        </div>
+        <div class="profile">
+        <a href="../../profile.php" class="btn-link">Back to Profile</a>
         </div>
 </div>
 
@@ -89,7 +90,6 @@ if(!empty($_GET['id'])){
 </div>
 
 </body>
-<?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 </html>
 
 <script>

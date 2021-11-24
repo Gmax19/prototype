@@ -901,12 +901,25 @@ span.posted-at {
     color: #929292;
 }
 
-.btn-link {
+.profile .btn-link {
   background: linear-gradient(to right,#ff6a6a,#c38d18);
   position: absolute;
   transition: .5s ease;
   right: 42px;
-  top: 550px;
+  top: 500px;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  right: 148px;
+}
+
+
+.home .btn-link {
+  background: linear-gradient(to right,#ff6a6a,#c38d18);
+  position: absolute;
+  transition: .5s ease;
+  right: 42px;
+  top: 450px;
   color: white;
   padding: 10px;
   border-radius: 5px;

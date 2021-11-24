@@ -65,8 +65,8 @@
                         $steam = $fetch['steam'];
                         $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
-
-                        $participants = "SELECT * FROM `payments` as p 
+ 
+                        $participants = "SELECT *, p.id as paymentid  FROM payments as p
                         inner join users as u on p.user_id = u.id
                         inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
                     }
@@ -126,7 +126,8 @@
                      <thead>
                     <th><h4><i class="fas fa-certificate"></i> Events Joined:</h4></th>
                     <th><h4><i class="far fa-calendar-check"></i> Joined:</h4></th>
-                    <th><h4><i class="fas fa-users-cog"></i>Category:</h4></th>
+                    <th><h4><i class="fas fa-users-cog"></i> Category:</h4></th>
+                    <th><h4><i class="fas fa-file-invoice-dollar"></i> Invoice:</h4></th>
                   </thead>
                     <?php 
                          $res = mysqli_query($conn, $participants);
@@ -137,6 +138,7 @@
                     <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
                     <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
                     <td><p><?php echo $participant['category']; ?></p></td>
+                    <td><p><a href="app/payment/payment-status.php?id=<?php echo $participant['paymentid']; ?>">View</a></p></td>
                       </tr>
                     <?php
                                         } 
