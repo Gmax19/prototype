@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2021 at 05:12 AM
+-- Generation Time: Nov 25, 2021 at 05:22 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -154,21 +154,6 @@ CREATE TABLE `pending` (
   `approval` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pending`
---
-
-INSERT INTO `pending` (`id`, `member_id`, `team`, `approval`) VALUES
-(13, 36, 0, 0),
-(14, 36, 0, 0),
-(15, 39, 36, 0),
-(16, 36, 36, 0),
-(17, 69, 37, 0),
-(18, 69, 38, 0),
-(19, 69, 39, 0),
-(20, 69, 37, 0),
-(21, 91, 40, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -258,20 +243,6 @@ CREATE TABLE `teams` (
   `limit_members` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `teams`
---
-
-INSERT INTO `teams` (`id`, `team_name`, `team_coach`, `team_creator`, `team_captain`, `team_logo`, `limit_members`) VALUES
-(19, 'one', 'some', 54, 54, '', 2),
-(26, 'stop', 'it', 54, 54, '', 8),
-(27, 'AyamJago', 'Bota Wila Samba', 58, 58, '', 8),
-(31, 'teamone', 'teamone', 0, 0, 0x313633363630363033325f313633363433323338353036302e706e67, 2),
-(37, 't', 't', 87, 87, 0x313633373636343636365f646c7266584d354f6f6d4231675671516e3575316341375468776763537a57372e706e67, 2),
-(38, 'testing', 'testing', 87, 87, 0x313633373830373631325f31303738303932362e6a7067, 2),
-(39, 'testingg', 'testingg', 87, 87, 0x313633373830393137305f31303738303932362e6a7067, 8),
-(40, 'Team A', 'Ahmad Syukri', 97, 97, 0x313633373831333139385f313633333935353635365f6f72616e67652d746f702d6772616469656e742d6261636b67726f756e642e6a7067, 8);
-
 -- --------------------------------------------------------
 
 --
@@ -283,20 +254,6 @@ CREATE TABLE `team_members` (
   `team_id` int(255) NOT NULL,
   `member_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `team_members`
---
-
-INSERT INTO `team_members` (`id`, `team_id`, `member_id`) VALUES
-(41, 37, 87),
-(45, 38, 87),
-(46, 38, 69),
-(47, 39, 87),
-(48, 39, 69),
-(49, 37, 69),
-(50, 40, 97),
-(52, 40, 91);
 
 -- --------------------------------------------------------
 
@@ -487,46 +444,6 @@ ALTER TABLE `tbl_comment`
 --
 ALTER TABLE `tbl_like_unlike`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
-
---
--- AUTO_INCREMENT for table `teams`
---
-ALTER TABLE `teams`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT for table `team_members`
---
-ALTER TABLE `team_members`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
-
---
--- AUTO_INCREMENT for table `topics`
---
-ALTER TABLE `topics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `events`
---
-ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
