@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2021 at 05:22 AM
+-- Generation Time: Nov 25, 2021 at 08:20 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -51,11 +51,13 @@ INSERT INTO `bookmark` (`id`, `postid`, `userid`, `status`) VALUES
 (54, 0, 97, 1),
 (55, 0, 97, 1),
 (56, 0, 97, 1),
-(57, 0, 97, 0),
+(57, 0, 97, 1),
 (58, 0, 69, 1),
 (59, 0, 69, 0),
 (60, 55, 69, 1),
-(61, 55, 69, 0);
+(61, 55, 69, 0),
+(62, 0, 97, 0),
+(63, 0, 58, 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,8 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `category`, `s_price`, `currency`, `published`, `created_at`, `status`, `participant_limit`) VALUES
 (52, 58, 10, 'Virtual  Titans Present - VALORANT TOURNAMENT', '1636634492_1633870021_961279.png', '&lt;p&gt;&lt;strong&gt;Valorant Tournament&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Information....&lt;/p&gt;&lt;p&gt;blablabbla&amp;nbsp;&lt;/p&gt;&lt;p&gt;join now!&lt;/p&gt;', 'Solo', 15.00, 'SGD', 1, '2021-10-11 10:02:23', 1, 4),
-(69, 58, 10, 'Event Test', '1637632457_1633870021_961279.png', '&lt;p&gt;Testing aja kok mas&lt;/p&gt;', 'Solo', 5.00, 'SGD', 1, '2021-11-23 09:54:17', 1, 2);
+(69, 58, 10, 'Event Test', '1637632457_1633870021_961279.png', '&lt;p&gt;Testing aja kok mas&lt;/p&gt;', 'Solo', 5.00, 'SGD', 1, '2021-11-23 09:54:17', 1, 2),
+(72, 58, 10, 'dsf', '1637817830_1634190231_G.jpg', '&lt;p&gt;fdsfds&lt;/p&gt;', 'Solo', 4.00, 'SGD', 1, '2021-11-25 13:23:50', 1, 12);
 
 -- --------------------------------------------------------
 
@@ -139,7 +142,9 @@ INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`
 (44, 97, 52, 'PAYID-MGNZAHI1RK42422RA858690C', 11.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-22 13:42:14'),
 (45, 58, 69, 'PAYID-MGOEWKA2CX59766XD879005B', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-23 03:00:21'),
 (46, 97, 69, 'PAYID-MGPDVAA84229231W62419333', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-24 14:13:49'),
-(47, 58, 70, 'PAYID-MGPQQDI4EK07662AR469744A', 12.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-25 04:50:49');
+(47, 58, 70, 'PAYID-MGPQQDI4EK07662AR469744A', 12.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-25 04:50:49'),
+(48, 58, 71, 'PAYID-MGPREGI9W758485GR946435E', 11.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-25 05:33:42'),
+(49, 58, 72, 'PAYID-MGPR37I3S637310V1325912X', 4.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-25 06:24:25');
 
 -- --------------------------------------------------------
 
@@ -153,6 +158,19 @@ CREATE TABLE `pending` (
   `team` int(255) NOT NULL,
   `approval` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pending`
+--
+
+INSERT INTO `pending` (`id`, `member_id`, `team`, `approval`) VALUES
+(13, 36, 0, 0),
+(14, 36, 0, 0),
+(15, 39, 36, 0),
+(16, 36, 36, 0),
+(17, 69, 37, 0),
+(18, 69, 38, 0),
+(19, 69, 39, 0);
 
 -- --------------------------------------------------------
 
@@ -243,6 +261,22 @@ CREATE TABLE `teams` (
   `limit_members` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `team_name`, `team_coach`, `team_creator`, `team_captain`, `team_logo`, `limit_members`) VALUES
+(19, 'one', 'some', 54, 54, '', 2),
+(26, 'stop', 'it', 54, 54, '', 8),
+(27, 'AyamJago', 'Bota Wila Samba', 58, 58, '', 8),
+(31, 'teamone', 'teamone', 0, 0, 0x313633363630363033325f313633363433323338353036302e706e67, 2),
+(37, 't', 't', 87, 87, 0x313633373636343636365f646c7266584d354f6f6d4231675671516e3575316341375468776763537a57372e706e67, 2),
+(38, 'testing', 'testing', 87, 87, 0x313633373830373631325f31303738303932362e6a7067, 2),
+(39, 'testingg', 'testingg', 87, 87, 0x313633373830393137305f31303738303932362e6a7067, 8),
+(40, 'Team A', 'ahmad', 97, 97, 0x313633373832343135355f313633333836383536355f706f7374322e504e47, 2),
+(41, 'Team B', 'test', 97, 97, 0x313633373832343137355f313633353431363235345f62323034322e6a7067, 5),
+(42, 'Team C', 'ahmaddasda', 97, 97, 0x313633373832343434355f313633333931373734335f4465736b746f702053637265656e73686f7420323032312e31302e3131202d2030392e35322e32352e3838202833292e706e67, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -254,6 +288,24 @@ CREATE TABLE `team_members` (
   `team_id` int(255) NOT NULL,
   `member_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `team_members`
+--
+
+INSERT INTO `team_members` (`id`, `team_id`, `member_id`) VALUES
+(41, 37, 87),
+(45, 38, 87),
+(46, 38, 69),
+(47, 39, 87),
+(48, 39, 69),
+(49, 37, 69),
+(50, 40, 97),
+(51, 41, 97),
+(52, 40, 69),
+(53, 41, 91),
+(54, 42, 97),
+(55, 42, 91);
 
 -- --------------------------------------------------------
 
@@ -315,7 +367,7 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `code`, `st
 (59, 1, 'Amir Sabrin', 'AmirSabrin@gmail.com', '$2y$10$Eb2sth71Xr9l.y9yHVyUmeO8h3NEH.s1SFhpxNpNSGxPD6E51tXwK', 196742, 'verified', '2021-10-10 11:59:23', 'One of the Co-Creator of Esports Brunei', '', '', 'name#0000', '1635135602_Miu.jpg', 0, '', 0, 8645562, ''),
 (60, 1, 'Danial Kamsur', 'DanialKamsur@gmail.com', '$2y$10$N3.Oxc4gU057BeLAWG0ObO/JCH0n0L3lOAIbI6aQrMcoGF6cy7Kmq', 699403, 'verified', '2021-10-10 11:59:56', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
 (61, 1, 'NydiaWesdi', 'NydiaWesdi@gmail.com', '$2y$10$Np/5tD9xWEJ7BlSuxR3gz.tThLH4YXIH0KyUf.UFBhqUmkk9kSbn2', 917176, 'verified', '2021-10-10 12:00:25', '', '', '', 'name#0000', '', 0, '', 0, 0, ''),
-(69, 3, 'User', 'User@account', '$2y$10$bmz8mxpXx0P1fopabCvR3OnUTjKEDQNkxyl7/Fz5RYxCMj1TeNm2O', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1636975942_1634018908_profile.png', 0, '1636976645_1634037650_Siesta.jpg', 1, 1234456, '&lt;p&gt;yo&lt;/p&gt;'),
+(69, 0, 'User', 'User@account', '$2y$10$bmz8mxpXx0P1fopabCvR3OnUTjKEDQNkxyl7/Fz5RYxCMj1TeNm2O', 0, 'verified', '2021-10-14 13:27:59', 'hello ', '', '', 'name#0000', '1636975942_1634018908_profile.png', 0, '1636976645_1634037650_Siesta.jpg', 1, 1234456, '&lt;p&gt;yo&lt;/p&gt;'),
 (91, 0, 'Zylioth', 'amirsabrin8@gmail.com', '$2y$10$vchXFR6v9ACXk5K0IqthOeSuFZtHQATgjXijZuJRU8oahsHYP4ygq', 0, 'verified', '2021-10-27 13:12:53', 'Hello World', '_amir02', '76561199032818871', 'Zylioth#1580', '1635416514_Miu.jpg', 0, '1635416688_cert.png', 3, 8645562, '&lt;p&gt;Official Organiser for Esports Brunei&lt;/p&gt;'),
 (97, 0, 'kerol', 'kerolijat19@gmail.com', '$2y$10$44pWXXHr9p2uMebQ5iXAu.AicwKBywV/exc0E3jXMBLKHqY23hA7m', 0, 'verified', '2021-11-22 12:41:08', 'No Bio Yet ... ', 'EsportBrunei', 'SteamID', 'name#0000', '1634018908_profile.png', 0, '1637587130_1634037650_Siesta.jpg', 1, 7258975, '&lt;h1&gt;fgsegfsdfvsfwfdsfsscsacsaca&lt;/h1&gt;&lt;p&gt;hfdhdfhfdhfdhdhd&lt;/p&gt;');
 
@@ -407,25 +459,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookmark`
 --
 ALTER TABLE `bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `pending`
 --
 ALTER TABLE `pending`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -444,6 +496,18 @@ ALTER TABLE `tbl_comment`
 --
 ALTER TABLE `tbl_like_unlike`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
+--
+-- AUTO_INCREMENT for table `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `team_members`
+--
+ALTER TABLE `team_members`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
