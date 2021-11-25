@@ -1,6 +1,5 @@
 <?php include("path.php"); ?>
-<?php include(ROOT_PATH . "/app/controllers/posts.php");
-?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +49,7 @@
 
                     <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
-
+        <?php if (isset($_SESSION['id'])){ ?>
                     <table>
                         <thead>
                             <th>No.</th>
@@ -63,10 +62,10 @@
                                     <td><?php echo $key + 1; ?></td>
                                     <td><?php echo $bookmark['title'] ?></td>
                                     <td><a href="Single.php?id=<?php echo $bookmark['id']; ?>" class="view">view post</a></td>
-                                    <td><a href="bookmarkpost.php?status=1&p_id=<?php echo $bookmark['bookmarkid'] ?>" class="remove">remove from bookmark</a></td>                                    
+                                    <td><a href="bookmarkpost.php?bookmarkid=<?php echo $bookmark['bookmarkid'] ?>" class="remove">remove from bookmark</a></td>                                    
                                 </tr>
                             <?php endforeach; ?>
-
+                                <?php } ?>
                         </tbody>
                     </table>
 

@@ -85,10 +85,9 @@ $posts = selectAll('posts', ['published' => 1]);
                 <br>
                   <h5>share now !</h5>
             <?php include(ROOT_PATH . "/app/includes/share.php"); ?>    
+            
             <h5>save/bookmark this post !</h5>
-
-          <a href="single.php?bookmark=1&p_id=<?php echo $post['id'] ?>" class="bookmark"><img src="<?php echo BASE_URL . '/assets/logo/bookmark.png' ?>" alt="bookmark link" style = "max-width:20px" /></a>
- 
+          <a href="bookmarkpost.php?bookmark=1&p_id=<?php echo $post['id'] ?>" class="bookmark"><img src="<?php echo BASE_URL . '/assets/logo/bookmark.png' ?>" alt="bookmark link" style = "max-width:20px" /></a>
           </div>
 
         </div>
