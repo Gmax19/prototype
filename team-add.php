@@ -101,7 +101,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
               $teamId = $_GET['id'];
               $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
                 //echo the users that are not in the list
-                $teamUserAdd = "SELECT * FROM users WHERE id != ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+                $teamUserAdd = "SELECT * FROM users WHERE id NOT in ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
                 // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                 //"SELECT member_id FROM team_members"; 
                         $res = mysqli_query($conn, $teamUserAdd);
