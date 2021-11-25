@@ -61,7 +61,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         //According to this, this should only take member id inside of team_members table that is equal to the session id of the user
                         // $teamId = "SELECT * FROM team_members WHERE member_id = $userId";
 
-                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
+                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id where team_members.member_id = $userId";
                         $res = mysqli_query($conn, $teamId);
                         if(mysqli_num_rows($res) > 0){
                         // $teamNumber = "Team"; 
@@ -82,79 +82,18 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 
         </div>
         <!-- // Page Wrapper -->
+        <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
-  <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
 
-<!-- JQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Slick Carousel -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-<!-- Custom Script -->
-<script src="assets/js/scripts.js"></script>
-
-<script src="assets/js/comment.js"></script> <!-- Comment script -->
-
-<script>
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}</script>
-
+        <!-- JQuery -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Ckeditor -->
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+        <!-- Custom Script -->
+        <script src="assets/js/scripts.js"></script>
 
     </body>
-
-    <!-- Invitation (requirement) + search function + add team members
-team member table - requires the id, team_id (from teams table), member_id (user_id)
-insert query - team captain insert to team members table
-
-receive invitation -> invitation table (approval/reject)
-if approved, move to team member table
-reject -> status to reject 
-user profile -> add team invitation
-
-
-LIST OF LINKS
-
-1) Team Registration = Limit 2/3/5/8 members (DONE)
-2) Team Profile Page = 
-a) List of all users (add member) ( must be not in the team )
-b) Team Profile Page (delete member) ( list in a certain team )
-
-(Members)
-SELECT *
-FROM users
-WHERE user_id = (
-    SELECT user_id 
-    FROM team_members where id = teamid);
-
-(Non-Members)
-SELECT *
-FROM users
-WHERE user_id != (
-    SELECT user_id 
-    FROM team_members where id = teamid);
-
-List out teams -> 2/3 list of teams
-
-Captain -- remove player/delete team
-Add member -- Insert
-Delete member -- Delete
-
-Cannot edit team name or number of members
-
-
-
-
-list of teams-->
-
-
-
 </html>

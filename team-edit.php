@@ -32,25 +32,42 @@
 <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
 
-
   <!-- Page Wrapper -->
- 
+
 
     <!-- Content -->
-    
+ 
 
       <!-- Main Content Wrapper -->
-    
         <div class="auth-content" align="center">
           <h1 class="post-title">List of Users</h1>
 
-          <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
-           
-          
 
             <?php 
 
 
+// REMOVE AREA
+            if (isset($_GET['id']) && isset($_GET['memberid'])){
+              // if(count($errors) === 0){
+                $addId = $_GET['memberid'];
+                $teamId = $_GET['id'];
+                $removeData = "DELETE FROM team_members WHERE member_id = $addId";
+                // $insert_data = "INSERT INTO team_members (team_id, member_id)
+                //                      values('$teamId','$addId')";
+                    $data_check = mysqli_query($conn, $removeData);
+
+                    if ($data_check){
+                      echo "<h3>User has been removed from the team.</h3>";
+                      
+                    } else {
+                      echo "error";
+                    }
+            
+                // } 
+                // else {
+                //   echo "You reached the limit of members added!";
+                // }
+              }
               $teamId = $_GET['id'];
               $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
                 //echo the users that are in the list
@@ -69,32 +86,19 @@
                         echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-edit.php?id=".$teams['id']."&member_id=".$teams['id']."\">Delete Member</a></td></tr>";
                         
 
-                        if (isset($_POST['submit'])){
-                          if(count($errors) === 0){
-                            //check the member limit
-                            $insert_data = "DELETE FROM team_members WHERE member_id = $deleteId";
-                            if ($data_check){
-                              echo "<h3>User has been deleted from the team!</h3>";
-                              header('location: team-edit.php');
-                              exit();
-                            }
-                            } else {
-                              echo "It seems like there is an error, try again!";
-                      } 
-                      }
+                        
                     }
-                  }
+                    echo "
+                    </table>";
+                  }?>
 
-                      
-                      echo "
-                      </table>";
-                       ?>
+                </div>
+                </div>
 
-            
 
-  </div>
+           
   <!-- // Page Wrapper -->
-  </div>
+
   <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
 

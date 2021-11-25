@@ -21,4 +21,5 @@ $errors = array();
 
 // (DELETING MEMBERS)
 $teamUserDelete = "SELECT * FROM users WHERE id = ( SELECT member_id FROM team_members WHERE id = member_id);";
+
 ?>

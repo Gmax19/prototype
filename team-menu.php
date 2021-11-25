@@ -51,28 +51,13 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 
                     
 
-                    <h2 class="page-title">Team Management List : </h2>
+                    <h2 class="page-title">Team Area : </h2>
                     
 
                     <div class="main-content">
                         
-                        <?php 
-
-                        //According to this, this should only take member id inside of team_members table that is equal to the session id of the user
-                        // $teamId = "SELECT * FROM team_members WHERE member_id = $userId";
-
-                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
-                        $res = mysqli_query($conn, $teamId);
-                        if(mysqli_num_rows($res) > 0){
-                        // $teamNumber = "Team"; 
-                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        foreach ($fetch as $teams){
-                            //I forgotten that it requires double quotation marks I am so sorry
-                         echo "<br><h2><a href=\"team_no.php?id=".$teams['team_id']."\">TEAM ".$teams['team_name']."</a></h2>";
-                        }
-                    }
-                            ?>
-                        
+                        <div><a href="team-profile.php">Teams Management</a></div>
+                        <div><a href="team-pendings.php">Current Teams Joined</a></div>
                         </div>
                     </div>
                 </div>
@@ -82,32 +67,18 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 
         </div>
         <!-- // Page Wrapper -->
+        <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
-  <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
 
-<!-- JQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Slick Carousel -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-<!-- Custom Script -->
-<script src="assets/js/scripts.js"></script>
-
-<script src="assets/js/comment.js"></script> <!-- Comment script -->
-
-<script>
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}</script>
-
+        <!-- JQuery -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Ckeditor -->
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+        <!-- Custom Script -->
+        <script src="assets/js/scripts.js"></script>
 
     </body>
 

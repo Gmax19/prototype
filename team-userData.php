@@ -1,17 +1,21 @@
 <?php
 session_start();
 require "app/database/connect.php";
+include "app/includes/sidebar.php";
 $teamName = "";
 $username = "";
 $errors = array();
+
+
+
 //if user team registration button
 if(isset($_POST['teamReg'])){
-
+    $userId = $_SESSION['id'];
     $teamName = $_POST['teamName'];
     $teamCoach =  $_POST['teamCoach'];
-    $teamLogo = $_POST['image'];
+    // $teamLogo = $_POST['image'];
     $limit = $_POST['limit'];
-    $userId = $_SESSION['id'];
+
 
     //TEAM NAME
     $teamCheck = "SELECT * FROM teams WHERE team_name = '$teamName'";
@@ -19,6 +23,15 @@ if(isset($_POST['teamReg'])){
     if(mysqli_num_rows($res) > 0){
         $errors['teamName'] = "The name of the team that you have entered is already exist for another team! Please use another!";
     }
+
+    //PROFANITY FILTER
+    $profanities =  array('fuck','shit','bullshit','motherfucker','ass','nigga','tranny','piss'); //this array is for inserting such
+
+    foreach ($profanities as $value) {
+        if(strpos($teamName, $value) !== false){
+            $errors['teamName'] = "The name of the team contains abusive language. Please change the team name.";
+        }
+      }
 
     //TEAM COACH - IN TEAMS DATABASE
     $teamCC = "SELECT * FROM teams WHERE team_coach = '$teamCoach'";
@@ -59,7 +72,7 @@ if(isset($_POST['teamReg'])){
     //INSERT TO TEAM DATABASE
     if(count($errors) === 0){
     $insert_data = "INSERT INTO teams (team_name, team_coach, team_creator, team_captain, team_logo, limit_members)
-                         values('$teamName', '$teamCoach', '$userId', '$userId', '$teamLogo', '$limit')";
+                         values('$teamName', '$teamCoach', '$userId', '$userId', '$image_name', '$limit')";
         $data_check = mysqli_query($conn, $insert_data);
 
         $team_id = "SELECT * FROM teams WHERE team_name = '$teamName'";
@@ -87,4 +100,7 @@ if(isset($_POST['teamReg'])){
              }
             }
         }
+
+        
+        
 ?>

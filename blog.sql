@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 06:16 AM
+-- Generation Time: Nov 25, 2021 at 05:12 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -39,9 +39,23 @@ CREATE TABLE `bookmark` (
 --
 
 INSERT INTO `bookmark` (`id`, `postid`, `userid`, `status`) VALUES
-(45, 0, 97, 0),
-(46, 55, 97, 0),
-(47, 58, 97, 0);
+(45, 0, 98, 1),
+(46, 55, 97, 1),
+(47, 58, 97, 1),
+(48, 62, 97, 1),
+(49, 0, 97, 1),
+(50, 64, 97, 1),
+(51, 0, 97, 1),
+(52, 0, 97, 1),
+(53, 0, 97, 1),
+(54, 0, 97, 1),
+(55, 0, 97, 1),
+(56, 0, 97, 1),
+(57, 0, 97, 0),
+(58, 0, 69, 1),
+(59, 0, 69, 0),
+(60, 55, 69, 1),
+(61, 55, 69, 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +137,37 @@ INSERT INTO `payments` (`id`, `user_id`, `product_id`, `txn_id`, `payment_gross`
 (33, 69, 52, 'PAYID-MGGQ5VI2WW783100S1559300', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-11 13:39:02'),
 (35, 91, 52, 'PAYID-MGIL6PI9TX98604P6928084A', 15.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-14 08:48:23'),
 (44, 97, 52, 'PAYID-MGNZAHI1RK42422RA858690C', 11.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-22 13:42:14'),
-(45, 58, 69, 'PAYID-MGOEWKA2CX59766XD879005B', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-23 03:00:21');
+(45, 58, 69, 'PAYID-MGOEWKA2CX59766XD879005B', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-23 03:00:21'),
+(46, 97, 69, 'PAYID-MGPDVAA84229231W62419333', 5.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-24 14:13:49'),
+(47, 58, 70, 'PAYID-MGPQQDI4EK07662AR469744A', 12.00, 'SGD', 'UY6BNUUQWFWSU', 'John Doe', 'sb-e4vyr8091156@business.example.com', 'US', 'approved', '2021-11-25 04:50:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pending`
+--
+
+CREATE TABLE `pending` (
+  `id` int(255) NOT NULL,
+  `member_id` int(255) NOT NULL,
+  `team` int(255) NOT NULL,
+  `approval` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pending`
+--
+
+INSERT INTO `pending` (`id`, `member_id`, `team`, `approval`) VALUES
+(13, 36, 0, 0),
+(14, 36, 0, 0),
+(15, 39, 36, 0),
+(16, 36, 36, 0),
+(17, 69, 37, 0),
+(18, 69, 38, 0),
+(19, 69, 39, 0),
+(20, 69, 37, 0),
+(21, 91, 40, 0);
 
 -- --------------------------------------------------------
 
@@ -169,6 +213,14 @@ CREATE TABLE `tbl_comment` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_comment`
+--
+
+INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`, `user_id`, `post_id`) VALUES
+(193, 0, '  asa', 'Izzat', '2021-11-24 18:46:19', 58, 0),
+(194, 0, '  vxzvzx', 'kerol', '2021-11-24 19:40:25', 97, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +234,13 @@ CREATE TABLE `tbl_like_unlike` (
   `like_unlike` int(2) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_like_unlike`
+--
+
+INSERT INTO `tbl_like_unlike` (`id`, `member_id`, `comment_id`, `like_unlike`, `date`) VALUES
+(83, 1, 193, 0, '2021-11-25 02:40:36');
 
 -- --------------------------------------------------------
 
@@ -207,8 +266,11 @@ INSERT INTO `teams` (`id`, `team_name`, `team_coach`, `team_creator`, `team_capt
 (19, 'one', 'some', 54, 54, '', 2),
 (26, 'stop', 'it', 54, 54, '', 8),
 (27, 'AyamJago', 'Bota Wila Samba', 58, 58, '', 8),
-(33, 'Hellio BN', 'Zylioth', 89, 89, '', 2),
-(34, 'Kampung boy', 'Abu Bakar', 91, 91, '', 3);
+(31, 'teamone', 'teamone', 0, 0, 0x313633363630363033325f313633363433323338353036302e706e67, 2),
+(37, 't', 't', 87, 87, 0x313633373636343636365f646c7266584d354f6f6d4231675671516e3575316341375468776763537a57372e706e67, 2),
+(38, 'testing', 'testing', 87, 87, 0x313633373830373631325f31303738303932362e6a7067, 2),
+(39, 'testingg', 'testingg', 87, 87, 0x313633373830393137305f31303738303932362e6a7067, 8),
+(40, 'Team A', 'Ahmad Syukri', 97, 97, 0x313633373831333139385f313633333935353635365f6f72616e67652d746f702d6772616469656e742d6261636b67726f756e642e6a7067, 8);
 
 -- --------------------------------------------------------
 
@@ -218,7 +280,7 @@ INSERT INTO `teams` (`id`, `team_name`, `team_coach`, `team_creator`, `team_capt
 
 CREATE TABLE `team_members` (
   `id` int(255) NOT NULL,
-  `team_id` int(255) DEFAULT NULL,
+  `team_id` int(255) NOT NULL,
   `member_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -227,16 +289,14 @@ CREATE TABLE `team_members` (
 --
 
 INSERT INTO `team_members` (`id`, `team_id`, `member_id`) VALUES
-(8, 19, 54),
-(17, 26, 54),
-(18, 27, 58),
-(19, 28, 59),
-(20, 29, 69),
-(21, 30, 84),
-(22, 31, 86),
-(23, 32, 88),
-(24, 33, 89),
-(25, 34, 91);
+(41, 37, 87),
+(45, 38, 87),
+(46, 38, 69),
+(47, 39, 87),
+(48, 39, 69),
+(49, 37, 69),
+(50, 40, 97),
+(52, 40, 91);
 
 -- --------------------------------------------------------
 
@@ -332,6 +392,12 @@ ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pending`
+--
+ALTER TABLE `pending`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -360,8 +426,7 @@ ALTER TABLE `teams`
 -- Indexes for table `team_members`
 --
 ALTER TABLE `team_members`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `team_id` (`team_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `topics`
@@ -385,19 +450,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookmark`
 --
 ALTER TABLE `bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `pending`
+--
+ALTER TABLE `pending`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -409,25 +480,25 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `tbl_like_unlike`
 --
 ALTER TABLE `tbl_like_unlike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `team_members`
 --
 ALTER TABLE `team_members`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `topics`
