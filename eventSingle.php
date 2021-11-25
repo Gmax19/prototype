@@ -77,24 +77,12 @@ $_SESSION['postid'] = $_GET['id'];
               <!-- will show price for tournaments based on the category (solo/team) -->
 
               <?php 
-              //limit to only one registration for single user
-              if (isset($_SESSION['id'])){
-
                $id = $_GET['id'];
-               $uid = $_SESSION['id'];
-
-               $user = "SELECT COUNT(*) as u FROM payments WHERE product_id= $id and id= 45";
-               $query_test = mysqli_query($conn, $user);
-               $userid = mysqli_fetch_assoc($query_test);
-              }
-               //counter for user participants
                 $query = "SELECT COUNT(*) as p FROM payments WHERE product_id= $id and payment_status='approved'";
                 $query_run = mysqli_query($conn, $query);
 
                 $total_ikut = mysqli_fetch_assoc($query_run);
-              
               ?>  
-
               <h3>Available slots :  <?php echo $total_ikut['p']; ?> / <?php echo $post['participant_limit']; ?> 
               <br>
               <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn" >View participants</a></h3>
@@ -108,23 +96,18 @@ $_SESSION['postid'] = $_GET['id'];
 
               <h3>Event Description :</h3> 
 
-              <p><?php echo html_entity_decode($post['body']); ?></p>
+                      <p><?php echo html_entity_decode($post['body']); ?></p>
 
               <!-- <h3>Availability to join</h3>  -->
           </div>
-              <!-- If already full of user participants -->
-            <?php if ((isset($_SESSION['id'] )) && ($total_ikut['p'] >= $post['participant_limit']) ) {?>
+
+
+
+
+            <?php if ($total_ikut['p'] >= $post['participant_limit']) {?>
               <h1>Registration for this event is full</h1>
-
-              <!-- If they have registered they are not able to register again -->
-              <?php } else  if (isset($_SESSION['id'] ) && ($userid['u'] >= 1)) {?>
-                <h3>You have already registered for this event</h3>
-
-                <!-- If they are logged in and still not register and want to register  -->
-            <?php } else  if (isset($_SESSION['id'] )) {?>
+            <?php } else  if (isset($_SESSION['id'])) {?>
                 <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register For this event</a>  
-                
-                <!-- If they are using guest account  -->
               <?php } else {?>
                 <a href=" <?php echo BASE_URL . '/login-user.php' ?> " class="btn btn-big">Login/Signup to register for this event</a>
                  <?php } ?>  
