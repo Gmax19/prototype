@@ -61,7 +61,7 @@ if(!empty($_GET['id'])){
         <div class="main-content single">
         <div class="status">
     <?php if(!empty($paymentData)){ ?>
-        <h3 class="success">Your Payment has been Successful!</h3>
+        <h3 class="success" style="max-width:30%;">Your Payment has been Successful!</h3>
         <h1>Payment Information</h1>
         <p><b>TXN ID:</b> <?php echo $paymentData['txn_id']; ?></p>
         <p><b>Paid Amount:</b> <?php echo $paymentData['payment_gross'].' '.$paymentData['currency_code']; ?></p>

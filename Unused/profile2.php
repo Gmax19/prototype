@@ -122,11 +122,6 @@
             <h3><i class="fas fa-trophy"></i> Achievements</h3>
             <div class="projects_data">
                  <div class="data">
-                   <?php $res = mysqli_query($conn, $participants);
-                          if (!empty($res)){
-                            if(mysqli_num_rows($res) > 0){
-                              $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                   ?>
                    <table>
                      <thead>
                     <th><h4><i class="fas fa-certificate"></i> Events Joined:</h4></th>
@@ -134,7 +129,10 @@
                     <th><h4><i class="fas fa-users-cog"></i> Category:</h4></th>
                     <th><h4><i class="fas fa-file-invoice-dollar"></i> Invoice:</h4></th>
                   </thead>
-                    <?php                          
+                    <?php 
+                         $res = mysqli_query($conn, $participants);
+                         if(mysqli_num_rows($res) > 0){
+                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
                           foreach ($fetch as $key => $participant){   ?>
                     <tr>
                     <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
@@ -144,12 +142,9 @@
                       </tr>
                     <?php
                                         } 
-                                    } else { ?>
-                                      <p>You have not participated in any events yet...</p>
-                                   <?php  }
+                                    }
                                   ?>
                    </table>
-                   <?php } ?>
                  </div>
             </div>
         </div>
