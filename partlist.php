@@ -86,7 +86,7 @@ inner JOIN events as e on e.id = p.product_id where e.id = $eventid
                               </table>
         </div>
         </div>
-
+        <h4><a href="eventsingle.php?id=<?php echo $post['id']; ?>" class="btn btn-big">back</a></h4>
       </div>
       
       <!-- // Main Content -->
