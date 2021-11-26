@@ -135,7 +135,7 @@ $_SESSION['postid'] = $_GET['id'];
                     
                     <?php  
                     // test for team user event registration 
-                    if ($post['category'] == 'Team' && is_null($captain) ) {  ?>
+                    if ($post['category'] == 'Team') {  ?>
                         <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register Your team</a>  
                       <?php echo $teamid;
                              echo $teamname;
