@@ -20,6 +20,7 @@
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/admin.css">
 
         <!-- Admin Styling -->
 
@@ -77,7 +78,7 @@
         </div>
         <!-- // Page Wrapper -->
 
-        <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+          <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
 
         <!-- JQuery -->
