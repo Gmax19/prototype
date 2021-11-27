@@ -77,7 +77,8 @@
         </div>
         <!-- // Page Wrapper -->
 
-        
+        <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+
 
         <!-- JQuery -->
         <script
