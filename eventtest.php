@@ -120,7 +120,12 @@ $_SESSION['postid'] = $_GET['id'];
                       ?>
                         
                      <?php 
-                     //query for team ?
+                     //test for teams event registration
+                     //query for team 
+                     /* for team event registration button :
+                    1. check whether user is a team captain (check team_captain  and team_creator = user session id (?))
+                    2.specify how many users in the team captain's team (select count users in that specific team)
+                    3.if team captain have more than one team (select count then if statement more than 1)*/
                      $teamcaptain = "SELECT * , t.id as teamid , t.team_name as teamname FROM TEAMS as t
                      INNER JOIN USERS AS u ON u.id = t.team_captain
                      WHERE team_captain = $uid ";
@@ -128,20 +133,38 @@ $_SESSION['postid'] = $_GET['id'];
                             if(mysqli_num_rows($res) > 0){
                                 $fetch = mysqli_fetch_assoc($res);
                                 $captain = $fetch['team_captain'];
+                                $creator = $fetch['team_creator'];
                                 $teamid = $fetch['teamid'];
                                 $teamname = $fetch['teamname'];
 
-                    ?>
-                    
-                    <?php  
-                    // test for team user event registration 
-                    if ($post['category'] == 'Team') {  ?>
-                        <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register Your team</a>  
-                      <?php echo $teamid;
-                             echo $teamname;
+                    // query for number of teams the team captain have
+                    $userteams = "SELECT * FROM teams AS t 
+                                    INNER JOIN users as u on u.id = t.team_captain
+                                    INNER JOIN team_members as tm on tm.team_id = t.id
+                                    WHERE team_captain = $uid ";
+                    $result = mysqli_query($conn, $userteams);
+                            if(mysqli_num_rows($result) > 0){
+                              $team = mysqli_fetch_all($result,MYSQLI_ASSOC);
+                              echo "this user's team:";?><br><?php
+                              foreach($team as $key => $teams){
+                                echo $teams['team_name']; ?><br><?php
+                              }
+                            }
 
-                      } 
-                    
+                                //query to count the amount of members in one team captain's team (?)
+                            $members = "SELECT COUNT(*) as m FROM team_members WHERE team_id = 43";
+                            $membersquery = mysqli_query($conn, $members);
+                               $teammember = mysqli_fetch_assoc($membersquery);
+                               ?><br><?php
+                               echo 'members in team ' . $teammember['m'];?><br><?php
+
+                                //check if event is solo or team
+                                if ($post['category'] == 'Team' ) {
+                                  //check if user is a team captain
+                                  if($captain == $uid && $creator == $uid){
+                                    echo "you are a team captain";
+                                  }
+                                }
                     }
                       ?>
       </div>
