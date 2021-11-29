@@ -147,7 +147,7 @@ $_SESSION['postid'] = $_GET['id'];
                               $team = mysqli_fetch_all($result,MYSQLI_ASSOC);
                               echo "this user's team:";?><br><?php
                               foreach($team as $key => $teams){
-                                echo $teams['team_name']; ?><br><?php
+                                echo 'register for '.$teams['team_name']; ?><br><?php
                               }
                             }
 
