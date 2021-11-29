@@ -161,8 +161,12 @@ $_SESSION['postid'] = $_GET['id'];
                                 //check if event is solo or team
                                 if ($post['category'] == 'Team' ) {
                                   //check if user is a team captain
-                                  if($captain == $uid && $creator == $uid){
-                                    echo "you are a team captain";
+                                  if($captain != $uid && $creator != $uid){
+                                    echo "you are a not a team captain";
+                                  } else {
+                                    foreach($team as $key => $teams){ ?>
+                                     <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> <br> 
+                          <?php          }
                                   }
                                 }
                     }
