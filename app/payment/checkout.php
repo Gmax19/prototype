@@ -107,7 +107,6 @@ JavaScript code to render PayPal checkout button and execute payment
  <div class="main-content-wrapper">
         <div class="main-content single">
 
-
     <!-- Product details -->
     <div class="text-center">
         <img src="<?php echo BASE_URL . '/assets/images/' . $eventData['image']; ?>" class="rounded" style="max-width:100%;" alt="...">
@@ -115,14 +114,14 @@ JavaScript code to render PayPal checkout button and execute payment
 
     <div class="post-content">  
 
-        <h3>Tournament :</h3> 
+        <h3>Tournament Title:</h3> 
         <p> <?php echo $eventData['title']; ?></p>
 
         <h3>Tournament Category :</h3> 
         <p> <?php echo $eventData['category']; ?></p>
 
         <h3>Registration Fees :</h3> 
-        <p> <?php echo $eventData['s_price']; ?></p>
+        <p> <?php echo $eventData['s_price']; ?> SGD</p>
         
         <br>
 
