@@ -10,8 +10,9 @@ header {
 .admin-wrapper .left-sidebar {
 	flex: 2;
 	height: 100%;
-	background: #1a1a1a;
-}
+	background: linear-gradient(to right,#1a1a1a,#434343);
+} 
+
 
 .admin-wrapper .left-sidebar ul {
 	list-style: none;
@@ -23,11 +24,11 @@ header {
 .admin-wrapper .left-sidebar ul li a {
 	padding: 18px;
 	display: block;
-	border-bottom: 1px solid #000000;
+	border-bottom: 1px solid #F09819;
 }
 
 .admin-wrapper .left-sidebar ul li a:hover {
-	background: #726c60;
+	background: linear-gradient(to right,#F09819,#EDDE5D);
 }
 
 .admin-wrapper .admin-content {

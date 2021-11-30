@@ -27,7 +27,7 @@ adminOnly();
         <link rel="stylesheet" href="../assets/css/moderator.css">
 
         <title>Organiser Section - Dashboard</title>
-        <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
+        <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/o1.png" ?>>
 
     </head>
 
