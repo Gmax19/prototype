@@ -22,60 +22,61 @@ $posts = selectAll('events', ['published' => 1]);
 
 $_SESSION['postid'] = $_GET['id'];
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-  <!-- Google Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-  <!-- Custom Styling -->
-  <link rel="stylesheet" href="../../assets/css/style.css">
+        <!-- Custom Styling -->
+        <link rel="stylesheet" href="../../assets/css/style.css">
 
-  <title> Esport Brunei - <?php echo $post['title']; ?> </title>
-  <link rel="icon" href="assets/logo/logo3.png">
+        <!-- Admin Styling -->
+        <link rel="stylesheet" href="../../assets/css/admin.css">
 
-</head>
+        <title>Organiser Section - participant list</title>
+        <link rel="icon" href= <?php echo BASE_URL . "/assets/logo/logo3.png" ?>>
 
-<body>
+    </head>
 
-  <?php include(ROOT_PATH . "/app/includes/organiserheader.php"); ?>
+    <body>
+        
+    <?php include(ROOT_PATH . "/app/includes/OrganiserHeader.php"); ?>
 
-  <!-- Page Wrapper -->
-  <div class="page-wrapper">
-  <div class="sidebar-wrapper">
+        <!-- Admin Page Wrapper -->
+        <div class="admin-wrapper">
 
-<?php include(ROOT_PATH . "/app/includes/organisersidebar.php"); ?>
+        <?php include(ROOT_PATH . "/app/includes/OrganiserSidebar.php"); ?>
 
-</div>
-    <!-- Content -->
-    <div class="content clearfix">
 
-      <!-- Main Content Wrapper -->
-      <div class="main-content-wrapper">
-        <div class="main-content single">
-          <h1 class="post-title"><?php echo $post['title']; ?></h1>
+            <!-- Admin Content -->
+            <div class="admin-content">
+                <div class="button-group">
+                    <a href="create.php" class="btn btn-big">Add Events</a>
+                    <a href="index.php" class="btn btn-big">Manage Events</a>
+                </div>
 
-           
-            <div class="text-center">
-              <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="rounded" style="max-width:30%;" alt="...">
-            </div>
-           
 
-          <div class="post-content">
-                                   <!-- CODES FOR PARTICIPANTS -->
-                                <table>
+                <div class="content">
+
+                    <h2 class="page-title">Manage Events</h2>
+
+                    <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
+
+                    
+<table>
                                   <thead>
                                       <th ><h2>Participants</h2></th>
                                       <th><h2>Category</h2></th>
@@ -99,46 +100,25 @@ $_SESSION['postid'] = $_GET['id'];
                                     }
                                   ?>
                               </table>
+                </div>
+
+            </div>
+            <!-- // Admin Content -->
+
         </div>
-        </div>
-
-      </div>
-      
-      <!-- // Main Content -->
-
-      
-
-    </div>
-    <!-- // Content -->
-
-  </div>
-  <!-- // Page Wrapper -->
-
-  <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+        <!-- // Page Wrapper -->
 
 
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <!-- Slick Carousel -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <!-- JQuery -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Ckeditor -->
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+        <!-- Custom Script -->
+        <script src="../../assets/js/scripts.js"></script>
 
-  <!-- Custom Script -->
-  <script src="assets/js/scripts.js"></script>
-
-  <script src="assets/js/comment.js"></script> <!-- Comment script -->
-
-  <script>
-  /* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }
-  
-  /* Set the width of the side navigation to 0 */
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }</script>
-
-</body>
+    </body>
 
 </html>
