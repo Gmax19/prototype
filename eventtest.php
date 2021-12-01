@@ -145,20 +145,17 @@ $_SESSION['postid'] = $_GET['id'];
                     $result = mysqli_query($conn, $userteams);
                             if(mysqli_num_rows($result) > 0){
                               $team = mysqli_fetch_all($result,MYSQLI_ASSOC);
-                              echo "this user's team:";?><br><?php
-                              foreach($team as $key => $teams){ ?>
-                                <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?>&teamid=<?php echo $teams['teamid']; ?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> <br> 
-                        <?php      }
+                              
                             }
 
                                 //query to count the amount of members in one team captain's team (?)
-                            $members = "SELECT COUNT(*) as m FROM team_members WHERE team_id = 43";
-                            $membersquery = mysqli_query($conn, $members);
-                               $teammember = mysqli_fetch_assoc($membersquery);
-                               ?><br><?php
-                               echo 'members in team ' . $teammember['m'];?><br><?php
+                            // $members = "SELECT COUNT(*) as m FROM team_members WHERE team_id = 43";
+                            // $membersquery = mysqli_query($conn, $members);
+                            //    $teammember = mysqli_fetch_assoc($membersquery);
+                            //    ?><br><?php
+                            //    echo 'members in team ' . $teammember['m'];?><br><?php
 
-                                //check if event is solo or team
+                                //check if event is team or team
                                 if ($post['category'] == 'Team' ) {
                                   //check if user is a team captain
                                   if($captain != $uid && $creator != $uid){
