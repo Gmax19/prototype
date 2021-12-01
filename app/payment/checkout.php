@@ -181,7 +181,7 @@ paypal.Button.render({
             //window.alert('Thank you for your purchase!');
             
             // Redirect to the payment process page
-            window.location = "process.php?paymentID="+data.paymentID+"&token="+data.paymentToken+"&payerID="+data.payerID+"&pid=<?php echo $eventData['id']; ?>";
+            window.location = "process.php?paymentID="+data.paymentID+"&token="+data.paymentToken+"&payerID="+data.payerID+"&pid=<?php echo $eventData['id']; ?>&teamid=<?php echo $_GET['teamid']; ?>";
         });
     }
 }, '#paypal-button');

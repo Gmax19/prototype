@@ -115,7 +115,7 @@ $_SESSION['postid'] = $_GET['id'];
                       <?php 
                       // test for single user event registration 
                       if ($post['category'] == 'Solo' ) { ?>
-                        <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register for this event</a>  
+                        <a href="app/payment/checkout.php?id=<?php echo $post['id'];?>&teamid=0 " class="btn btn-big" >Register for this event</a>  
                      <?php }
                       ?>
                         
@@ -138,7 +138,7 @@ $_SESSION['postid'] = $_GET['id'];
                                 $teamname = $fetch['teamname'];
 
                     // query for number of teams the team captain have
-                    $userteams = "SELECT * FROM teams AS t 
+                    $userteams = "SELECT *, t.id as teamid FROM teams AS t 
                                     INNER JOIN users as u on u.id = t.team_captain
                                     INNER JOIN team_members as tm on tm.team_id = t.id
                                     WHERE team_captain = $uid ";
@@ -146,9 +146,9 @@ $_SESSION['postid'] = $_GET['id'];
                             if(mysqli_num_rows($result) > 0){
                               $team = mysqli_fetch_all($result,MYSQLI_ASSOC);
                               echo "this user's team:";?><br><?php
-                              foreach($team as $key => $teams){
-                                echo 'register for '.$teams['team_name']; ?><br><?php
-                              }
+                              foreach($team as $key => $teams){ ?>
+                                <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?>&teamid=<?php echo $teams['teamid']; ?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> <br> 
+                        <?php      }
                             }
 
                                 //query to count the amount of members in one team captain's team (?)
@@ -165,7 +165,7 @@ $_SESSION['postid'] = $_GET['id'];
                                     echo "you are a not a team captain";
                                   } else {
                                     foreach($team as $key => $teams){ ?>
-                                     <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> <br> 
+                                     <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?>&teamid=<?php echo $teams['teamid']; ?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> <br> 
                           <?php          }
                                   }
                                 }
