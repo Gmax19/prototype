@@ -44,7 +44,7 @@
         
         <!-- IF NORMAL USER -->
         <?php if($_SESSION['admin']  == 0 ){ ?>
-            <li><h5><a href="<?php echo BASE_URL . '/team-profile.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></h5></li> 
+            <li><h5><a href="<?php echo BASE_URL . '/team-menu.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></h5></li> 
             <li><h5><a href="<?php echo BASE_URL . '/team-registration.php' ?>" class="TeamRegistration"><i class="fa fa-user-plus"></i> Team Registration</a></h5></li>
             <li><h5><a href="<?php echo BASE_URL . '/organiser-reg.php' ?>" class="organiserreg"><i class="fas fa-user-plus"></i> Organiser Registration</a></h5></li>  
         <?php }?>
