@@ -97,7 +97,7 @@ $posts = selectAll('posts', ['published' => 1]);
       <!-- // Main Content -->
 
       <!-- Sidebar -->
-      <div class="sidebar single">
+      <!-- <div class="sidebar single">
 
         <div class="section popular">
           <h2 class="section-title">Popular</h2>
@@ -123,7 +123,7 @@ $posts = selectAll('posts', ['published' => 1]);
 
           </ul>
         </div>
-      </div>
+      </div> -->
       <!-- // Sidebar -->
 
     </div>

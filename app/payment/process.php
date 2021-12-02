@@ -15,6 +15,8 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
     $token = $_GET['token']; 
     $payerID = $_GET['payerID']; 
     $productID = $_GET['pid']; 
+    $teamid = $_GET['teamid'];  
+
      
     // Validate transaction via PayPal API 
     $paymentCheck = $paypal->validate($paymentID, $token, $payerID, $productID); 
@@ -48,6 +50,7 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
             // Insert transaction data in the database 
             $data = array( 
                 'user_id' => $_SESSION['id'],
+                'team_id' => $teamid,
                 'product_id' => $productID, 
                 'txn_id' => $id, 
                 'payment_gross' => $paidAmount, 

@@ -40,9 +40,7 @@
         <!-- page Page Wrapper -->
         <div class="page-wrapper">
 
-        <div class="sidebar-wrapper">
-        <?php include(ROOT_PATH . "/app/includes/Adminsidebar.php"); ?>
-        </div>
+        
 
 
                 <!-- <div class="auth-content" align="center" > -->
