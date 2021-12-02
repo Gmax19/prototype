@@ -1,8 +1,41 @@
 <?php include("path.php"); ?>
 
-<?php include(ROOT_PATH . '/app/controllers/team-listing.php');?>
-<!DOCTYPE html>
-<html lang="en">
+<?php include(ROOT_PATH . '/app/controllers/team-listing.php');
+
+// PENDING AREA
+if (isset($_GET['id']) && isset($_GET['memberid'])){
+
+  $addId = $_GET['memberid'];
+  $teamId = $_GET['id'];
+
+  //Check limit of members
+  $limit_data = "SELECT FROM teams WHERE team_creator AND team_coach =". $_SESSION['id'];
+  $teamUserLimit = "SELECT * COUNT (users) WHERE id IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+  $data_limit01 = mysqli_query($conn, $limit_data);
+  $data_limit02 = mysqli_query($conn, $teamUserLimit);
+  if ($data_limit01 < $data_limit02){
+    echo "You reach the maximum number of team members you can add!";
+  } else {
+                $insert_data = "INSERT INTO pending (member_id, team, approval)
+                                     values('$addId','$teamId', '0')";
+                    $data_check = mysqli_query($conn, $insert_data);
+
+                    if ($data_check){
+                      echo "<h3>User added is now in the pending list.</h3>";
+                      header('Location: team-add.php');
+                      //set id on this php
+                    } else {
+                      echo "error";
+                    }
+                  }
+
+//approval table
+// if 0 = pending
+// if 1 = accept
+// if 2 = reject
+
+}
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -47,61 +80,10 @@
 
             <?php 
 
-// PENDING AREA
-if (isset($_GET['id']) && isset($_GET['memberid'])){
-
-  $addId = $_GET['memberid'];
-  $teamId = $_GET['id'];
-
-                $insert_data = "INSERT INTO pending (member_id, team, approval)
-                                     values('$addId','$teamId', '0')";
-                    $data_check = mysqli_query($conn, $insert_data);
-
-                    if ($data_check){
-                      echo "<h3>User added is now in the pending list.</h3>";
-                      // header('Location: team-add.php');
-                      //set id on this php
-                    } else {
-                      echo "error";
-                    }
-
-}
-
-//approval table
-// if 0 = pending
-// if 1 = accept
-// if 2 = reject
-
-// ADD AREA
-            if (isset($_GET['id']) && isset($_GET['memberid'])){
-              // if(count($errors) === 0){
-                $addId = $_GET['memberid'];
-                $teamId = $_GET['id'];
-                // //check the member limit
-                // $memberLimit = "SELECT COUNT(team_id) FROM team_members WHERE team_id = $teamId"; //pulls out the number of members
-                // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
-                // if ($memberLimit <=  $teamMembers){
-                $insert_data = "INSERT INTO team_members (team_id, member_id)
-                                     values('$teamId','$addId')";
-                    $data_check = mysqli_query($conn, $insert_data);
-
-                    if ($data_check){
-                      echo "<h3>User has been added to the team!</h3>";
-                      header('Location: team-add.php?id="'.$teamId.'"&memberid="'.$teamId.'">');
-                      //set id on this php
-                    } else {
-                      echo "Error";
-                    }
-            
-                // } 
-                // else {
-                //   echo "You reached the limit of members added!";
-                // }
-              }
               $teamId = $_GET['id'];
-              $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
+              // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
                 //echo the users that are not in the list
-                $teamUserAdd = "SELECT * FROM users WHERE id != ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+                $teamUserAdd = "SELECT * FROM users WHERE id NOT IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
                 // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                 //"SELECT member_id FROM team_members"; 
                         $res = mysqli_query($conn, $teamUserAdd);

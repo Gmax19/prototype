@@ -1,6 +1,6 @@
 <?php include("path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/team-listing.php");
-UsersOnly();
+// UsersOnly();
 $userId = $_SESSION['id'];
 $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         $res = mysqli_query($conn, $teamCheck);
@@ -56,8 +56,8 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 
                     <div class="main-content">
                         
-                        <div><a href="team-profile.php">Teams Management</a></div>
-                        <div><a href="team-pendings.php">Current Teams Joined</a></div>
+                        <div><h3 class="btn btn-big"><a href="team-profile.php">Teams Management</a></h3></div>
+                        <div><h3 class="btn btn-big"><a href="team-pendings.php">Current Teams Joined</a></h3></div>
                         </div>
                     </div>
                 </div>

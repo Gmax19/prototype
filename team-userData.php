@@ -90,7 +90,7 @@ if(isset($_POST['teamReg'])){
     //CHECKING IF INSERTED ALL
         if($data_check){
             if($data_check02){
-                header('location: team-profile.php');
+                header('location: team-menu.php');
                 exit();}
             else{
                     $errors['db-error'] = "Failed while inserting data into database!";
