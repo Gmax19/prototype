@@ -92,13 +92,31 @@ $_SESSION['postid'] = $_GET['id'];
                 $query_run = mysqli_query($conn, $query);
 
                 $total_ikut = mysqli_fetch_assoc($query_run);
+                
+                //counter for team user participants
+                 $queryteam = "SELECT COUNT(*) as total_player FROM teams as t 
+                 INNER JOIN team_members as tm ON t.id = tm.team_id 
+                 INNER JOIN payments as p ON p.team_id = t.id 
+                 WHERE product_id = $id AND payment_status = 'approved' ";
+                 $query_run_team = mysqli_query($conn, $queryteam);
+ 
+                 $total_ikut_team = mysqli_fetch_assoc($query_run_team);
               
               ?>  
-
+              <!-- participant counter for solo -->
+            <?php if ($post['category'] == 'Solo') { ?>
               <h3>Available slots :  <?php echo $total_ikut['p']; ?> / <?php echo $post['participant_limit']; ?> 
               <br>
               <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn" >View participants</a></h3>
+              <?php } ?>
+              <!-- participant counter for team -->
+              <?php if ($post['category'] == 'Team') { ?>
+              <h3>Available slots :  <?php echo $total_ikut_team['total_player']; ?> / <?php echo $post['participant_limit']; ?> 
               <br>
+              <a href="partlist.php?id=<?php echo $post['id']; ?>" class="btn" >View participants</a></h3>
+              <?php } ?>
+              <br>
+
               <h3>Tournament Category :</h3>
               <p> <?php echo $post['category'] ?> </p>
 
@@ -163,11 +181,11 @@ $_SESSION['postid'] = $_GET['id'];
                   foreach($team as $key => $teams){ ?>
                     <br><br> <a href="app/payment/checkout.php?id=<?php echo $post['id'];?>&teamid=<?php echo $teams['teamid']; ?> " class="btn btn-big" >Register for <?php echo $teams['team_name']; ?></a><br> 
          <?php  }  // if event is full
-                } else if ($total_ikut['p'] >= $post['participant_limit']){
-                  echo 'event full';
+                } else if ($total_ikut_team['total_player'] >= $post['participant_limit']){ ?>
+                      <h1>Registration for this event is full</h1> <?php
                   // if already registered
-              } else {
-                  echo 'you already register this team';
+              } else { ?>
+                       <h3>You have already registered your team for this event</h3> <?php 
               }
             } 
           }
