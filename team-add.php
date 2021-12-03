@@ -7,7 +7,6 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 
   $addId = $_GET['memberid'];
   $teamId = $_GET['id'];
-  $_SESSION['messageSuccess'] = "<h3>User added is now in the pending list.</h3>";
 
   //Check limit of members
   $limit_data = "SELECT FROM teams WHERE team_creator AND team_coach =". $_SESSION['id'];

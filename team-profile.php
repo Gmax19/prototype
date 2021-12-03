@@ -1,6 +1,6 @@
 <?php include("path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/team-listing.php");
-UsersOnly();
+// UsersOnly();
 $userId = $_SESSION['id'];
 $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         $res = mysqli_query($conn, $teamCheck);
