@@ -45,7 +45,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
         <!-- Admin Page Wrapper -->
         <div class="sidebar-wrapper">
 
-        <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+            <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
                 <div class="auth-content" align="center">
 

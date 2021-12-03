@@ -734,7 +734,7 @@ header .menu-toggle {
 /* Sidebar Nav */
 
 .sidebar-wrapper {
-	display: flex;
+	/* display: flex; */
 	height: calc(100% - 66px);
 }
 

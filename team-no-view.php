@@ -42,22 +42,22 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 <body>
 
   <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-  <div class="sidebar-wrapper">
+<div class="sidebar-wrapper">
 
-<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+      <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+  
 
-
-  <!-- Page Wrapper -->
+   <!-- Page Wrapper -->
 
 
     <!-- Content -->
  
 
       <!-- Main Content Wrapper -->
-        <div class="auth-content" align="center">
+ <div class="auth-content" align="center">
 
           <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
-
+  <div class="main-content">
 
             <?php 
               
@@ -109,13 +109,13 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                       </table>";
                        ?>
 
-<?php 
-//Event Achivements
-$teamId = $_GET['id'];
-$participants = "SELECT *, p.id as paymentid  FROM payments as p
-                        inner join teams as t on p.team_id = t.id
-                        inner JOIN events as e on e.id = p.product_id where t.id = $teamId; ";
-$res = mysqli_query($conn, $participants);
+        <?php 
+        //Event Achivements
+        $teamId = $_GET['id'];
+        $participants = "SELECT *, p.id as paymentid  FROM payments as p
+                                inner join teams as t on p.team_id = t.id
+                                inner JOIN events as e on e.id = p.product_id where t.id = $teamId; ";
+        $res = mysqli_query($conn, $participants);
                           if (!empty($res)){
                             if(mysqli_num_rows($res) > 0){
                               $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
@@ -135,10 +135,9 @@ $res = mysqli_query($conn, $participants);
                                              <?php  }
                    ?>
 
-                </div>
-                </div>
-
-
+  </div>
+ </div>
+</div>
            
   <!-- // Page Wrapper -->
 

@@ -11,6 +11,11 @@ inner join users as u on p.user_id = u.id
 inner JOIN events as e on e.id = p.product_id where e.id = $eventid
 ";
 
+$teamparticipants = "SELECT team_name,created FROM payments as p 
+inner join users as u on p.user_id = u.id
+inner join teams as t on t.id = p.team_id
+inner JOIN events as e on e.id = p.product_id 
+where e.id = $eventid";
 // To get session of Events by id
 
 if (isset($_GET['id'])) {
@@ -76,13 +81,22 @@ $_SESSION['postid'] = $_GET['id'];
                     <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
                     
-<table>
+                    <table>
                                   <thead>
+                                    <?php if ($post['category'] == 'Solo') { ?>
                                       <th ><h2>Participants</h2></th>
-                                      <th><h2>Category</h2></th>
-                                      <th colspan="3"><h3>Payment status</h3></th>
+                                      <th ><h2>Registered</h2></th>
+                                      <?php }?>
+
+                                      <?php if ($post['category'] == 'Team') { ?>
+                                      <th ><h2>Team Participated</h2></th>
+                                      <th ><h2>Registered</h2></th>
+                                      <?php }?>
+
                                     </thead>
                               <?php 
+
+                              if ($post['category'] == 'Solo') {
                                 $res = mysqli_query($conn, $participants);
                                   if(mysqli_num_rows($res) > 0){
                                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
@@ -90,14 +104,27 @@ $_SESSION['postid'] = $_GET['id'];
                                       foreach ($fetch as $key => $participant){   ?>
                                     <tr>
                                       <td><?php echo $key + 1; ?>. <?php echo $participant['username']; ?></td>
-                                      <td><?php echo $participant['category']; ?></td>
-                                      <td><?php echo $participant['payment_status']; ?></td>
-                                      <td colspan="3">$<?php echo $participant['s_price'];?></td>
-                                      <td><?php echo $participant['currency'];?></td>
+                                      <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
                                     </tr>  
                                         <?php
                                         } 
                                     }
+                                  }
+
+                              if ($post['category'] == 'Team') {
+                                $res = mysqli_query($conn, $teamparticipants);
+                                  if(mysqli_num_rows($res) > 0){
+                                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+
+                                      foreach ($fetch as $key => $participant){   ?>
+                                    <tr>
+                                      <td><?php echo $key + 1; ?>. <?php echo $participant['team_name']; ?></td>
+                                      <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
+                                    </tr>  
+                                        <?php
+                                        } 
+                                    }
+                                  }
                                   ?>
                               </table>
                 </div>
