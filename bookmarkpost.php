@@ -33,11 +33,11 @@
         
     <?php include(ROOT_PATH . "/app/includes/Header.php"); ?>
 
-    <div class="sidebar-wrapper">
-
+    <div class="page-wrapper">
+  <div class="sidebar-wrapper">
       <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
-    
+      </div>
         <!-- Admin Page Wrapper -->
         
 

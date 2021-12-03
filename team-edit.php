@@ -10,9 +10,9 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
     $delete_data = "DELETE FROM team_members WHERE team_id = $teamId AND member_id = $addId";
     $data_check = mysqli_query($conn, $delete_data);
     if ($data_check){
+          header('Refresh:3; url=team-edit.php?id="'.$teamId);
           echo "<h3>User has been deleted to the team!</h3>";
           exit();
-          header('Location: team-edit.php?id="'.$teamId);
           //set id on this php
         } else {
           echo "Error";
