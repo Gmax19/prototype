@@ -16,16 +16,18 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
   if ($data_limit01 < $data_limit02){
     echo "You reach the maximum number of team members you can add!";
   } else {
-                $insert_data = "INSERT INTO pending (member_id, team, approval)
-                                     values('$addId','$teamId', '0')";
+ $insert_data = "INSERT INTO pending (member_id, team, approval)
+                 values('$addId','$teamId', '0')";
                     $data_check = mysqli_query($conn, $insert_data);
 
                     if ($data_check){
-                      echo "<h3>User added is now in the pending list.</h3>";
-                      header('Location: team-add.php');
+                      // echo "<h3>User added is now in the pending list.</h3>";
+                      header('Refresh:3; url=team-add.php?id='.$teamId);
                       //set id on this php
+                      echo "<h3>User added is now in the pending list.</h3>";
+                      exit;
                     } else {
-                      echo "error";
+                      echo "There is an error occurring.";
                     }
                   }
 
@@ -87,11 +89,9 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                 // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                 //"SELECT member_id FROM team_members"; 
                         $res = mysqli_query($conn, $teamUserAdd);
-                        // $data_check = mysqli_query($conn, $getId);
                         if (!empty($res)){
                         if(mysqli_num_rows($res) > 0){
                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        // $obtain = mysqli_fetch_all($data_check,MYSQLI_ASSOC);
                         echo "<table>
                         <tr>
                         <th>View Users</th>

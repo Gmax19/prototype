@@ -12,7 +12,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
     if ($data_check){
           echo "<h3>User has been deleted to the team!</h3>";
           exit();
-          header('Location: team-edit.php?id="'.$teamId.'">');
+          header('Location: team-edit.php?id="'.$teamId);
           //set id on this php
         } else {
           echo "Error";
