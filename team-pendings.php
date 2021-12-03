@@ -86,6 +86,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
         <!-- Admin Page Wrapper -->
+        <div class="page-wrapper">
         <div class="sidebar-wrapper">
 
         <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
@@ -113,7 +114,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                     }
                             ?>
                             <br><br>
-                            <h2>Pending Invitations: </h2>
+                            <h2>Pending Invitations : </h2>
 
                             
 
