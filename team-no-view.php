@@ -131,7 +131,7 @@ $res = mysqli_query($conn, $participants);
                               }
                                                   } 
                                               } else { ?>
-                                                <p>The team have not participated in any events yet...</p>
+                                                <h3>The team have not participated in any events yet...</h3>
                                              <?php  }
                    ?>
 
