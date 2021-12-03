@@ -78,7 +78,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                         $resImage = mysqli_query($conn, $image_check);
                         if(mysqli_num_rows($resImage) > 0){
                             $fetchImg = mysqli_fetch_assoc($resImage);
-                            $pic = $fetchImg['team_logo'];
+                            $pic = $fetchImg['team_logo']; 
                         }
 
                         $teamName = "SELECT * FROM users INNER JOIN teams ON users.id = teams.team_captain WHERE teams.id = $teamId";
@@ -108,6 +108,32 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                       echo "
                       </table>";
                        ?>
+
+<?php 
+//Event Achivements
+$teamId = $_GET['id'];
+$participants = "SELECT *, p.id as paymentid  FROM payments as p
+                        inner join teams as t on p.team_id = t.id
+                        inner JOIN events as e on e.id = p.product_id where t.id = $teamId; ";
+$res = mysqli_query($conn, $participants);
+                          if (!empty($res)){
+                            if(mysqli_num_rows($res) > 0){
+                              $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                              foreach ($fetch as $key => $participant){
+                               ?>
+                              <tr>
+                              <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
+                              <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
+                              <td><p><?php echo $participant['category']; ?></p></td>
+                              <td><p><a href="app/payment/payment-status.php?id=<?php echo $participant['paymentid']; ?>">View</a></p></td>
+                                </tr>
+                              <?php 
+                              }
+                                                  } 
+                                              } else { ?>
+                                                <p>The team have not participated in any events yet...</p>
+                                             <?php  }
+                   ?>
 
                 </div>
                 </div>
