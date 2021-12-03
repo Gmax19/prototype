@@ -131,7 +131,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                               }
                                                   } 
                                               } else { ?>
-                                                <p>The team have not participated in any events yet...</p>
+                                                <h3>The team have not participated in any events yet...</h3>
                                              <?php  }
                    ?>
 
