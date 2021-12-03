@@ -1,6 +1,6 @@
 <?php include("path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/team-listing.php");
-// UsersOnly();
+UsersOnly();
 $userId = $_SESSION['id'];
 $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         $res = mysqli_query($conn, $teamCheck);
@@ -33,7 +33,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 
         <!-- Admin Styling -->
 
-        <title>Esport Brunei - Team Management</title>
+        <title>Esport Brunei - Profile</title>
         <link rel="icon" href="assets/logo/logo3.png">
 
     </head>
@@ -61,9 +61,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         //According to this, this should only take member id inside of team_members table that is equal to the session id of the user
                         // $teamId = "SELECT * FROM team_members WHERE member_id = $userId";
 
-                        // $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
-                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId
-                        AND teams.team_coach = $userId AND teams.team_creator = $userId";
+                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                         $res = mysqli_query($conn, $teamId);
                         if(mysqli_num_rows($res) > 0){
                         // $teamNumber = "Team"; 
