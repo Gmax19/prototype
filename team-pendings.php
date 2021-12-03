@@ -28,8 +28,8 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
             if ($data_check){
               if ($accepted_data){
                 if ($remove_data){
+              header('Refresh:3; url=Location: team-pendings.php');
               echo "<h3>You have joined the team! It'll reflect your current team list.</h3>";
-              header('Location: team-pendings.php');
                           exit;
             }
             }
