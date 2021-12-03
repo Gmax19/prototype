@@ -87,7 +87,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                         $fetchName = mysqli_fetch_all($resName,MYSQLI_ASSOC); //fetch all results from that column's name
                         foreach ($fetchName as $team){
 
-                            echo '<img src='.BASE_URL.'/assets/team_logo/'.$pic.">";
+                            echo '<img src='.BASE_URL.'/assets/team_logo/'.$pic." style = 'max-width:90%;' >";
                          echo "<h1>Team ".$team['team_name']."</h1>";
                          echo "<h2>Team Coach: ".$team['team_coach']."</h2>";
                         }
