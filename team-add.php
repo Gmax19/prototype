@@ -7,6 +7,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 
   $addId = $_GET['memberid'];
   $teamId = $_GET['id'];
+  $_SESSION['messageSuccess'] = "<h3>User added is now in the pending list.</h3>";
 
   //Check limit of members
   $limit_data = "SELECT FROM teams WHERE team_creator AND team_coach =". $_SESSION['id'];
@@ -21,9 +22,10 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                     $data_check = mysqli_query($conn, $insert_data);
 
                     if ($data_check){
-                      echo "<h3>User added is now in the pending list.</h3>";
-                      header('Location: team-add.php?id='.$teamId);
+                      // echo "<h3>User added is now in the pending list.</h3>";
+                      header('Refresh:3; url=team-add.php?id='.$teamId);
                       //set id on this php
+                      echo "<h3>User added is now in the pending list.</h3>";
                       exit;
                     } else {
                       echo "There is an error occurring.";
