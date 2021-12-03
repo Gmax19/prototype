@@ -9,7 +9,7 @@ $(document).ready(function () {
         slidesToScroll: 1,
         dots: true,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 5000,
         fade: true,
         nextArrow: $(".next"),
         prevArrow: $(".prev"),

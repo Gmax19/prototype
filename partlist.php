@@ -6,10 +6,11 @@ require (ROOT_PATH . "/app/database/connect.php");
 // CODES FOR PARTICIPANTS
 $eventid = $_GET['id'];
 
-$participants = "SELECT * FROM `payments` as p 
+$participants = "SELECT `username`,`created` FROM `payments` as p 
 inner join users as u on p.user_id = u.id
 inner JOIN events as e on e.id = p.product_id where e.id = $eventid
 ";
+
 $teamparticipants = "SELECT team_name,created FROM payments as p 
 inner join users as u on p.user_id = u.id
 inner join teams as t on t.id = p.team_id
