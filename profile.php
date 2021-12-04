@@ -66,19 +66,9 @@
                         $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
                     }
-
-                    $team_id = mysqli_query($conn,"SELECT team_id FROM team_members as tm
-                        inner join users as u on tm.member_id = u.id
-                        where u.id = $id limit 1");
-
-                    $result = mysqli_fetch_assoc($team_id);
-                    $teamid = $result['team_id'];
-
-                      $participants = "SELECT *, p.id as paymentid  FROM payments as p
-                        inner join users as u on p.user_id = u.id
-                        inner join team_members as tm on tm.member_id = u.id
-                        inner JOIN events as e on e.id = p.product_id 
-                        where u.id = $id OR p.team_id = $teamid ; ";
+                    $participants = "SELECT * FROM `payments` as p 
+                    inner join users as u on p.user_id = u.id
+                    inner JOIN events as e on e.id = p.product_id where u.id = $id";
 
                     ?>
                     
