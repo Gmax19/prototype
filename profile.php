@@ -79,7 +79,7 @@
                         inner join team_members as tm on tm.member_id = u.id
                         inner JOIN events as e on e.id = p.product_id 
                         where u.id = $id OR p.team_id = $teamid ; ";
-
+ 
                     ?>
                     
             <!-- // page Content -->
