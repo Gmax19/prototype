@@ -120,11 +120,7 @@ $teamId = $_GET['id'];
                             //  }
                           }
                          } else {
-<<<<<<< HEAD
                             echo "There is no one with that username.";
-=======
-                          echo "There is no one with that username.";
->>>>>>> 00dd6e4ac629f95def5bfe90657e6e963c2abc79
                           }
                         } else {
                           echo "There is no one with that username.";
