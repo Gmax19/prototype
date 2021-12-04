@@ -130,7 +130,7 @@ if (isset($_GET['t_id'])) {
       </div>
       <!-- // Main Content -->
 <!--  This is the search -->
-      <div class="sidebar">
+      <!-- <div class="sidebar">
 
         <div class="section topics">
           <h2 class="section-title">Topics</h2>
@@ -143,7 +143,7 @@ if (isset($_GET['t_id'])) {
 
         
 
-      </div>
+      </div> -->
 
     </div>
     <!-- // Content -->
