@@ -79,39 +79,84 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 
           <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
+          
 
             <?php 
 
-              $teamId = $_GET['id'];
+// search bar
+
+$teamId = $_GET['id'];
+?>
+          <div class="section search">
+
+          <form action="team-add.php?id=<?php $teamId?>" method="post">
+          <input type="text" name="search-term" class="text-input" placeholder="Search User...">
+          </form>
+        </div>
+<?php
+// this area for usernames to add
+              
               // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
                 //echo the users that are not in the list
                 $teamUserAdd = "SELECT * FROM users WHERE id NOT IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
                 // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                 //"SELECT member_id FROM team_members"; 
                         $res = mysqli_query($conn, $teamUserAdd);
-                        if (!empty($res)){
-                        if(mysqli_num_rows($res) > 0){
-                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        echo "<table>
-                        <tr>
-                        <th>View Users</th>
-                        </tr>
-                        ";
-                        foreach ($fetch as $teams){
-                          // foreach ($obtain as $team){
-                        echo "<tr><td>".$teams['username']."</td>";
-                         echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
-                        //  }
+                        if (isset($_POST['search-term'])){
+
+                          $searchU = $_POST['search-term'];
+                          $searchUser = "SELECT * FROM users WHERE username LIKE '%$searchU%' ORDER BY id ASC";
+                
+                        $resSearch = mysqli_query($conn, $searchUser);
+
+                          if (!empty($resSearch)){
+                          if(mysqli_num_rows($resSearch) > 0){
+                            $fetchSearch = mysqli_fetch_all($resSearch,MYSQLI_ASSOC);
+                            echo "<table>
+                            <tr>
+                            <th>Viewing Searched Users</th>
+                            </tr>
+                            ";
+                            foreach ($fetchSearch as $teams){
+                              // foreach ($obtain as $team){
+                            echo "<tr><td>".$teams['username']."</td>";
+                             echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
+                            //  }
+                          }
+                         } else {
+                            echo "It seems like there is an error, try again!";
+                          }
+                        } else {
+                          echo "There is no one with that username.";
+                        }
+                          
+                          echo "
+                          </table>";
+                        } else {
+                          if (!empty($res)){
+                          if(mysqli_num_rows($res) > 0){
+                          $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                          echo "<table>
+                          <tr>
+                          <th>View Users</th>
+                          </tr>
+                          ";
+                          foreach ($fetch as $teams){
+                            // foreach ($obtain as $team){
+                          echo "<tr><td>".$teams['username']."</td>";
+                           echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
+                          //  }
+                        }
+                       } else {
+                          echo "It seems like there is an error, try again!";
+                        }
+                      } else {
+                        echo "List is empty.";
                       }
-                     } else {
-                        echo "It seems like there is an error, try again!";
-                      }
-                    } else {
-                      echo "List is empty.";
-                    }
-                      
-                      echo "
-                      </table>";
+                        
+                        echo "
+                        </table>";}
+                        
                        ?>
 
                 </div>
