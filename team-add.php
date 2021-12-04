@@ -71,7 +71,9 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 
 
     <!-- Content -->
- 
+ <?php
+$teamId = $_GET['id'];
+ ?>
 
       <!-- Main Content Wrapper -->
         <div class="auth-content" align="center">
@@ -82,12 +84,12 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
           
           <div class="section search">
 
-          <form action="team-add.php?id=<?php $teamId?>" method="post">
+          <form action="team-add.php?id=<?php echo $teamId?>" method="post">
           <input type="text" name="search-term" class="text-input" placeholder="Search User...">
           </form>
         </div>
 <?php
-$teamId = $_GET['id'];
+
 // this area for usernames to add
               
               // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
