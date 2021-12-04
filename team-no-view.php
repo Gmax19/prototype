@@ -68,10 +68,9 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                         if (!empty($res)){
                         if(mysqli_num_rows($res) > 0){
                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        echo "<table>
-                        <tr>
-                        <h2><th>View Team Members</th></h2>
-                        </tr>
+                        echo "
+                        <h2 class=\"page-title\" style='border-style:solid' >View Team Members</h2>
+                        <table>
                         ";
 
                         $image_check = "SELECT * FROM teams WHERE id = '$teamId'";
@@ -86,17 +85,18 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                         if(mysqli_num_rows($resName) > 0){
                         $fetchName = mysqli_fetch_all($resName,MYSQLI_ASSOC); //fetch all results from that column's name
                         foreach ($fetchName as $team){
-
-                            echo '<img src='.BASE_URL.'/assets/team_logo/'.$pic." style = 'max-width:90%;' >";
-                         echo "<h1>Team ".$team['team_name']."</h1>";
-                         echo "<h2>Team Coach: ".$team['team_coach']."</h2>";
+                          echo "<h2>Team ".$team['team_name']."</h2>";
+                          echo '<img src='.BASE_URL.'/assets/team_logo/'.$pic." style = 'max-width:50%;max-height:50%;' >";
+                         echo "<h3>Team Coach: ".$team['team_coach']."</h3>";
                         }
                     }
+                    echo "<br><thead>
+                    <th colspan=\"3\">Members</th>
+                    </thead>";
                         foreach ($fetch as $teams){
                           // foreach ($obtain as $team){
-                        echo "<tr><td>".$teams['username']."</td>";
-                        //  echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-edit.php?id=".$teamId."&memberid=".$teams['id']."\">Delete Member</a></td></tr>"; 
-                        //  }
+                        echo "<tbody><tr>
+                        <td>".$teams['username']."</td>";
                       }
                      } else {
                         echo "It seems like there is an error, try again!";
@@ -105,28 +105,35 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                       echo "List is empty.";
                     }
                       
-                      echo "
-                      </table>";
+                      echo "</tbody>
+                      </tr>
+                      </table><br><br>";
                        ?>
 
-        <?php 
-        //Event Achivements
-        $teamId = $_GET['id'];
-        $participants = "SELECT *, p.id as paymentid  FROM payments as p
-                                inner join teams as t on p.team_id = t.id
-                                inner JOIN events as e on e.id = p.product_id where t.id = $teamId; ";
-        $res = mysqli_query($conn, $participants);
+<?php 
+//Event Achivements
+$teamId = $_GET['id'];
+$participants = "SELECT *, p.id as paymentid  FROM payments as p
+                        inner join teams as t on p.team_id = t.id
+                        inner JOIN events as e on e.id = p.product_id where t.id = $teamId; ";
+$res = mysqli_query($conn, $participants);
                           if (!empty($res)){
                             if(mysqli_num_rows($res) > 0){
                               $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
                               foreach ($fetch as $key => $participant){
                                ?>
-                              <tr>
-                              <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
+                               <table style='border: 1px solid black';>
+                               <thead style='border: 1px solid black';>
+                            <th style='border: 1px solid black';>Events Previously Joined</th>
+                            <th style='border: 1px solid black';>Date</th>
+                        </thead>
+                        <tbody>
+                              <tr style='border: 1px solid black';>
+                              <td ><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
                               <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
-                              <td><p><?php echo $participant['category']; ?></p></td>
-                              <td><p><a href="app/payment/payment-status.php?id=<?php echo $participant['paymentid']; ?>">View</a></p></td>
                                 </tr>
+                              </tbody>
+                              </table>
                               <?php 
                               }
                                                   } 
@@ -134,6 +141,7 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
                                                 <h3>The team have not participated in any events yet...</h3>
                                              <?php  }
                    ?>
+
 
   </div>
  </div>
