@@ -79,10 +79,8 @@ adminOnly();
                         <div>
                             <label>category</label>
                             <select name="category" class="text-input">
-                            <option value="Solo">Solo</option>
-                                <option value="Duo">Duo</option>
-                                <option value="Team">Team (5 person)</option>
-                                <option value="Team (4 person)">Team (4 person)</option>
+                                <option value="Solo">Solo</option>
+                                <option value="Team">Team</option>
                             </select>
                         </div>
                         <div>
