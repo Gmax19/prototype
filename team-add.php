@@ -71,7 +71,9 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
 
 
     <!-- Content -->
- 
+ <?php
+$teamId = $_GET['id'];
+ ?>
 
       <!-- Main Content Wrapper -->
         <div class="auth-content" align="center">
@@ -80,20 +82,14 @@ if (isset($_GET['id']) && isset($_GET['memberid'])){
           <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
           
-
-            <?php 
-
-// search bar
-
-$teamId = $_GET['id'];
-?>
           <div class="section search">
 
-          <form action="team-add.php?id=<?php $teamId?>" method="post">
+          <form action="team-add.php?id=<?php echo $teamId?>" method="post">
           <input type="text" name="search-term" class="text-input" placeholder="Search User...">
           </form>
         </div>
 <?php
+
 // this area for usernames to add
               
               // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
@@ -124,7 +120,11 @@ $teamId = $_GET['id'];
                             //  }
                           }
                          } else {
+<<<<<<< HEAD
                             echo "There is no one with that username.";
+=======
+                          echo "There is no one with that username.";
+>>>>>>> 00dd6e4ac629f95def5bfe90657e6e963c2abc79
                           }
                         } else {
                           echo "There is no one with that username.";
