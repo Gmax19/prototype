@@ -105,7 +105,7 @@ $teamId = $_GET['id'];
                         if (isset($_POST['search-term'])){
 
                           $searchU = $_POST['search-term'];
-                          $searchUser = "SELECT * FROM users WHERE username LIKE '%$searchU%' ORDER BY id ASC";
+                          $searchUser = "SELECT * FROM users WHERE admin = 0 AND username LIKE '%$searchU%'  ORDER BY id ASC";
                 
                         $resSearch = mysqli_query($conn, $searchUser);
 
@@ -124,7 +124,7 @@ $teamId = $_GET['id'];
                             //  }
                           }
                          } else {
-                            echo "It seems like there is an error, try again!";
+                            echo "There is no one with that username.";
                           }
                         } else {
                           echo "There is no one with that username.";
