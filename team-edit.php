@@ -1,8 +1,23 @@
 <?php include("path.php"); ?>
 
-<?php include(ROOT_PATH . '/app/controllers/team-listing.php');?>
-<!DOCTYPE html>
-<html lang="en">
+<?php include(ROOT_PATH . '/app/controllers/team-listing.php');
+
+// DELETE AREA
+if (isset($_GET['id']) && isset($_GET['memberid'])){
+  // if(count($errors) === 0){
+    $addId = $_GET['memberid'];
+    $teamId = $_GET['id'];
+    $delete_data = "DELETE FROM team_members WHERE team_id = $teamId AND member_id = $addId";
+    $data_check = mysqli_query($conn, $delete_data);
+    if ($data_check){
+          header('Refresh:3; url=team-edit.php?id="'.$teamId);
+          echo "<h3>User has been deleted to the team!</h3>";
+          exit();
+          //set id on this php
+        } else {
+          echo "Error";
+        }
+      }?>
 
 <head>
   <meta charset="UTF-8">
@@ -42,55 +57,44 @@
         <div class="auth-content" align="center">
           <h1 class="post-title">List of Users</h1>
 
+          <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
+
 
             <?php 
-
-
-// REMOVE AREA
-            if (isset($_GET['id']) && isset($_GET['memberid'])){
-              // if(count($errors) === 0){
-                $addId = $_GET['memberid'];
-                $teamId = $_GET['id'];
-                $removeData = "DELETE FROM team_members WHERE member_id = $addId";
-                // $insert_data = "INSERT INTO team_members (team_id, member_id)
-                //                      values('$teamId','$addId')";
-                    $data_check = mysqli_query($conn, $removeData);
-
-                    if ($data_check){
-                      echo "<h3>User has been removed from the team.</h3>";
-                      
-                    } else {
-                      echo "error";
-                    }
-            
-                // } 
-                // else {
-                //   echo "You reached the limit of members added!";
-                // }
-              }
+              
               $teamId = $_GET['id'];
               $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
-                //echo the users that are in the list
-                $teamUserDelete = "SELECT * FROM users WHERE id = ( SELECT member_id FROM team_members WHERE team_id = $teamId);";
-                        $res = mysqli_query($conn, $teamUserDelete);
+                //echo the users that are not in the list
+                $teamUserAdd = "SELECT * FROM users WHERE id IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+                // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
+                //"SELECT member_id FROM team_members"; 
+                        $res = mysqli_query($conn, $teamUserAdd);
+                        // $data_check = mysqli_query($conn, $getId);
+                        if (!empty($res)){
                         if(mysqli_num_rows($res) > 0){
                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                        // $obtain = mysqli_fetch_all($data_check,MYSQLI_ASSOC);
                         echo "<table>
                         <tr>
-                        <th>Teammates</th>
+                        <th>View Users</th>
                         </tr>
                         ";
                         foreach ($fetch as $teams){
-                          
+                          // foreach ($obtain as $team){
                         echo "<tr><td>".$teams['username']."</td>";
-                        echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-edit.php?id=".$teams['id']."&member_id=".$teams['id']."\">Delete Member</a></td></tr>";
-                        
-
-                        
+                         echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-edit.php?id=".$teamId."&memberid=".$teams['id']."\">Delete Member</a></td></tr>"; 
+                        //  }
+                      }
+                     } else {
+                        echo "It seems like there is an error, try again!";
+                      }
+                    } else {
+                      echo "List is empty.";
                     }
-                    echo "
-                    </table>";
-                  }?>
+                      
+                      echo "
+                      </table>";
+                       ?>
 
                 </div>
                 </div>

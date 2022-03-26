@@ -51,7 +51,7 @@ adminOnly();
                     <?php include(ROOT_PATH . '/app/includes/messages.php'); ?>
 
                     <div class="container">
-                            <img src=<?php echo BASE_URL . "/assets/logo/test3.png" ?> alt="Avatar" class="image">
+                            <img src=<?php echo BASE_URL . "/assets/logo/m1.png" ?> alt="Avatar" class="image">
                             <div class="overlay">
                             <div class="text">Greetings Moderator</div>
                         </div>

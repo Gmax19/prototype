@@ -1,6 +1,6 @@
 <?php include("path.php"); ?>
 <?php include(ROOT_PATH . "/app/controllers/team-listing.php");
-UsersOnly();
+// UsersOnly();
 $userId = $_SESSION['id'];
 $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         $res = mysqli_query($conn, $teamCheck);
@@ -13,7 +13,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -42,30 +42,32 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
         
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
-        <!-- Admin Page Wrapper -->
+        <!-- Wrapper -->
         <div class="sidebar-wrapper">
 
-        <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+            <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
                 <div class="auth-content" align="center">
 
-                    
+                <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
-                    <h2 class="page-title">Team Area : </h2>
+                    <h2 class="page-title" >Team Menu</h2>
                     
 
                     <div class="main-content">
                         
-                        <div><a href="team-profile.php">Teams Management</a></div>
-                        <div><a href="team-pendings.php">Current Teams Joined</a></div>
-                        </div>
+                        <h3 class="btn btn-big"><a href="team-profile.php">Teams Management</a></h3>
+                        <h3 class="btn btn-big"><a href="team-pendings.php">Current Teams Joined</a></h3>
+                        
+            <!-- //  Content -->
+
+        </div>
+                    </div>
+                    </div>
                     </div>
                 </div>
 
             </div>
-            <!-- // Admin Content -->
-
-        </div>
         <!-- // Page Wrapper -->
         <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 

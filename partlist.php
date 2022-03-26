@@ -6,10 +6,16 @@ require (ROOT_PATH . "/app/database/connect.php");
 // CODES FOR PARTICIPANTS
 $eventid = $_GET['id'];
 
-$participants = "SELECT * FROM `payments` as p 
+$participants = "SELECT `username`,`created` FROM `payments` as p 
 inner join users as u on p.user_id = u.id
 inner JOIN events as e on e.id = p.product_id where e.id = $eventid
 ";
+
+$teamparticipants = "SELECT team_name,created FROM payments as p 
+inner join users as u on p.user_id = u.id
+inner join teams as t on t.id = p.team_id
+inner JOIN events as e on e.id = p.product_id 
+where e.id = $eventid";
 ?>
 
 
@@ -66,10 +72,20 @@ inner JOIN events as e on e.id = p.product_id where e.id = $eventid
                                    <!-- CODES FOR PARTICIPANTS -->
                                 <table>
                                   <thead>
+                                    <?php if ($post['category'] == 'Solo') { ?>
                                       <th ><h2>Participants</h2></th>
                                       <th ><h2>Registered</h2></th>
+                                      <?php }?>
+
+                                      <?php if ($post['category'] == 'Team') { ?>
+                                      <th ><h2>Team Participated</h2></th>
+                                      <th ><h2>Registered</h2></th>
+                                      <?php }?>
+
                                     </thead>
                               <?php 
+
+                              if ($post['category'] == 'Solo') {
                                 $res = mysqli_query($conn, $participants);
                                   if(mysqli_num_rows($res) > 0){
                                         $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
@@ -82,6 +98,22 @@ inner JOIN events as e on e.id = p.product_id where e.id = $eventid
                                         <?php
                                         } 
                                     }
+                                  }
+
+                              if ($post['category'] == 'Team') {
+                                $res = mysqli_query($conn, $teamparticipants);
+                                  if(mysqli_num_rows($res) > 0){
+                                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+
+                                      foreach ($fetch as $key => $participant){   ?>
+                                    <tr>
+                                      <td><?php echo $key + 1; ?>. <?php echo $participant['team_name']; ?></td>
+                                      <td><?php echo date('F j, Y', strtotime($participant['created'])); ?></td>
+                                    </tr>  
+                                        <?php
+                                        } 
+                                    }
+                                  }
                                   ?>
                               </table>
         </div>

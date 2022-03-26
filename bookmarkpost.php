@@ -20,6 +20,7 @@
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/admin.css">
 
         <!-- Admin Styling -->
 
@@ -32,11 +33,11 @@
         
     <?php include(ROOT_PATH . "/app/includes/Header.php"); ?>
 
-    <div class="sidebar-wrapper">
-
+    <div class="page-wrapper">
+  <div class="sidebar-wrapper">
       <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
-    
+      </div>
         <!-- Admin Page Wrapper -->
         
 
@@ -77,7 +78,8 @@
         </div>
         <!-- // Page Wrapper -->
 
-        
+          <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+
 
         <!-- JQuery -->
         <script

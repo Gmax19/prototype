@@ -65,12 +65,11 @@
                         $steam = $fetch['steam'];
                         $discord = $fetch['discord'];
                         $created = $fetch['created_at'];
- 
-                        $participants = "SELECT *, p.id as paymentid  FROM payments as p
-                        inner join users as u on p.user_id = u.id
-                        inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
                     }
-                    
+                    $participants = "SELECT * FROM `payments` as p 
+                    inner join users as u on p.user_id = u.id
+                    inner JOIN events as e on e.id = p.product_id where u.id = $id";
+
                     ?>
                     
             <!-- // page Content -->
@@ -118,6 +117,7 @@
             </div>
         </div>
       
+
       <div class="projects">
             <h3><i class="fas fa-trophy"></i> Achievements</h3>
             <div class="projects_data">
@@ -152,6 +152,7 @@
                    <?php } ?>
                  </div>
             </div>
+            
         </div>
         <div class="projects">
         <div class="links">
@@ -159,11 +160,11 @@
             <ul>
             <div class="data">
               
-              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i> <?php echo $steam?></a></li>
+              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i></a></li>
             </div>  
 
             <div class="data">
-              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i> <?php echo $instagram?></a></li>
+              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i></a></li>
             </div>
             
             <div class="data">

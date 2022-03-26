@@ -1,8 +1,43 @@
 <?php include("path.php"); ?>
 
-<?php include(ROOT_PATH . '/app/controllers/team-listing.php');?>
-<!DOCTYPE html>
-<html lang="en">
+<?php include(ROOT_PATH . '/app/controllers/team-listing.php');
+
+// PENDING AREA
+if (isset($_GET['id']) && isset($_GET['memberid'])){
+
+  $addId = $_GET['memberid'];
+  $teamId = $_GET['id'];
+
+  //Check limit of members
+  $limit_data = "SELECT FROM teams WHERE team_creator AND team_coach =". $_SESSION['id'];
+  $teamUserLimit = "SELECT * COUNT (users) WHERE id IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+  $data_limit01 = mysqli_query($conn, $limit_data);
+  $data_limit02 = mysqli_query($conn, $teamUserLimit);
+  if ($data_limit01 < $data_limit02){
+    echo "You reach the maximum number of team members you can add!";
+  } else {
+ $insert_data = "INSERT INTO pending (member_id, team, approval)
+                 values('$addId','$teamId', '0')";
+                    $data_check = mysqli_query($conn, $insert_data);
+
+                    if ($data_check){
+                      // echo "<h3>User added is now in the pending list.</h3>";
+                      header('Refresh:3; url=team-add.php?id='.$teamId);
+                      //set id on this php
+                      echo "<h3>User added is now in the pending list.</h3>";
+                      exit;
+                    } else {
+                      echo "There is an error occurring.";
+                    }
+                  }
+
+//approval table
+// if 0 = pending
+// if 1 = accept
+// if 2 = reject
+
+}
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -36,7 +71,9 @@
 
 
     <!-- Content -->
- 
+ <?php
+$teamId = $_GET['id'];
+ ?>
 
       <!-- Main Content Wrapper -->
         <div class="auth-content" align="center">
@@ -44,92 +81,78 @@
 
           <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
+          
+          <div class="section search">
 
-            <?php 
+          <form action="team-add.php?id=<?php echo $teamId?>" method="post">
+          <input type="text" name="search-term" class="text-input" placeholder="Search User...">
+          </form>
+        </div>
+<?php
 
-// PENDING AREA
-if (isset($_GET['id']) && isset($_GET['memberid'])){
-
-  $addId = $_GET['memberid'];
-  $teamId = $_GET['id'];
-
-                $insert_data = "INSERT INTO pending (member_id, team, approval)
-                                     values('$addId','$teamId', '0')";
-                    $data_check = mysqli_query($conn, $insert_data);
-
-                    if ($data_check){
-                      echo "<h3>User added is now in the pending list.</h3>";
-                      // header('Location: team-add.php');
-                      //set id on this php
-                    } else {
-                      echo "error";
-                    }
-
-}
-
-//approval table
-// if 0 = pending
-// if 1 = accept
-// if 2 = reject
-
-// ADD AREA
-            if (isset($_GET['id']) && isset($_GET['memberid'])){
-              // if(count($errors) === 0){
-                $addId = $_GET['memberid'];
-                $teamId = $_GET['id'];
-                // //check the member limit
-                // $memberLimit = "SELECT COUNT(team_id) FROM team_members WHERE team_id = $teamId"; //pulls out the number of members
-                // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
-                // if ($memberLimit <=  $teamMembers){
-                $insert_data = "INSERT INTO team_members (team_id, member_id)
-                                     values('$teamId','$addId')";
-                    $data_check = mysqli_query($conn, $insert_data);
-
-                    if ($data_check){
-                      echo "<h3>User has been added to the team!</h3>";
-                      header('Location: team-add.php?id="'.$teamId.'"&memberid="'.$teamId.'">');
-                      //set id on this php
-                    } else {
-                      echo "Error";
-                    }
-            
-                // } 
-                // else {
-                //   echo "You reached the limit of members added!";
-                // }
-              }
-              $teamId = $_GET['id'];
-              $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
+// this area for usernames to add
+              
+              // $teamMembers = "SELECT limit_members FROM teams WHERE id = $teamId";
                 //echo the users that are not in the list
-                $teamUserAdd = "SELECT * FROM users WHERE id NOT in ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
+                $teamUserAdd = "SELECT * FROM users WHERE id NOT IN ( SELECT member_id FROM team_members WHERE team_id = $teamId) AND admin = 0;";
                 // $getId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
                 //"SELECT member_id FROM team_members"; 
                         $res = mysqli_query($conn, $teamUserAdd);
-                        // $data_check = mysqli_query($conn, $getId);
-                        if (!empty($res)){
-                        if(mysqli_num_rows($res) > 0){
-                        $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        // $obtain = mysqli_fetch_all($data_check,MYSQLI_ASSOC);
-                        echo "<table>
-                        <tr>
-                        <th>View Users</th>
-                        </tr>
-                        ";
-                        foreach ($fetch as $teams){
-                          // foreach ($obtain as $team){
-                        echo "<tr><td>".$teams['username']."</td>";
-                         echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
-                        //  }
+                        if (isset($_POST['search-term'])){
+
+                          $searchU = $_POST['search-term'];
+                          $searchUser = "SELECT * FROM users WHERE admin = 0 AND username LIKE '%$searchU%'  ORDER BY id ASC";
+                
+                        $resSearch = mysqli_query($conn, $searchUser);
+
+                          if (!empty($resSearch)){
+                          if(mysqli_num_rows($resSearch) > 0){
+                            $fetchSearch = mysqli_fetch_all($resSearch,MYSQLI_ASSOC);
+                            echo "<table>
+                            <tr>
+                            <th>Viewing Searched Users</th>
+                            </tr>
+                            ";
+                            foreach ($fetchSearch as $teams){
+                              // foreach ($obtain as $team){
+                            echo "<tr><td>".$teams['username']."</td>";
+                             echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
+                            //  }
+                          }
+                         } else {
+                            echo "There is no one with that username.";
+                          }
+                        } else {
+                          echo "There is no one with that username.";
+                        }
+                          
+                          echo "
+                          </table>";
+                        } else {
+                          if (!empty($res)){
+                          if(mysqli_num_rows($res) > 0){
+                          $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                          echo "<table>
+                          <tr>
+                          <th>View Users</th>
+                          </tr>
+                          ";
+                          foreach ($fetch as $teams){
+                            // foreach ($obtain as $team){
+                          echo "<tr><td>".$teams['username']."</td>";
+                           echo "<td class=\"btn btn-big\" name=\"submit\"><a href=\"team-add.php?id=".$teamId."&memberid=".$teams['id']."\">Add Member</a></td></tr>"; 
+                          //  }
+                        }
+                       } else {
+                          echo "It seems like there is an error, try again!";
+                        }
+                      } else {
+                        echo "List is empty.";
                       }
-                     } else {
-                        echo "It seems like there is an error, try again!";
-                      }
-                    } else {
-                      echo "List is empty.";
-                    }
-                      
-                      echo "
-                      </table>";
+                        
+                        echo "
+                        </table>";}
+                        
                        ?>
 
                 </div>

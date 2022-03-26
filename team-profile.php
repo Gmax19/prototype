@@ -61,7 +61,7 @@ $teamCheck = "SELECT * FROM team_members WHERE member_id = '$userId'";
                         //According to this, this should only take member id inside of team_members table that is equal to the session id of the user
                         // $teamId = "SELECT * FROM team_members WHERE member_id = $userId";
 
-                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId";
+                        $teamId = "SELECT * FROM team_members INNER JOIN teams ON team_members.team_id = teams.id WHERE team_members.member_id = $userId AND teams.team_creator =". $_SESSION['id'];
                         $res = mysqli_query($conn, $teamId);
                         if(mysqli_num_rows($res) > 0){
                         // $teamNumber = "Team"; 

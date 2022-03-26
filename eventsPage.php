@@ -96,7 +96,7 @@ if (isset($_GET['t_id'])) {
           <div class="post clearfix">
             <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-image">
             <div class="post-preview">
-              <h2><a href="eventtest.php?id=<?php echo $post['eventid']; ?>"><?php echo $post['title']; ?></a></h2>
+              <h2><a href="eventSingle.php?id=<?php echo $post['eventid']; ?>"><?php echo $post['title']; ?></a></h2>
               <i class="far fa-user"> <?php echo $post['username']; ?></i>
               &nbsp;
               <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['created_at'])); ?></i>
